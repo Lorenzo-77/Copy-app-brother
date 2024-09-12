@@ -1,0 +1,69 @@
+/* Contenedor principal más compacto */
+.container {
+  padding: 10px;
+  background-color: #f0f8ff; /* Azul claro */
+  color: #000000; /* Texto negro para mayor contraste */
+}
+
+/* Contenedor de los botones de los días */
+.days-container {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los botones se ajusten a nuevas líneas */
+  gap: 5px; /* Espaciado entre los botones */
+  justify-content: center;
+  margin-top: 10px; /* Menos espacio superior */
+}
+
+/* Botones para los días de la semana */
+.day-button {
+  flex: 1 1 30%; /* Los botones ocuparán 30% del ancho, ajustándose a varias filas si es necesario */
+  padding: 8px 16px; /* Tamaño compacto de los botones */
+  background-color: #8B4513; /* Azul oscuro */
+  color: white; /* Texto blanco para contraste */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem; /* Tamaño de texto ajustado */
+  text-align: center;
+}
+
+.day-button:hover {
+  background-color: #47240b; /* Azul un poco más claro para el hover */
+}
+
+/* Contenedor de la rutina */
+.routine-container {
+  margin-top: 15px; /* Menos espacio entre el selector de días y la rutina */
+  text-align: left; /* Alineación del texto a la izquierda */
+  background-color: #e6f2ff; /* Azul muy claro para el fondo */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+p {
+  font-size: 1rem; /* Tamaño de fuente legible pero compacto */
+  color: #333333; /* Gris oscuro */
+}
+
+/* Ajustes para pantallas móviles */
+@media (max-width: 768px) {
+  .container {
+    padding: 5px;
+  }
+
+  .days-container {
+    gap: 5px;
+  }
+
+  .day-button {
+    flex: 1 1 45%; /* Los botones ocuparán 45% del ancho en pantallas más pequeñas */
+    padding: 6px 12px; /* Botones más pequeños en móvil */
+    font-size: 0.9rem;
+  }
+
+  .routine-container {
+    font-size: 0.9rem; /* Tamaño de texto reducido para móvil */
+  }
+}

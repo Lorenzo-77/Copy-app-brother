@@ -1,0 +1,97 @@
+/* Estilo general para el contenedor principal */
+.container {
+    padding: 20px;
+    background-color: white; /* Fondo negro */
+    color: white; /* Texto blanco */
+  }
+  
+  /* Estilo general para cada bloque de sección */
+  .section-block {
+    margin-bottom: 20px;
+    background-color: white; /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    color: black; /* Texto negro para que contraste con el fondo blanco */
+  }
+  
+  /* Encabezado de cada sección */
+  .section-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d6d6d6; /* Azul oscuro */
+    color: white;
+    cursor: pointer;
+  }
+  
+  .section-header h3 {
+    margin: 0;
+  }
+  
+  .section-header span {
+    font-size: 1.5rem;
+  }
+  
+  /* Contenido dentro de cada sección */
+  .section-content {
+    padding: 15px;
+    background-color: #fff;
+  }
+  
+  p, h2 {
+    color: black; /* Texto negro para garantizar visibilidad en el fondo blanco */
+  }
+  
+  /* Estilo para listas generales */
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    color: black;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para la lista de sets específicos */
+  .set-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .set-list li {
+    margin-right: 10px;
+  }
+  
+  /* Estilo para los campos de entrada */
+  input[type="number"] {
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%; /* Ancho completo */
+  }
+  
+  /* Adaptación para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .section-header {
+      font-size: 1rem;
+    }
+  
+    .section-content {
+      font-size: 0.9rem;
+    }
+  
+    .set-list {
+      flex-direction: column; /* En pantallas pequeñas, los sets se mostrarán en columna */
+    }
+  }
+  

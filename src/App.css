@@ -1,0 +1,20 @@
+body {
+  background-image: url('https://i.pinimg.com/originals/54/8e/37/548e372d06a3be952552c4c712155c51.jpg');
+  background-size: cover; /* La imagen cubrirá todo el fondo */
+  background-repeat: no-repeat; /* Evitar que la imagen se repita */
+  background-position: center; /* Centrar la imagen en la pantalla */
+  color: #333; /* Ajusta el color del texto a un tono más oscuro */
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5 {
+  color: black; /* Asegúrate de que los encabezados tengan suficiente contraste */
+}
+
+/* Otros ajustes relacionados con el diseño responsivo */
+.container {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}

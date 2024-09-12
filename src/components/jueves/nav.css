@@ -1,0 +1,84 @@
+.lunes-container {
+  padding: 20px;
+  background-color: #000000;
+  color: white; /* Cambié el texto a blanco para que sea visible sobre el fondo oscuro */
+}
+
+.section-block {
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: black;
+}
+
+.section-header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+input[type="number"] {
+  background-color: white; /* Fondo blanco */
+  color: black; /* Texto negro */
+  border: 2px solid #007bff; /* Borde azul */
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%; /* Para que ocupe todo el ancho disponible */
+}
+.section-header h3 {
+  margin: 0;
+}
+
+.section-header span {
+  font-size: 1.5rem;
+}
+
+.section-content {
+  padding: 15px;
+  background-color: #fff;
+}
+p{
+  color: black;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  color: black;
+  margin-bottom: 10px;
+}
+
+.set-list {
+  display: flex;
+  justify-content: space-between; /* Esto hace que los elementos se alineen en una fila */
+}
+
+.set-list li {
+  margin-right: 10px; /* Agrega un pequeño espacio entre cada set */
+}
+
+@media (max-width: 768px) {
+  .lunes-container {
+    padding: 10px;
+  }
+
+  .section-header {
+    font-size: 1rem;
+  }
+
+  .section-content {
+    font-size: 0.9rem;
+  }
+
+  .set-list {
+    flex-direction: column; /* En pantallas pequeñas, los sets se mostrarán en columna */
+  }
+}
