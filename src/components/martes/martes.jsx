@@ -3,12 +3,17 @@ import '../../styles.css';
 
 function About() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isGymTestOpen, setIsGymTestOpen] = useState(false);
+  const [isFrontSquatOpen, setIsFrontSquatOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-  const [isMidlineOpen, setIsMidlineOpen] = useState(false);
+  const [isHSPUDevOpen, setIsHSPUDevOpen] = useState(false); // Para HANDSTAND PUSH UP DEVELOPMENT
   const [oneRepMax, setOneRepMax] = useState(''); 
-  const [calculatedWeights, setCalculatedWeights] = useState([]);
+  const [calculatedWeights, setCalculatedWeights] = useState({
+    set80: '',
+    set62: '',
+    set65: '',
+    set68: ''
+  });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
@@ -17,17 +22,22 @@ function About() {
     setOneRepMax(value);
 
     if (value) {
-      const percentages = [0.58, 0.62, 0.66, 0.70];
-      const weights = percentages.map(percentage => (value * percentage).toFixed(2));
-      setCalculatedWeights(weights);
+      const rm = parseFloat(value);
+      const calculatedWeights = {
+        set80: (rm * 0.80).toFixed(2),
+        set62: (rm * 0.62).toFixed(2),
+        set65: (rm * 0.65).toFixed(2),
+        set68: (rm * 0.68).toFixed(2)
+      };
+      setCalculatedWeights(calculatedWeights);
     }
   };
 
   return (
     <div className="container">
-      <h1>Martes</h1>
+      <h1>MARTES</h1>
 
-      {/* Sección WARM UP */}
+      {/* WARM UP */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsWarmUpOpen)}>
           <h3>SESSION 1: WARM UP</h3>
@@ -37,25 +47,26 @@ function About() {
           <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Regressed Copenhagen Raise</li>
-              <li>10/10 Single Leg Good Morning</li>
-              <li>6/6 Goblet Lateral Box Step Ups</li>
+              <li>10/10 Banded Side Steps</li>
+              <li>8/8 Single Leg KB Hip Thrust</li>
               <li>10 Bootstraps</li>
+              <li>10 Squat Press Out</li>
               <li>8 Yoga Push Ups</li>
-              <li>10" Handstand Hold</li>
+              <li>10" Bottom Ring Support Hold + 10" Top Of Ring Support Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección GYMNASTICS TEST */}
+      {/* FRONT SQUAT */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsGymTestOpen)}>
+        <div className="section-header" onClick={() => toggleSection(setIsFrontSquatOpen)}>
           <h3>FRONT SQUAT</h3>
-          <span>{isGymTestOpen ? '▲' : '▼'}</span>
+          <span>{isFrontSquatOpen ? '▲' : '▼'}</span>
         </div>
-        {isGymTestOpen && (
+        {isFrontSquatOpen && (
           <div className="section-content">
+            <p>Build to 3 Reps @<strong>{calculatedWeights.set80 || '80kg'}</strong></p>
             <p>Introduce tu 1RM para Front Squat:</p>
             <input 
               type="number" 
@@ -65,26 +76,22 @@ function About() {
             />
             {oneRepMax && (
               <div>
-                <p>4 Sets con los siguientes pesos:</p>
+                <p>3 Sets con los siguientes pesos:</p>
                 <ul className="set-list">
-  <li>Set 1: {calculatedWeights[0]} kg (58%)</li>
-  <li>Set 2: {calculatedWeights[1]} kg (62%)</li>
-  <li>Set 3: {calculatedWeights[2]} kg (66%)</li>
-  <li>Set 4: {calculatedWeights[3]} kg (70%)</li>
-</ul>
-
+                  <li>6 Front Squats {calculatedWeights.set62} kg (62%)</li>
+                  <li>6 Front Squats {calculatedWeights.set65} kg (65%)</li>
+                  <li>6 Front Squats {calculatedWeights.set68} kg (68%)</li>
+                </ul>
               </div>
             )}
             <ul>
-              <li>3 Tempo Front Squat</li>
-              <li>Rest 60-90" b/t Sets</li>
-              <li>TEMPO: 5" bajando, 3" abajo, subida rápida</li>
+              <li>Rest 60-90" entre sets</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección CONDITIONING */}
+      {/* CONDITIONING */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsConditioningOpen)}>
           <h3>CONDITIONING</h3>
@@ -92,18 +99,46 @@ function About() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>4 Sets, Each For Time</p>
+            <p>3 Sets - AMRAP 4 Min</p>
             <ul>
-              <li>25/18 Cal Row</li>
-              <li>100 Double Unders</li>
-              <li>25 Rower Facing Burpees</li>
+              <li>40 Wall Balls</li>
+              <li>10/7 Ring Muscle Ups</li>
+              <li>2 Handstand Walk Segments</li>
+              <li>30/21 Cal Row</li>
             </ul>
-            <p>Rest 3 Min b/t Sets</p>
+            <p>Rest 4 Min entre sets</p>
           </div>
         )}
       </div>
 
-      {/* Sección ACCESSORY */}
+      {/* HANDSTAND PUSH UP DEVELOPMENT */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsHSPUDevOpen)}>
+          <h3>HANDSTAND PUSH UP DEVELOPMENT</h3>
+          <span>{isHSPUDevOpen ? '▲' : '▼'}</span>
+        </div>
+        {isHSPUDevOpen && (
+          <div className="section-content">
+            <p>Elegir la opción según el resultado del TEST de Chest-to-Wall Handstand Push Ups.</p>
+            <h4>1) Test Sub 3 Min</h4>
+            <p>4 Rounds For Total Time</p>
+            <ul>
+              <li>15 GHD Sit Ups</li>
+              <li>15 Double Dumbbell Farmers Walking Lunges</li>
+              <li>15 Handstand Push Ups</li>
+            </ul>
+            <p>Rest 1 Min entre rondas</p>
+            <p><strong>***Round 1 & 2:</strong> Chest-to-Wall Handstand Push Ups</p>
+            <p><strong>***Round 3 & 4:</strong> Strict Handstand Push Ups</p>
+            <ul>
+              <li>Dumbbells - 2 x 22,5/15 kg</li>
+              <li>Lunges - 7,5 m Unbroken Segments</li>
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* ACCESSORY */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
           <h3>ACCESSORY</h3>
@@ -112,29 +147,14 @@ function About() {
         {isAccessoryOpen && (
           <div className="section-content">
             <ul>
-              <li>8/8 Lateral Goblet Box Step Ups</li>
-              <li>8/8 Kettlebell Single Leg Deadlift</li>
-              <li>8/8 One Arm Shoulder Press</li>
-              <li>8/8 One Arm Upright Row</li>
+              <li>3 Rounds - 10/10 Three Point Dumbbell Row</li>
+              <li>10/10 Elbow On Knee Banded External Rotation</li>
+              <li>Rest 1 Min entre rondas</li>
             </ul>
-          </div>
-        )}
-      </div>
-
-      {/* Sección MIDLINE */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
-          <h3>MIDLINE</h3>
-          <span>{isMidlineOpen ? '▲' : '▼'}</span>
-        </div>
-        {isMidlineOpen && (
-          <div className="section-content">
             <ul>
-              <li>2 x 10" Standing Straight Leg Hold</li>
-              <li>10 Lemon Squeeze</li>
-              <li>10" L Hang</li>
-              <li>10 GHD Hip Extensions (2" Hold On Top)</li>
-              <li>30" Samson Stretch (cada lado)</li>
+              <li>3 Rounds - 30 m One Arm Overhead Carry (Each Arm)</li>
+              <li>30 m One Arm Farmers Carry (Each Arm)</li>
+              <li>Rest 1 Min entre rondas</li>
             </ul>
           </div>
         )}

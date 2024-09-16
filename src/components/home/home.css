@@ -18,7 +18,7 @@
 .day-button {
   flex: 1 1 30%; /* Los botones ocuparán 30% del ancho, ajustándose a varias filas si es necesario */
   padding: 8px 16px; /* Tamaño compacto de los botones */
-  background-color: #8B4513; /* Azul oscuro */
+  background-color: #aa0000; /* Azul oscuro */
   color: white; /* Texto blanco para contraste */
   border: none;
   border-radius: 5px;
@@ -28,7 +28,7 @@
 }
 
 .day-button:hover {
-  background-color: #47240b; /* Azul un poco más claro para el hover */
+  background-color: #640000; /* Azul un poco más claro para el hover */
 }
 
 /* Contenedor de la rutina */

@@ -3,10 +3,30 @@ import '../../styles.css';
 
 function Lunes() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isGymTestOpen, setIsGymTestOpen] = useState(false);
+  const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
+  const [isSnatchOpen, setIsSnatchOpen] = useState(false);
+  const [isSnatchDeadliftOpen, setIsSnatchDeadliftOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isMidlineOpen, setIsMidlineOpen] = useState(false);
+  const [oneRepMaxSnatch, setOneRepMaxSnatch] = useState('');
+
+  // Función para manejar el cambio de 1RM
+  const handle1RMChange = (event) => {
+    setOneRepMaxSnatch(event.target.value);
+  };
+
+  // Cálculo de pesos basados en porcentajes
+  const calculateWeights = (percentages) => {
+    return percentages.map(percentage => 
+      Math.round((oneRepMaxSnatch * percentage) / 100)
+    );
+  };
+
+  const snatchTechniquePercentages = [58, 61, 64, 67];
+  const snatchPercentages = [70, 75, 80];
+  const snatchTechniqueWeights = oneRepMaxSnatch ? calculateWeights(snatchTechniquePercentages) : [];
+  const snatchWeights = oneRepMaxSnatch ? calculateWeights(snatchPercentages) : [];
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
@@ -24,43 +44,84 @@ function Lunes() {
           <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Banded Side Steps</li>
-              <li>8/8 Single Leg KB Hip Thrust</li>
+              <li>10/10 Regressed Copenhagen Raise</li>
+              <li>8/8 Kettlebell Single Leg Hip Thrust</li>
               <li>6/6 Goblet Lateral Box Step Ups</li>
-              <li>10 Bootstraps</li>
               <li>8 Yoga Push Ups</li>
-              <li>10" Handstand Hold</li>
+              <li>10 Russian KB Swings</li>
+              <li>5 Cuban Press Complex (w/Empty Barbell)</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección GYMNASTICS TEST */}
+      {/* Sección SNATCH TECHNIQUE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsGymTestOpen)}>
-          <h3>GYMNASTICS TEST</h3>
-          <span>{isGymTestOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsSnatchTechniqueOpen)}>
+          <h3>SNATCH TECHNIQUE</h3>
+          <span>{isSnatchTechniqueOpen ? '▲' : '▼'}</span>
         </div>
-        {isGymTestOpen && (
+        {isSnatchTechniqueOpen && (
           <div className="section-content">
-            <p>For Time</p>
-            <ul>
-              <li>50 Strict Handstand Push Ups</li>
+            <p>Introduce tu 1RM para Snatch:</p>
+            <input 
+              type="number" 
+              value={oneRepMaxSnatch} 
+              onChange={handle1RMChange} 
+              placeholder="1RM en kg" 
+            />
+             <ul>
+              <li>1 Snatch Lift Off</li>
+              <li>1 Power Snatch</li>
+              <li>1 Overhead Squat</li>
+              <li>1 Hang Squat Snatch</li>
             </ul>
-            <div className="notes">
-              <h4>NOTAS</h4>
-              <p>ESTIMULO & OBJETIVOS</p>
-              <ul>
-                <li>Buscamos hacer un Test de Handstand Push Ups diferente, intentando hacer en el menor tiempo posible 50 repeticiones estrictas.</li>
-                <li>Anoten el tiempo que les tomó, ya que utilizaremos este en combinación con el máximo de Chest-to-Wall Handstand Push Ups para hacer los trabajos lo más específicos posible de aquí en adelante.</li>
-              </ul>
-              <h4>NOTES</h4>
-              <p>STIMULUS & GOALS</p>
-              <ul>
-                <li>Handstand Push Up Stamina Test para medir la resistencia en este movimiento.</li>
-                <li>Anoten el tiempo para usarlo con el Chest-to-Wall Handstand Push Up Test en los próximos entrenamientos.</li>
-              </ul>
-            </div>
+            {oneRepMaxSnatch && (
+              <div>
+                <p>4 Sets con los siguientes pesos:</p>
+                <ul>
+                  <li>Set 1: {snatchTechniqueWeights[0]} kg (58%)</li>
+                  <li>Set 2: {snatchTechniqueWeights[1]} kg (61%)</li>
+                  <li>Set 3: {snatchTechniqueWeights[2]} kg (64%)</li>
+                  <li>Set 4: {snatchTechniqueWeights[3]} kg (67%)</li>
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Sección SNATCH */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsSnatchOpen)}>
+          <h3>SNATCH</h3>
+          <span>{isSnatchOpen ? '▲' : '▼'}</span>
+        </div>
+        {isSnatchOpen && (
+          <div className="section-content">
+            <p>3 Sets:</p>
+            <ul>
+              <li>3 Snatch @70% ({snatchWeights[0]} kg)</li>
+              <li>2 Snatch @75% ({snatchWeights[1]} kg)</li>
+              <li>1 Snatch @80% ({snatchWeights[2]} kg)</li>
+            </ul>
+            <p>Rest 45" entre sets</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sección SNATCH DEADLIFT & PULLS ON RISER */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsSnatchDeadliftOpen)}>
+          <h3>SNATCH DEADLIFT & PULLS ON RISER</h3>
+          <span>{isSnatchDeadliftOpen ? '▲' : '▼'}</span>
+        </div>
+        {isSnatchDeadliftOpen && (
+          <div className="section-content">
+            <p>4 Sets:</p>
+            <ul>
+              <li>85kg - 90kg - 90kg - 95kg</li>
+            </ul>
           </div>
         )}
       </div>
@@ -73,26 +134,13 @@ function Lunes() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>4 Sets, Each For Time</p>
+            <p>5 Rounds For Time</p>
             <ul>
-              <li>25/18 Cal Row</li>
-              <li>100 Double Unders</li>
-              <li>25 Rower Facing Burpees</li>
+              <li>30/20 Cal Assault Bike</li>
+              <li>30 Alternating Dumbbell Snatch</li>
+              <li>20 Burpee Box Jump Overs</li>
             </ul>
-            <p>Rest 3 Min b/t Sets</p>
-            <div className="notes">
-              <h4>NOTAS</h4>
-              <ul>
-                <li>SCORE OBJETIVO: 2-4 Min (Cada Set)</li>
-                <li>ESTIMULO & OBJETIVOS: Sprint, con esfuerzo máximo en los Burpees.</li>
-              </ul>
-              <h4>NOTES</h4>
-              <ul>
-                <li>TARGET SCORE: 2-4 Min (Each Set)</li>
-                <li>STIMULUS & GOALS: Sprint workout, con foco en alta intensidad en los Burpees.</li>
-              </ul>
-              <p>REEMPLAZOS: 10 Shuttle Runs (7.5 m Segments; 1 rep = 15 m)</p>
-            </div>
+            <p>Dumbbell: 22.5/15 kg, Box: 60/50 cm</p>
           </div>
         )}
       </div>
@@ -105,15 +153,31 @@ function Lunes() {
         </div>
         {isAccessoryOpen && (
           <div className="section-content">
-            <p>3 Sets</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>8/8 Lateral Goblet Box Step Ups</li>
-              <li>8/8 Kettlebell Single Leg Deadlift</li>
-              <li>8/8 One Arm Shoulder Press</li>
-              <li>8/8 One Arm Upright Row</li>
+              <li>8 Box Front Squats</li>
+              <li>8 Good Mornings</li>
             </ul>
-            <p>Rest 30-60" b/t Sets</p>
-            <p>All Sets @Moderate Weight</p>
+            <p>Rest 1 Min entre rounds</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sección MIDLINE */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
+          <h3>MIDLINE (OPCIONAL)</h3>
+          <span>{isMidlineOpen ? '▲' : '▼'}</span>
+        </div>
+        {isMidlineOpen && (
+          <div className="section-content">
+            <p>3 Sets For Quality</p>
+            <ul>
+              <li>6/6 Hanging Single Leg Circles</li>
+              <li>15" Extended Crab Hold</li>
+              <li>30" Angled Wall Hold</li>
+            </ul>
+            <p>Rest 45-60" entre sets</p>
           </div>
         )}
       </div>

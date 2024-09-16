@@ -3,15 +3,15 @@ import '../../styles.css';
 
 function Miercoles() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
-  const [isSnatchOpen, setIsSnatchOpen] = useState(false);
+  const [isJerkTechniqueOpen, setIsJerkTechniqueOpen] = useState(false);
+  const [isCleanJerkOpen, setIsCleanJerkOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [oneRmSnatch, setOneRmSnatch] = useState(0);
+  const [oneRmCleanJerk, setOneRmCleanJerk] = useState(0);
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
   const calculateWeight = (percentage) => {
-    return Math.round(oneRmSnatch * (percentage / 100));
+    return Math.round(oneRmCleanJerk * (percentage / 100));
   };
 
   return (
@@ -28,69 +28,72 @@ function Miercoles() {
           <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>8 Sumo Inchworm + Push Ups</li>
-              <li>10 Alternating Kossacks</li>
-              <li>10/10 Spiderman + Reach</li>
-              <li>10 Russian KB Swings</li>
-              <li>8 Yoga Push Ups</li>
-              <li>5 Cuban Press Complex</li>
+              <li>10/10 Regressed Copenhagen Raise</li>
+              <li>10/10 Single Leg Good Morning</li>
+              <li>10/10 Squat + Thoracic Extension Rotation</li>
+              <li>6/6 One Arm Russian KB Swings</li>
+              <li>6/6 One Arm Thrusters</li>
+              <li>6/6 One Arm Overhead Squats</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección SNATCH TECHNIQUE */}
+      {/* Sección JERK TECHNIQUE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSnatchTechniqueOpen)}>
-          <h3>SNATCH TECHNIQUE</h3>
-          <span>{isSnatchTechniqueOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsJerkTechniqueOpen)}>
+          <h3>JERK TECHNIQUE</h3>
+          <span>{isJerkTechniqueOpen ? '▲' : '▼'}</span>
         </div>
-        {isSnatchTechniqueOpen && (
+        {isJerkTechniqueOpen && (
           <div className="section-content">
-            <p>4 Sets</p>
+            <p>1) Foot Positioning</p>
             <ul>
-              <li>1 Snatch Lift Off</li>
-              <li>1 Power Snatch</li>
-              <li>1 Overhead Squat</li>
-              <li>1 Hang Squat Snatch</li>
+              <li>2 x 5 Back Rack Step to Split @Light Weight</li>
+              <li>2 x 3 Back Rack Jump to Split @Light to Moderate Weight</li>
             </ul>
-            <p>
-              Sets: {calculateWeight(53)} kg - {calculateWeight(56)} kg - {calculateWeight(59)} kg - {calculateWeight(62)} kg
-            </p>
+            <p>2) Overhead Position</p>
+            <ul>
+              <li>1 x 4 Jerk Balance In Split @Moderate Weight</li>
+            </ul>
           </div>
         )}
       </div>
 
       {/* Input para 1RM */}
+
+
+      {/* Sección CLEAN & JERK */}
       <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsCleanJerkOpen)}>
+          <h3>CLEAN & JERK</h3>
+          <span>{isCleanJerkOpen ? '▲' : '▼'}</span>
+        </div>
+        {isCleanJerkOpen && (
+          <div className="section-content">
+            <p>OTM 4 Min</p>
+            <ul>
+              <li>1 Power Clean </li>
+              <li>1 Hang Power Clean</li>
+              <li>1 Push Jerk</li>
+              <li>1 Split Jerk </li>
+              <li>@{calculateWeight(63)}kg</li>
+            </ul>
+            <div className="section-block">
         <label>
-          Ingresar 1RM Snatch (kg):
+          Ingresar 1RM Clean & Jerk (kg):
           <input
             type="number"
-            value={oneRmSnatch}
-            onChange={(e) => setOneRmSnatch(e.target.value)}
+            value={oneRmCleanJerk}
+            onChange={(e) => setOneRmCleanJerk(e.target.value)}
             placeholder="Ingresa tu 1RM en kg"
           />
         </label>
       </div>
-
-      {/* Sección SNATCH */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSnatchOpen)}>
-          <h3>SNATCH</h3>
-          <span>{isSnatchOpen ? '▲' : '▼'}</span>
-        </div>
-        {isSnatchOpen && (
-          <div className="section-content">
-            <p>OTM 11 Min</p>
-            <ul>
-              <li>Min 1: 1 Snatch @ {calculateWeight(67)}kg</li>
-              <li>Min 2: 1 Snatch @ {calculateWeight(72)}kg</li>
-              <li>Min 3: 1 Snatch @ {calculateWeight(77)}kg</li>
-              <li>Min 4: Rest</li>
-            </ul>
           </div>
+          
         )}
+       
       </div>
 
       {/* Sección CONDITIONING */}
@@ -101,22 +104,41 @@ function Miercoles() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>4 Rounds For Time</p>
+            <p>3 Rounds For Time</p>
             <ul>
-              <li>3 Wall Walks</li>
-              <li>6 Power Snatch (42.5/30 kg)</li>
-              <li>9 Box Jump Overs (60/50 cm; STEP DOWN)</li>
+              <li>50 Double Unders</li>
+              <li>9 Power Snatches</li>
+              <li>3 Rope Climbs</li>
             </ul>
             <p>Rest 5 Min</p>
-            <p>4 Rounds For Time</p>
+            <p>3 Rounds For Time</p>
             <ul>
-              <li>2 Handstand Walk Segments</li>
-              <li>4 Power Snatch (50/35 kg)</li>
-              <li>6 Box Jump Overs (76/60 cm; STEP DOWN)</li>
+              <li>50 Double Unders</li>
+              <li>9 Squat Cleans</li>
+              <li>6 Wall Walks</li>
             </ul>
-            <p>Handstand Walk - 7,5 m Unbroken Segments</p>
+            <p>Barbell - 60/40 kg</p> {/* Valor fijo */}
+            <p>Rope - 4,57 m</p> {/* Valor fijo */}
           </div>
         )}
+      </div>
+
+      {/* Sección ACCESSORY */}
+      <div className="section-block">
+        <h3>ACCESSORY</h3>
+        <p>3 Rounds</p>
+        <ul>
+          <li>12 Dumbbell Bench Press</li>
+          <li>12 Rolling DB Triceps Extensions</li>
+        </ul>
+        <p>Rest 1 Min b/t Rounds</p>
+        <p>Then</p>
+        <p>3 Rounds</p>
+        <ul>
+          <li>10 Supinated Grip Strict Pull Ups</li>
+          <li>12 Barbell Bicep Curls</li>
+        </ul>
+        <p>Rest 1 Min b/t Rounds</p>
       </div>
     </div>
   );
