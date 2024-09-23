@@ -130,23 +130,33 @@ const Viernes = () => {
             <ul>
               <li>500/400 m Row</li>
               <li>18 Toes to Bar</li>
-              <li>12 Double Dumbbell Thrusters @22,5/15 kg</li>
+              <li>12 Double Dumbbell Thrusters</li>
+              <li>*Dumbbells - 2 x 22,5/15 kg</li>
             </ul>
+            <p>SCORE OBJETIVO
+            • 14-18 Min</p>
           </div>
         )}
       </div>
 
       {/* SKILL PRACTICE + CONDITIONING */}
       <div className="section-block">
-        <h3>SKILL PRACTICE + CONDITIONING</h3>
-        <p>5 Min Triple Under Practice</p>
-        <p>Then</p>
-        <p>OTM 8-10 Min</p>
-        <ul>
-          <li>Min 1: 10-15 Double Under Crossovers + 30 Crossovers</li>
-          <li>Min 2: 2/1 Legless Rope Climb (Rope de 4,57 m)</li>
-        </ul>
+        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
+          <h3>SKILL PRACTICE + CONDITIONING</h3>
+          <span>{isMidlineOpen ? '▲' : '▼'}</span>
+        </div>
+        {isMidlineOpen && (
+          <div className="section-content">
+            <p>5 Min Triple Under Practice</p>
+            <ul>
+              <li>Min 1: 10-15 Double Under Crossovers + 30 Crossovers</li>
+              <li>Min 2: 2/1 Legless Rope Climb (Rope de 4,57 m)</li>
+            </ul>
+            <p>OTM 8-10 Min</p>
+          </div>
+        )}
       </div>
+
 
       {/* ACCESSORY */}
       <div className="section-block">
@@ -174,23 +184,7 @@ const Viernes = () => {
         )}
       </div>
 
-      {/* MIDLINE */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
-          <h3>MIDLINE</h3>
-          <span>{isMidlineOpen ? '▲' : '▼'}</span>
-        </div>
-        {isMidlineOpen && (
-          <div className="section-content">
-            <ul>
-              <li>3 x 20 Plate Turkish Sit Ups</li>
-              <li>3 x 10 Supine Leg Raises</li>
-              <li>3 x 10/10 One Arm Suitcase Deadlift</li>
-            </ul>
-            <p>Rest 30" b/t Rounds</p>
-          </div>
-        )}
-      </div>
+      
 
     </div>
   );

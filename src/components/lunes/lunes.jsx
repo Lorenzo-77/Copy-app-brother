@@ -131,13 +131,13 @@ function Lunes() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>5 Rounds For Time</p>
+            <p>2-2-2-3 Min Intervals</p>
             <ul>
-              <li>30/20 Cal Assault Bike</li>
-              <li>30 Alternating Dumbbell Snatch</li>
-              <li>20 Burpee Box Jump Overs</li>
+              <li>7 Power Snathches</li>
+              <li>21 GHD Sit Ups</li>
+              <li>Max Rope Climbs</li>
             </ul>
-            <p>Dumbbell: 22.5/15 kg, Box: 60/50 cm</p>
+            <p>Rest 1 Min b/t Intervals Barbell - 60/42,5 kg</p>
           </div>
         )}
       </div>
@@ -152,7 +152,7 @@ function Lunes() {
           <div className="section-content">
             <p>3 Rounds</p>
             <ul>
-              <li>8 Box Front Squats</li>
+              <li>10 Box Front Squats (Box justo debajo del Paralelo)</li>
               <li>8 Good Mornings</li>
             </ul>
             <p>Rest 1 Min entre rounds</p>

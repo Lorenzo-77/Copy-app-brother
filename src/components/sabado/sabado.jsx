@@ -49,15 +49,6 @@ const Sabado = () => {
         </div>
         {isBenchPressOpen && (
           <div className="section-content">
-            <label>
-              Ingresar 1RM de Bench Press (kg):
-              <input
-                type="number"
-                value={oneRmBenchPress}
-                onChange={(e) => setOneRmBenchPress(Number(e.target.value))}
-                placeholder="Ingresa tu 1RM en kg"
-              />
-            </label>
             <p>Find a Heavy 1 Wide Grip Bench Press</p>
             <p>Then</p>
             <p>3 Sets</p>
@@ -91,7 +82,7 @@ const Sabado = () => {
                 placeholder="Ingresa tu 1RM en kg"
               />
             </label>
-            <p>Work Up To 76% x 3 Reps</p>
+            <p>Work Up To {calculateWeight(76, oneRmDeadlift)}kg x 3 Reps</p>
             <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado.</p>
             <p>*Todas las repeticiones son Singles, No Touch And Go</p>
             <p>Then</p>

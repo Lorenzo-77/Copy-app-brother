@@ -75,23 +75,42 @@
     font-size: 1rem;
     width: 100%; /* Ancho completo */
   }
+  .video-container {
+    position: relative; 
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0; /* Altura cero, se usa padding para crear el espacio */
+    overflow: hidden; /* Ocultar cualquier contenido que desborde */
+    margin-bottom: 20px; /* Añadir espacio inferior si es necesario */
+  }
   
-  /* Adaptación para pantallas pequeñas */
+  .video-container iframe {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; 
+    left: 0;
+    width: 100%; /* Ancho al 100% del contenedor */
+    height: 100%; /* Altura al 100% del contenedor */
+  }
+  
   @media (max-width: 768px) {
     .container {
-      padding: 10px;
+      padding: 5px;
     }
   
-    .section-header {
-      font-size: 1rem;
+    .days-container {
+      gap: 5px;
     }
   
-    .section-content {
+    .day-button {
+      flex: 1 1 45%; /* Los botones ocuparán 45% del ancho en pantallas más pequeñas */
+      padding: 6px 12px; /* Botones más pequeños en móvil */
       font-size: 0.9rem;
     }
   
-    .set-list {
-      flex-direction: column; /* En pantallas pequeñas, los sets se mostrarán en columna */
+    .routine-container {
+      font-size: 0.9rem; /* Tamaño de texto reducido para móvil */
     }
+  
+    /* El contenedor del video no debería tener modificaciones específicas aquí */
   }
   

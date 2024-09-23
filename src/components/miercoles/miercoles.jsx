@@ -118,6 +118,8 @@ function Miercoles() {
               <li>3 Front Squats</li>
             </ul>
             <p>Barbell - 75/50 kg</p>
+            <p>SCORE OBJETIVO
+            • 6-10 Min (Incluyendo descansos)</p>
           </div>
         )}
       </div>
