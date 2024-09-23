@@ -9,10 +9,10 @@ function About() {
   const [isHSPUDevOpen, setIsHSPUDevOpen] = useState(false); // Para HANDSTAND PUSH UP DEVELOPMENT
   const [oneRepMax, setOneRepMax] = useState(''); 
   const [calculatedWeights, setCalculatedWeights] = useState({
-    set80: '',
-    set62: '',
+    set83: '',
     set65: '',
-    set68: ''
+    set68: '',
+    set71: ''
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -24,10 +24,10 @@ function About() {
     if (value) {
       const rm = parseFloat(value);
       const calculatedWeights = {
-        set80: (rm * 0.80).toFixed(2),
-        set62: (rm * 0.62).toFixed(2),
+        set83: (rm * 0.83).toFixed(2),  // Para los 3 reps principales
         set65: (rm * 0.65).toFixed(2),
-        set68: (rm * 0.68).toFixed(2)
+        set68: (rm * 0.68).toFixed(2),
+        set71: (rm * 0.71).toFixed(2)
       };
       setCalculatedWeights(calculatedWeights);
     }
@@ -66,7 +66,7 @@ function About() {
         </div>
         {isFrontSquatOpen && (
           <div className="section-content">
-            <p>Build to 3 Reps @<strong>{calculatedWeights.set80 || '80kg'}</strong></p>
+            <p>Build to 3 Reps @<strong>{calculatedWeights.set83 || '83%'}</strong></p>
             <p>Introduce tu 1RM para Front Squat:</p>
             <input 
               type="number" 
@@ -78,9 +78,9 @@ function About() {
               <div>
                 <p>3 Sets con los siguientes pesos:</p>
                 <ul className="set-list">
-                  <li>6 Front Squats {calculatedWeights.set62} kg (62%)</li>
                   <li>6 Front Squats {calculatedWeights.set65} kg (65%)</li>
                   <li>6 Front Squats {calculatedWeights.set68} kg (68%)</li>
+                  <li>6 Front Squats {calculatedWeights.set71} kg (71%)</li>
                 </ul>
               </div>
             )}

@@ -23,8 +23,8 @@ function Lunes() {
     );
   };
 
-  const snatchTechniquePercentages = [58, 61, 64, 67];
-  const snatchPercentages = [70, 75, 80];
+  const snatchTechniquePercentages = [61, 64, 67, 70];
+  const snatchPercentages = [73, 78, 83];
   const snatchTechniqueWeights = oneRepMaxSnatch ? calculateWeights(snatchTechniquePercentages) : [];
   const snatchWeights = oneRepMaxSnatch ? calculateWeights(snatchPercentages) : [];
 
@@ -70,20 +70,14 @@ function Lunes() {
               onChange={handle1RMChange} 
               placeholder="1RM en kg" 
             />
-             <ul>
-              <li>1 Snatch Lift Off</li>
-              <li>1 Power Snatch</li>
-              <li>1 Overhead Squat</li>
-              <li>1 Hang Squat Snatch</li>
-            </ul>
             {oneRepMaxSnatch && (
               <div>
                 <p>4 Sets con los siguientes pesos:</p>
                 <ul>
-                  <li>Set 1: {snatchTechniqueWeights[0]} kg (58%)</li>
-                  <li>Set 2: {snatchTechniqueWeights[1]} kg (61%)</li>
-                  <li>Set 3: {snatchTechniqueWeights[2]} kg (64%)</li>
-                  <li>Set 4: {snatchTechniqueWeights[3]} kg (67%)</li>
+                  <li>Set 1: {snatchTechniqueWeights[0]} kg (61%)</li>
+                  <li>Set 2: {snatchTechniqueWeights[1]} kg (64%)</li>
+                  <li>Set 3: {snatchTechniqueWeights[2]} kg (67%)</li>
+                  <li>Set 4: {snatchTechniqueWeights[3]} kg (70%)</li>
                 </ul>
               </div>
             )}
@@ -101,27 +95,30 @@ function Lunes() {
           <div className="section-content">
             <p>3 Sets:</p>
             <ul>
-              <li>3 Snatch @70% ({snatchWeights[0]} kg)</li>
-              <li>2 Snatch @75% ({snatchWeights[1]} kg)</li>
-              <li>1 Snatch @80% ({snatchWeights[2]} kg)</li>
+              <li>3 Snatch @73% ({snatchWeights[0]} kg)</li>
+              <li>2 Snatch @78% ({snatchWeights[1]} kg)</li>
+              <li>1 Snatch @83% ({snatchWeights[2]} kg)</li>
             </ul>
             <p>Rest 45" entre sets</p>
           </div>
         )}
       </div>
 
-      {/* Sección SNATCH DEADLIFT & PULLS ON RISER */}
+      {/* Sección SNATCH DEADLIFT & PULLS */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsSnatchDeadliftOpen)}>
-          <h3>SNATCH DEADLIFT & PULLS ON RISER</h3>
+          <h3>SNATCH DEADLIFT & PULLS</h3>
           <span>{isSnatchDeadliftOpen ? '▲' : '▼'}</span>
         </div>
         {isSnatchDeadliftOpen && (
           <div className="section-content">
             <p>4 Sets:</p>
             <ul>
-              <li>85kg - 90kg - 90kg - 95kg</li>
+              <li>1 Snatch Lift Off (Hold 2" At Knee Level)</li>
+              <li>1 Segmented Snatch Deadlift (2" Pause on each position)</li>
+              <li>1 Pause Snatch Pull (2" Pause At Knee Level)</li>
             </ul>
+            <p>Pesos: 90kg - 90kg - 95kg - 95kg</p>
           </div>
         )}
       </div>
@@ -171,13 +168,12 @@ function Lunes() {
         </div>
         {isMidlineOpen && (
           <div className="section-content">
-            <p>3 Sets For Quality</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>6/6 Hanging Single Leg Circles</li>
-              <li>15" Extended Crab Hold</li>
-              <li>30" Angled Wall Hold</li>
+              <li>8/8 Single Arm Farmer's Carry</li>
+              <li>8 Hollow Rocks</li>
+              <li>30-40 Segundos de Hollow Hold</li>
             </ul>
-            <p>Rest 45-60" entre sets</p>
           </div>
         )}
       </div>

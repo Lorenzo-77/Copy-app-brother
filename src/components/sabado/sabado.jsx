@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import '../../styles.css';
 
-const Footer = () => {
+const Sabado = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isGymTestOpen, setIsGymTestOpen] = useState(false);
+  const [isBenchPressOpen, setIsBenchPressOpen] = useState(false);
+  const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-  const [isMidlineOpen, setIsMidlineOpen] = useState(false);
+  const [oneRmBenchPress, setOneRmBenchPress] = useState(0);
+  const [oneRmDeadlift, setOneRmDeadlift] = useState(0);
 
   const toggleSection = (setState) => setState((prevState) => !prevState);
+
+  const calculateWeight = (percentage, oneRm) => {
+    return (oneRm * percentage / 100).toFixed(2);
+  };
 
   return (
     <div className="container">
@@ -24,31 +30,72 @@ const Footer = () => {
           <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Regressed Copenhagen Raise</li>
-              <li>10/10 Single Leg Good Morning</li>
-              <li>10/10 Squat + Thoracic Extension Rotation</li>
-              <li>6/6 One Arm Russian KB Swings</li>
-              <li>6/6 One Arm Thrusters</li>
-              <li>6/6 One Arm Overhead Squats</li>
+              <li>8 Sumo Inchworm + Push Ups</li>
+              <li>10 Alternating Kossacks</li>
+              <li>10/10 Spiderman + Reach</li>
+              <li>8/8 One Arm Suitcase Deadlift</li>
+              <li>8/8 One Arm RKB Swings</li>
+              <li>10 Handstand Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección BOX BACK SQUAT */}
+      {/* Sección PUSHING DEVELOPMENT 2 */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsGymTestOpen)}>
-          <h3>BOX BACK SQUAT</h3>
-          <span>{isGymTestOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsBenchPressOpen)}>
+          <h3>PUSHING DEVELOPMENT 2</h3>
+          <span>{isBenchPressOpen ? '▲' : '▼'}</span>
         </div>
-        {isGymTestOpen && (
+        {isBenchPressOpen && (
           <div className="section-content">
-            <p>4 Sets</p>
+            <label>
+              Ingresar 1RM de Bench Press (kg):
+              <input
+                type="number"
+                value={oneRmBenchPress}
+                onChange={(e) => setOneRmBenchPress(Number(e.target.value))}
+                placeholder="Ingresa tu 1RM en kg"
+              />
+            </label>
+            <p>Find a Heavy 1 Wide Grip Bench Press</p>
+            <p>Then</p>
+            <p>3 Sets</p>
             <ul>
-              <li>6 Box Back Squat</li>
+              <li>5 Wide Grip Bench Press @ {calculateWeight(70, oneRmBenchPress)}kg</li>
             </ul>
-            <p>*Subiendo hasta un peso moderado (No es un Máximo)</p>
-            <p>Rest 1-2 Min b/t</p>
+            <p>Rest 60-90" b/t Sets</p>
+            <p>Then</p>
+            <p>3 x 10 Incline Dumbbell Bench Press</p>
+            <p>Rest 30" b/t Sets</p>
+            <p>*En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</p>
+            <p>All sets @Moderate Weight</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sección DEADLIFT */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
+          <h3>DEADLIFT</h3>
+          <span>{isDeadliftOpen ? '▲' : '▼'}</span>
+        </div>
+        {isDeadliftOpen && (
+          <div className="section-content">
+            <label>
+              Ingresar 1RM de Deadlift (kg):
+              <input
+                type="number"
+                value={oneRmDeadlift}
+                onChange={(e) => setOneRmDeadlift(Number(e.target.value))}
+                placeholder="Ingresa tu 1RM en kg"
+              />
+            </label>
+            <p>Work Up To 76% x 3 Reps</p>
+            <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado.</p>
+            <p>*Todas las repeticiones son Singles, No Touch And Go</p>
+            <p>Then</p>
+            <p>4 x 3 Deadlift @ {calculateWeight(63, oneRmDeadlift)}kg (1 Min Rest)*</p>
           </div>
         )}
       </div>
@@ -61,66 +108,60 @@ const Footer = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>With a Running Clock</p>
+            <p>On A Running Clock</p>
             <p>On the 00:00 - For Time</p>
             <ul>
-              <li>3-6-9-12-15 Thrusters</li>
-              <li>Chest to Bar Pull Ups</li>
+              <li>1-2-3-4-5-6-7-8-9-10 Kipping Handstand Push Ups</li>
+              <li>Deadlift</li>
+              <li>Bar Facing Burpees</li>
             </ul>
-
-            <p>On the 10:00 - For Time</p>
+            <p>On the 15:00 - For Time</p>
             <ul>
-              <li>18-15-12-9-6-3 Double Under Crossovers</li>
-              <li>Toes to Bar</li>
+              <li>4 Rounds For Time</li>
+              <li>12 Chest to Bar Pull Ups</li>
+              <li>3 Sandbag to Shoulder</li>
+              <li>15 m Handstand Walk</li>
             </ul>
-            <p>Barbell - 43/30 kg</p>
+            <p>Barbell - 100/70 kg</p>
+            <p>Sandbag - 70/45 kg</p>
+            <p>Handstand Walk - 7,5 m Segments</p>
 
             <h4>NOTAS</h4>
-            <p><strong>Score Objetivo</strong>: 2-5 Min & 5-8 Min</p>
+            <p><strong>Score Objetivo</strong>: 8-12 Min (Cada Parte)</p>
             <p><strong>Estímulo & Objetivos</strong>: TEST - Realizar este workout como si fuera en competencia.</p>
 
-            <h4>REEMPLAZOS</h4>
+            <h4>ASSAULT BIKE CONDITIONING (OPCIONAL)</h4>
+            <p>4 Rounds For Time</p>
             <ul>
-              <li>No Double Under Crossovers: 72-60-48-36-24-12 Crossovers</li>
+              <li>3 Min @Moderate/Hard Pace</li>
+              <li>1 Min @Recovery Pace</li>
             </ul>
+            <p>No Additional Rest b/t Rounds</p>
           </div>
         )}
       </div>
 
-      {/* Sección ROW CONDITIONING */}
+      {/* Sección ACCESSORY */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
-          <h3>ROW CONDITIONING</h3>
-          <span>{isMidlineOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+          <h3>ACCESSORY</h3>
+          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
-        {isMidlineOpen && (
+        {isAccessoryOpen && (
           <div className="section-content">
+            <p>3 Rounds</p>
             <ul>
-              <li>2000 m Row @02:30/500</li>
-              <li>Rest 1 Min</li>
-              <li>3 x 500 m Row @02:30/500</li>
-              <li>Rest 1 Min b/t</li>
+              <li>10 Dumbbell Triceps Kickback</li>
+              <li>12 Shoulder Front Raises</li>
             </ul>
-          </div>
-        )}
-      </div>
-
-      {/* Sección ACCESSORY & MIDLINE */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
-          <h3>ACCESSORY & MIDLINE</h3>
-          <span>{isMidlineOpen ? '▲' : '▼'}</span>
-        </div>
-        {isMidlineOpen && (
-          <div className="section-content">
-            <p>3 Rounds For Quality</p>
+            <p>Rest 1 Min b/t Rounds</p>
+            <p>Then</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>5/5 Split Squat Rock Back (3" Hold At Stretch Point)</li>
-              <li>10 Alternating Dead Bug (1-2" Hold Each Rep)</li>
-              <li>5 Ring Fallouts</li>
-              <li>10 Alternating Groiners</li>
-              <li>10 Cat Camel + Rock Back</li>
+              <li>12 Barbell Bent Over Row</li>
+              <li>12 Trap Three Raise</li>
             </ul>
+            <p>Rest 1 Min b/t Rounds</p>
           </div>
         )}
       </div>
@@ -128,4 +169,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Sabado;

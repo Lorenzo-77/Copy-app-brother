@@ -30,7 +30,7 @@ function Home() {
       case 'Sábado':
         return <Sabado />;
       default:
-        return <p>Selecciona un día para ver la rutina.</p>;
+        return <p>La keila se pasa a brother?</p>;
     }
   };
 

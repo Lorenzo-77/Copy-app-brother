@@ -6,6 +6,8 @@ function Miercoles() {
   const [isJerkTechniqueOpen, setIsJerkTechniqueOpen] = useState(false);
   const [isCleanJerkOpen, setIsCleanJerkOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
+  const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
+  const [isRecoveryOpen, setIsRecoveryOpen] = useState(false);
   const [oneRmCleanJerk, setOneRmCleanJerk] = useState(0);
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -31,9 +33,9 @@ function Miercoles() {
               <li>10/10 Regressed Copenhagen Raise</li>
               <li>10/10 Single Leg Good Morning</li>
               <li>10/10 Squat + Thoracic Extension Rotation</li>
-              <li>6/6 One Arm Russian KB Swings</li>
-              <li>6/6 One Arm Thrusters</li>
+              <li>6/6 One Arm Muscle Snatch</li>
               <li>6/6 One Arm Overhead Squats</li>
+              <li>10" Bottom Ring Support Hold + 10" Top Of Ring Support Hold</li>
             </ul>
           </div>
         )}
@@ -49,19 +51,29 @@ function Miercoles() {
           <div className="section-content">
             <p>1) Foot Positioning</p>
             <ul>
-              <li>2 x 5 Back Rack Step to Split @Light Weight</li>
-              <li>2 x 3 Back Rack Jump to Split @Light to Moderate Weight</li>
+              <li>1 x 5 Back Rack Step to Split @Light Weight</li>
+              <li>3 x 3 Back Rack Jump to Split @Light to Moderate Weight</li>
             </ul>
             <p>2) Overhead Position</p>
             <ul>
-              <li>1 x 4 Jerk Balance In Split @Moderate Weight</li>
+              <li>2 x 3 Jerk Balance In Split @Moderate Weight</li>
             </ul>
           </div>
         )}
       </div>
 
       {/* Input para 1RM */}
-
+      <div className="section-block">
+        <label>
+          Ingresar 1RM Clean & Jerk (kg):
+          <input
+            type="number"
+            value={oneRmCleanJerk}
+            onChange={(e) => setOneRmCleanJerk(e.target.value)}
+            placeholder="Ingresa tu 1RM en kg"
+          />
+        </label>
+      </div>
 
       {/* Sección CLEAN & JERK */}
       <div className="section-block">
@@ -73,27 +85,14 @@ function Miercoles() {
           <div className="section-content">
             <p>OTM 4 Min</p>
             <ul>
-              <li>1 Power Clean </li>
+              <li>1 Power Clean</li>
               <li>1 Hang Power Clean</li>
               <li>1 Push Jerk</li>
-              <li>1 Split Jerk </li>
-              <li>@{calculateWeight(63)}kg</li>
+              <li>1 Split Jerk</li>
+              <li>@{calculateWeight(66)}kg</li>
             </ul>
-            <div className="section-block">
-        <label>
-          Ingresar 1RM Clean & Jerk (kg):
-          <input
-            type="number"
-            value={oneRmCleanJerk}
-            onChange={(e) => setOneRmCleanJerk(e.target.value)}
-            placeholder="Ingresa tu 1RM en kg"
-          />
-        </label>
-      </div>
           </div>
-          
         )}
-       
       </div>
 
       {/* Sección CONDITIONING */}
@@ -104,41 +103,80 @@ function Miercoles() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>3 Rounds For Time</p>
+            <p>For Total Time</p>
             <ul>
-              <li>50 Double Unders</li>
-              <li>9 Power Snatches</li>
-              <li>3 Rope Climbs</li>
+              <li>12/9 Ring Muscle Ups</li>
+              <li>12 Front Squats</li>
+              <li>Rest 45"</li>
+              <li>9/7 Ring Muscle Ups</li>
+              <li>9 Front Squats</li>
+              <li>Rest 45"</li>
+              <li>6/5 Ring Muscle Ups</li>
+              <li>6 Front Squats</li>
+              <li>Rest 45"</li>
+              <li>3 Ring Muscle Ups</li>
+              <li>3 Front Squats</li>
             </ul>
-            <p>Rest 5 Min</p>
-            <p>3 Rounds For Time</p>
-            <ul>
-              <li>50 Double Unders</li>
-              <li>9 Squat Cleans</li>
-              <li>6 Wall Walks</li>
-            </ul>
-            <p>Barbell - 60/40 kg</p> {/* Valor fijo */}
-            <p>Rope - 4,57 m</p> {/* Valor fijo */}
+            <p>Barbell - 75/50 kg</p>
           </div>
         )}
       </div>
 
+      {/* Sección ROW CONDITIONING (OPTIONAL) */}
+      <div className="section-block">
+        <h3>ROW CONDITIONING (OPTIONAL)</h3>
+        <ul>
+          <li>1000 m Row @02:30/500</li>
+          <li>Rest 2 Min</li>
+          <li>2 Rounds</li>
+          <li>300 m Row @02:30/500</li>
+          <li>500 m @Recovery Pace</li>
+          <li>300 m Row @02:25/500</li>
+          <li>Rest 2 Min b/t Rounds</li>
+        </ul>
+      </div>
+
       {/* Sección ACCESSORY */}
       <div className="section-block">
-        <h3>ACCESSORY</h3>
-        <p>3 Rounds</p>
-        <ul>
-          <li>12 Dumbbell Bench Press</li>
-          <li>12 Rolling DB Triceps Extensions</li>
-        </ul>
-        <p>Rest 1 Min b/t Rounds</p>
-        <p>Then</p>
-        <p>3 Rounds</p>
-        <ul>
-          <li>10 Supinated Grip Strict Pull Ups</li>
-          <li>12 Barbell Bicep Curls</li>
-        </ul>
-        <p>Rest 1 Min b/t Rounds</p>
+        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+          <h3>ACCESSORY</h3>
+          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
+        </div>
+        {isAccessoryOpen && (
+          <div className="section-content">
+            <p>3 Rounds</p>
+            <ul>
+              <li>12 Strict Parallel Dips</li>
+              <li>30 Banded Triceps Extensions</li>
+            </ul>
+            <p>Rest 1 Min b/t Rounds</p>
+            <p>Then</p>
+            <p>3 Rounds</p>
+            <ul>
+              <li>10 Pronated Grip Strict Pull Ups</li>
+              <li>12 Dumbbell Hammer Curls</li>
+            </ul>
+            <p>Rest 1 Min b/t Rounds</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sección RECOVERY/MIDLINE */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsRecoveryOpen)}>
+          <h3>RECOVERY/MIDLINE</h3>
+          <span>{isRecoveryOpen ? '▲' : '▼'}</span>
+        </div>
+        {isRecoveryOpen && (
+          <div className="section-content">
+            <p>10 Min For Quality</p>
+            <ul>
+              <li>15" Hollow Body Flutter Kicks</li>
+              <li>15" Chinese Plank Back</li>
+              <li>10/10 Dumbbell Side Plank Rotations @Light Weight</li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
