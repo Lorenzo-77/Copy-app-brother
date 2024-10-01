@@ -8,13 +8,22 @@ function Miercoles() {
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isRecoveryOpen, setIsRecoveryOpen] = useState(false);
-  const [oneRmCleanJerk, setOneRmCleanJerk] = useState(0);
+  const [isMidlineOpen, setIsMidlineOpen] = useState(false); // Añadido para MIDLINE (OPCIONAL)
+
+  const [oneRmCleanJerk, setOneRmCleanJerk] = useState('');
+
+  // Función para manejar el cambio de 1RM
+  const handle1RMChange = (e) => {
+    const value = e.target.value;
+    setOneRmCleanJerk(value);
+  };
+
+  // Cálculo de pesos basados en porcentajes
+  const calculateWeight = (percentage) => {
+    return oneRmCleanJerk ? Math.round((parseFloat(oneRmCleanJerk) * (percentage / 100))) : '-';
+  };
 
   const toggleSection = (setState) => setState(prevState => !prevState);
-
-  const calculateWeight = (percentage) => {
-    return Math.round(oneRmCleanJerk * (percentage / 100));
-  };
 
   return (
     <div className="container">
@@ -22,12 +31,17 @@ function Miercoles() {
 
       {/* Sección WARM UP */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsWarmUpOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsWarmUpOpen)}
+          aria-expanded={isWarmUpOpen}
+          aria-controls="warm-up-content"
+        >
           <h3>WARM UP</h3>
           <span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
-          <div className="section-content">
+          <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
               <li>10/10 Regressed Copenhagen Raise</li>
@@ -43,20 +57,25 @@ function Miercoles() {
 
       {/* Sección JERK TECHNIQUE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsJerkTechniqueOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsJerkTechniqueOpen)}
+          aria-expanded={isJerkTechniqueOpen}
+          aria-controls="jerk-technique-content"
+        >
           <h3>JERK TECHNIQUE</h3>
           <span>{isJerkTechniqueOpen ? '▲' : '▼'}</span>
         </div>
         {isJerkTechniqueOpen && (
-          <div className="section-content">
+          <div className="section-content" id="jerk-technique-content">
             <p>1) Foot Positioning</p>
             <ul>
-              <li>1 x 5 Back Rack Step to Split @Light Weight</li>
-              <li>3 x 3 Back Rack Jump to Split @Light to Moderate Weight</li>
+              <li>1 x 5 Back Rack Jump to Split @ Light to Moderate Weight</li>
+              <li>2 x 3 Back Rack Drop to Split @ Light to Moderate Weight</li>
             </ul>
             <p>2) Overhead Position</p>
             <ul>
-              <li>2 x 3 Jerk Balance In Split @Moderate Weight</li>
+              <li>3 x 3 Jerk Balance In Split @ Moderate Weight</li>
             </ul>
           </div>
         )}
@@ -64,12 +83,13 @@ function Miercoles() {
 
       {/* Input para 1RM */}
       <div className="section-block">
-        <label>
+        <label htmlFor="oneRmCleanJerk">
           Ingresar 1RM Clean & Jerk (kg):
           <input
             type="number"
+            id="oneRmCleanJerk"
             value={oneRmCleanJerk}
-            onChange={(e) => setOneRmCleanJerk(e.target.value)}
+            onChange={handle1RMChange}
             placeholder="Ingresa tu 1RM en kg"
           />
         </label>
@@ -77,49 +97,64 @@ function Miercoles() {
 
       {/* Sección CLEAN & JERK */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsCleanJerkOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsCleanJerkOpen)}
+          aria-expanded={isCleanJerkOpen}
+          aria-controls="clean-jerk-content"
+        >
           <h3>CLEAN & JERK</h3>
           <span>{isCleanJerkOpen ? '▲' : '▼'}</span>
         </div>
         {isCleanJerkOpen && (
-          <div className="section-content">
+          <div className="section-content" id="clean-jerk-content">
             <p>OTM 4 Min</p>
             <ul>
               <li>1 Power Clean</li>
               <li>1 Hang Power Clean</li>
               <li>1 Push Jerk</li>
               <li>1 Split Jerk</li>
-              <li>@{calculateWeight(66)}kg</li>
+              <li>All Sets @69%</li>
+              <li>@{calculateWeight(69)}kg</li>
             </ul>
+            <p>
+              <strong>1RM (Full):</strong> En este apartado el usuario cargará su RM que es un número
+              (puede ser 130, 70, etc. Lo que se debe hacer es donde están los % calcular con ese
+              número. O sea, si coloca 100 en sets se coloca 61kg como ejemplo).
+            </p>
           </div>
         )}
       </div>
 
       {/* Sección CONDITIONING */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsConditioningOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsConditioningOpen)}
+          aria-expanded={isConditioningOpen}
+          aria-controls="conditioning-content"
+        >
           <h3>CONDITIONING</h3>
           <span>{isConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isConditioningOpen && (
-          <div className="section-content">
-            <p>For Total Time</p>
+          <div className="section-content" id="conditioning-content">
+            <p>4 Sets</p>
+            <p>AMRAP 3 Min</p>
             <ul>
-              <li>12/9 Ring Muscle Ups</li>
-              <li>12 Front Squats</li>
-              <li>Rest 45"</li>
-              <li>9/7 Ring Muscle Ups</li>
-              <li>9 Front Squats</li>
-              <li>Rest 45"</li>
-              <li>6/5 Ring Muscle Ups</li>
-              <li>6 Front Squats</li>
-              <li>Rest 45"</li>
-              <li>3 Ring Muscle Ups</li>
-              <li>3 Front Squats</li>
+              <li>3 Rope Climbs</li>
+              <li>X Cal Ski Erg</li>
+              <li>Max Clean & Jerks</li>
             </ul>
-            <p>Barbell - 75/50 kg</p>
-            <p>SCORE OBJETIVO
-            • 6-10 Min (Incluyendo descansos)</p>
+            <p>Rest 3 Min b/t Sets</p>
+            <ul>
+              <li>Set 1: 30/21 Cal Ski Erg & 60/40 kg</li>
+              <li>Set 2: 27/19 Cal Ski Erg & 70/47.5 kg</li>
+              <li>Set 3: 24/17 Cal Ski Erg & 80/55 kg</li>
+              <li>Set 4: 21/15 Cal Ski Erg & 90/60 kg</li>
+            </ul>
+            <p><strong>NOTAS</strong></p>
+            <p><strong>SCORE OBJETIVO</strong>: 6-10 Min (Incluyendo descansos)</p>
           </div>
         )}
       </div>
@@ -128,55 +163,68 @@ function Miercoles() {
       <div className="section-block">
         <h3>ROW CONDITIONING (OPTIONAL)</h3>
         <ul>
-          <li>1000 m Row @02:30/500</li>
-          <li>Rest 2 Min</li>
-          <li>2 Rounds</li>
-          <li>300 m Row @02:30/500</li>
+          <li>5 Rounds</li>
+          <li>300 m Row @02:28/500 m</li>
           <li>500 m @Recovery Pace</li>
-          <li>300 m Row @02:25/500</li>
-          <li>Rest 2 Min b/t Rounds</li>
         </ul>
       </div>
 
       {/* Sección ACCESSORY */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAccessoryOpen)}
+          aria-expanded={isAccessoryOpen}
+          aria-controls="accessory-content"
+        >
           <h3>ACCESSORY</h3>
           <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
-          <div className="section-content">
+          <div className="section-content" id="accessory-content">
             <p>3 Rounds</p>
             <ul>
-              <li>12 Strict Parallel Dips</li>
-              <li>30 Banded Triceps Extensions</li>
+              <li>12 Decline Dumbbell Bench Press</li>
+              <li>12 Dumbbell Overhead Triceps Extensions</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
+
             <p>Then</p>
             <p>3 Rounds</p>
             <ul>
-              <li>10 Pronated Grip Strict Pull Ups</li>
-              <li>12 Dumbbell Hammer Curls</li>
+              <li>10 Wide Grip Pronated Grip Strict Pull Ups</li>
+              <li>12 Barbell Preacher Curls</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
+
+            <p>All Sets @Moderate Weight</p>
           </div>
         )}
       </div>
 
-      {/* Sección RECOVERY/MIDLINE */}
+      {/* Sección MIDLINE (OPCIONAL) */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsRecoveryOpen)}>
-          <h3>RECOVERY/MIDLINE</h3>
-          <span>{isRecoveryOpen ? '▲' : '▼'}</span>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsMidlineOpen)}
+          aria-expanded={isMidlineOpen}
+          aria-controls="midline-content"
+        >
+          <h3>MIDLINE (OPCIONAL)</h3>
+          <span>{isMidlineOpen ? '▲' : '▼'}</span>
         </div>
-        {isRecoveryOpen && (
-          <div className="section-content">
-            <p>10 Min For Quality</p>
+        {isMidlineOpen && (
+          <div className="section-content" id="midline-content">
+            <p>3 Sets For Quality</p>
             <ul>
-              <li>15" Hollow Body Flutter Kicks</li>
-              <li>15" Chinese Plank Back</li>
-              <li>10/10 Dumbbell Side Plank Rotations @Light Weight</li>
+              <li>10/10 Hanging Single Leg Circles</li>
+              <li>25" Extended Crab Hold</li>
+              <li>50" Angled Wall Hold</li>
             </ul>
+            <p>Rest 45-60" b/t Sets</p>
+
+            <p>Then</p>
+            <p>3 x 30 V-Sit Ups (Rest 30" b/t)</p>
           </div>
         )}
       </div>

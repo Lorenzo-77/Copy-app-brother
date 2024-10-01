@@ -23,10 +23,13 @@ function Lunes() {
     );
   };
 
-  const snatchTechniquePercentages = [61, 64, 67, 70];
-  const snatchPercentages = [73, 78, 83];
+  const snatchTechniquePercentages = [64, 67, 70, 73];
+  const snatchPercentages = [76, 81, 86];
+  const snatchDeadliftPercentages = [90, 95, 95, 100];
+  
   const snatchTechniqueWeights = oneRepMaxSnatch ? calculateWeights(snatchTechniquePercentages) : [];
   const snatchWeights = oneRepMaxSnatch ? calculateWeights(snatchPercentages) : [];
+  const snatchDeadliftWeights = oneRepMaxSnatch ? calculateWeights(snatchDeadliftPercentages) : [];
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
@@ -74,10 +77,10 @@ function Lunes() {
               <div>
                 <p>4 Sets con los siguientes pesos:</p>
                 <ul>
-                  <li>Set 1: {snatchTechniqueWeights[0]} kg (61%)</li>
-                  <li>Set 2: {snatchTechniqueWeights[1]} kg (64%)</li>
-                  <li>Set 3: {snatchTechniqueWeights[2]} kg (67%)</li>
-                  <li>Set 4: {snatchTechniqueWeights[3]} kg (70%)</li>
+                  <li>Set 1: {snatchTechniqueWeights[0]} kg (64%)</li>
+                  <li>Set 2: {snatchTechniqueWeights[1]} kg (67%)</li>
+                  <li>Set 3: {snatchTechniqueWeights[2]} kg (70%)</li>
+                  <li>Set 4: {snatchTechniqueWeights[3]} kg (73%)</li>
                 </ul>
               </div>
             )}
@@ -95,9 +98,9 @@ function Lunes() {
           <div className="section-content">
             <p>3 Sets:</p>
             <ul>
-              <li>3 Snatch @73% ({snatchWeights[0]} kg)</li>
-              <li>2 Snatch @78% ({snatchWeights[1]} kg)</li>
-              <li>1 Snatch @83% ({snatchWeights[2]} kg)</li>
+              <li>3 Snatch @76% ({snatchWeights[0]} kg)</li>
+              <li>2 Snatch @81% ({snatchWeights[1]} kg)</li>
+              <li>1 Snatch @86% ({snatchWeights[2]} kg)</li>
             </ul>
             <p>Rest 45" entre sets</p>
           </div>
@@ -118,7 +121,15 @@ function Lunes() {
               <li>1 Segmented Snatch Deadlift (2" Pause on each position)</li>
               <li>1 Pause Snatch Pull (2" Pause At Knee Level)</li>
             </ul>
-            <p>Pesos: 90kg - 90kg - 95kg - 95kg</p>
+            {oneRepMaxSnatch && (
+              <ul>
+                <li>Set 1: {snatchDeadliftWeights[0]} kg (90%)</li>
+                <li>Set 2: {snatchDeadliftWeights[1]} kg (95%)</li>
+                <li>Set 3: {snatchDeadliftWeights[2]} kg (95%)</li>
+                <li>Set 4: {snatchDeadliftWeights[3]} kg (100%)</li>
+              </ul>
+            )}
+            <p>Rest 1-2 Min b/t sets</p>
           </div>
         )}
       </div>
@@ -131,13 +142,33 @@ function Lunes() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>2-2-2-3 Min Intervals</p>
+            <p>For Time</p>
             <ul>
-              <li>7 Power Snathches</li>
-              <li>21 GHD Sit Ups</li>
-              <li>Max Rope Climbs</li>
+              <li>9-7-5 Ring Muscle Ups</li>
+              <li>Squat Snatch</li>
             </ul>
-            <p>Rest 1 Min b/t Intervals Barbell - 60/42,5 kg</p>
+            <p>Time Cap: 10 Min</p>
+            <p>Barbell - 61/43 kg</p>
+            <p>SCORE OBJETIVO: 4-6 Min</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sección HANDSTAND WALK CONDITIONING */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+          <h3>HANDSTAND WALK CONDITIONING</h3>
+          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
+        </div>
+        {isAccessoryOpen && (
+          <div className="section-content">
+            <p>OTM 12 Min</p>
+            <ul>
+              <li>Min 1: 15/12 Cal Assault Bike</li>
+              <li>Min 2: 18 Toes to Bar</li>
+              <li>Min 3: 1-2 Handstand Walk Pirouettes</li>
+            </ul>
+            <p>Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m Total)</p>
           </div>
         )}
       </div>
@@ -152,8 +183,16 @@ function Lunes() {
           <div className="section-content">
             <p>3 Rounds</p>
             <ul>
-              <li>10 Box Front Squats (Box justo debajo del Paralelo)</li>
+              <li>12 Box Front Squats (Box justo debajo del Paralelo)</li>
               <li>8 Good Mornings</li>
+            </ul>
+            <p>Rest 1 Min entre rounds</p>
+
+            <p>Then</p>
+            <p>3 Rounds</p>
+            <ul>
+              <li>12 Barbell Hip Thrusts</li>
+              <li>12 Heavy Russian Kettlebell Swings</li>
             </ul>
             <p>Rest 1 Min entre rounds</p>
           </div>
@@ -163,17 +202,18 @@ function Lunes() {
       {/* Sección MIDLINE */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
-          <h3>MIDLINE (OPCIONAL)</h3>
+          <h3>MIDLINE</h3>
           <span>{isMidlineOpen ? '▲' : '▼'}</span>
         </div>
         {isMidlineOpen && (
           <div className="section-content">
-            <p>3 Rounds</p>
+            <p>3 Sets</p>
             <ul>
-              <li>8/8 Single Arm Farmer's Carry</li>
-              <li>8 Hollow Rocks</li>
-              <li>30-40 Segundos de Hollow Hold</li>
+              <li>10/10 Lateral Med Ball Throws</li>
+              <li>10 Standing Med Ball Throws</li>
+              <li>8 Strict Hanging Leg Raises</li>
             </ul>
+            <p>Rest 1 Min entre sets</p>
           </div>
         )}
       </div>

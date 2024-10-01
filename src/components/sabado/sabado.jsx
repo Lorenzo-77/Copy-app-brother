@@ -3,31 +3,59 @@ import '../../styles.css';
 
 const Sabado = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isBenchPressOpen, setIsBenchPressOpen] = useState(false);
+  const [isPushingDevOpen, setIsPushingDevOpen] = useState(false);
+  const [isBackSquatOpen, setIsBackSquatOpen] = useState(false);
   const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-  const [oneRmBenchPress, setOneRmBenchPress] = useState(0);
-  const [oneRmDeadlift, setOneRmDeadlift] = useState(0);
+  const [isMidlineOpen, setIsMidlineOpen] = useState(false);
 
-  const toggleSection = (setState) => setState((prevState) => !prevState);
+  const [oneRmDip, setOneRmDip] = useState('');
+  const [oneRmDeadlift, setOneRmDeadlift] = useState('');
 
-  const calculateWeight = (percentage, oneRm) => {
-    return (oneRm * percentage / 100).toFixed(2);
+  // Función para manejar el cambio de 1RM Dip
+  const handle1RMDipChange = (e) => {
+    const value = e.target.value;
+    if (value >= 0) {
+      setOneRmDip(value);
+    }
   };
+
+  // Función para manejar el cambio de 1RM Deadlift
+  const handle1RMDeadliftChange = (e) => {
+    const value = e.target.value;
+    if (value >= 0) {
+      setOneRmDeadlift(value);
+    }
+  };
+
+  // Cálculo de pesos basados en porcentajes
+  const calculateWeight = (percentage, oneRm) => {
+    return oneRm ? Math.round((parseFloat(oneRm) * (percentage / 100))) : '-';
+  };
+
+  const toggleSection = (setState) => setState(prevState => !prevState);
 
   return (
     <div className="container">
       <h1>SÁBADO</h1>
 
-      {/* Sección WARM UP */}
+      {/* SESSION 1 */}
+      <h2>SESSION 1</h2>
+
+      {/* WARM UP */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsWarmUpOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsWarmUpOpen)}
+          aria-expanded={isWarmUpOpen}
+          aria-controls="warm-up-content"
+        >
           <h3>WARM UP</h3>
           <span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
-          <div className="section-content">
+          <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
               <li>8 Sumo Inchworm + Push Ups</li>
@@ -41,118 +69,147 @@ const Sabado = () => {
         )}
       </div>
 
-      {/* Sección PUSHING DEVELOPMENT 2 */}
+      {/* PUSHING DEVELOPMENT 2 */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsBenchPressOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsPushingDevOpen)}
+          aria-expanded={isPushingDevOpen}
+          aria-controls="pushing-dev-content"
+        >
           <h3>PUSHING DEVELOPMENT 2</h3>
-          <span>{isBenchPressOpen ? '▲' : '▼'}</span>
+          <span>{isPushingDevOpen ? '▲' : '▼'}</span>
         </div>
-        {isBenchPressOpen && (
-          <div className="section-content">
-            <p>Find a Heavy 1 Wide Grip Bench Press</p>
+        {isPushingDevOpen && (
+          <div className="section-content" id="pushing-dev-content">
+            <p>Find a Heavy 1 Weighted Strict Parallel Dip</p>
             <p>Then</p>
             <p>3 Sets</p>
             <ul>
-              <li>5 Wide Grip Bench Press @ {calculateWeight(70, oneRmBenchPress)}kg</li>
+              <li>
+                5 Weighted Strict Parallel Dip @ {calculateWeight(40, oneRmDip)}kg ({calculateWeight(40, oneRmDip)}kg)
+              </li>
             </ul>
             <p>Rest 60-90" b/t Sets</p>
             <p>Then</p>
-            <p>3 x 10 Incline Dumbbell Bench Press</p>
+            <p>3 x 12 Dumbbell Bench Press</p>
             <p>Rest 30" b/t Sets</p>
-            <p>*En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</p>
+            <p>
+              <strong>*En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong>
+            </p>
             <p>All sets @Moderate Weight</p>
           </div>
         )}
       </div>
 
-      {/* Sección DEADLIFT */}
+  
+
+
+      {/* DEADLIFT */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsDeadliftOpen)}
+          aria-expanded={isDeadliftOpen}
+          aria-controls="deadlift-content"
+        >
           <h3>DEADLIFT</h3>
           <span>{isDeadliftOpen ? '▲' : '▼'}</span>
         </div>
         {isDeadliftOpen && (
-          <div className="section-content">
+          <div className="section-content" id="deadlift-content">
             <label>
               Ingresar 1RM de Deadlift (kg):
               <input
                 type="number"
                 value={oneRmDeadlift}
-                onChange={(e) => setOneRmDeadlift(Number(e.target.value))}
+                onChange={handle1RMDeadliftChange}
                 placeholder="Ingresa tu 1RM en kg"
               />
             </label>
-            <p>Work Up To {calculateWeight(76, oneRmDeadlift)}kg x 3 Reps</p>
-            <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado.</p>
-            <p>*Todas las repeticiones son Singles, No Touch And Go</p>
-            <p>Then</p>
-            <p>4 x 3 Deadlift @ {calculateWeight(63, oneRmDeadlift)}kg (1 Min Rest)*</p>
+            {oneRmDeadlift && (
+              <>
+                <p>Work Up To {calculateWeight(79, oneRmDeadlift)}kg x 3 Reps</p>
+                <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado. // We go progressively up in weight to the weight given.</p>
+                <p>*Todas las repeticiones son Singles, No Touch And Go // All repetitions are Singles, No Touch And Go</p>
+                <p>Then</p>
+                <p>3 x 4 Sumo Deadlift @ {calculateWeight(66, oneRmDeadlift)}% (1 Min Rest)*</p>
+                <p>*Foco en velocidad de ejecución // Focus on speed of execution.</p>
+                <p>*Singles, No Touch And Go</p>
+                <p>
+                  <strong>1RM (Full):</strong> En este apartado el usuario cargará su RM que es un número
+                  (puede ser 130, 70, etc., lo que se debe hacer es donde están los % calcular con ese número. O sea, si
+                  coloca 100 en sets se coloca 61kg como ejemplo).
+                </p>
+              </>
+            )}
           </div>
         )}
       </div>
 
-      {/* Sección CONDITIONING */}
+      {/* CONDITIONING */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsConditioningOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsConditioningOpen)}
+          aria-expanded={isConditioningOpen}
+          aria-controls="conditioning-content"
+        >
           <h3>CONDITIONING</h3>
           <span>{isConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isConditioningOpen && (
-          <div className="section-content">
-            <p>On A Running Clock</p>
-            <p>On the 00:00 - For Time</p>
+          <div className="section-content" id="conditioning-content">
+            <p>With a Running Clock</p>
+            <p>On The 00:00</p>
+            <p>For Time</p>
             <ul>
-              <li>1-2-3-4-5-6-7-8-9-10 Kipping Handstand Push Ups</li>
-              <li>Deadlift</li>
-              <li>Bar Facing Burpees</li>
+              <li>45 Double Under Crossovers</li>
+              <li>45 Thrusters</li>
             </ul>
-            <p>On the 15:00 - For Time</p>
+            <p>On The 10:00</p>
+            <p>For Time</p>
             <ul>
-              <li>4 Rounds For Time</li>
-              <li>12 Chest to Bar Pull Ups</li>
-              <li>3 Sandbag to Shoulder</li>
-              <li>15 m Handstand Walk</li>
+              <li>45 Chest to Bar Pull Ups</li>
+              <li>45 Alternating Dumbbell Snatches</li>
             </ul>
-            <p>Barbell - 100/70 kg</p>
-            <p>Sandbag - 70/45 kg</p>
-            <p>Handstand Walk - 7,5 m Segments</p>
-
-            <h4>NOTAS</h4>
-            <p><strong>Score Objetivo</strong>: 8-12 Min (Cada Parte)</p>
-            <p><strong>Estímulo & Objetivos</strong>: TEST - Realizar este workout como si fuera en competencia.</p>
-
-            <h4>ASSAULT BIKE CONDITIONING (OPCIONAL)</h4>
-            <p>4 Rounds For Time</p>
-            <ul>
-              <li>3 Min @Moderate/Hard Pace</li>
-              <li>1 Min @Recovery Pace</li>
-            </ul>
-            <p>No Additional Rest b/t Rounds</p>
+            <p>Barbell - 42.5/30 kg</p>
+            <p>Dumbbell - 32.5/22.5 kg</p>
+            <p><strong>NOTAS</strong></p>
+            <p><strong>SCORE OBJETIVO</strong>: 2-5 Min (Cada Parte)</p>
           </div>
         )}
       </div>
 
-      {/* Sección ACCESSORY */}
+
+      {/* ACCESSORY */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAccessoryOpen)}
+          aria-expanded={isAccessoryOpen}
+          aria-controls="accessory-content"
+        >
           <h3>ACCESSORY</h3>
           <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
-          <div className="section-content">
+          <div className="section-content" id="accessory-content">
             <p>3 Rounds</p>
             <ul>
-              <li>10 Dumbbell Triceps Kickback</li>
+              <li>10 Incline Dumbbell Bench Press</li>
               <li>12 Shoulder Front Raises</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
+
             <p>Then</p>
             <p>3 Rounds</p>
             <ul>
-              <li>12 Barbell Bent Over Row</li>
-              <li>12 Trap Three Raise</li>
+              <li>12 Bamboo Bar Upright Row</li>
+              <li>12 Dumbbell Reverse Flys</li>
             </ul>
-            <p>Rest 1 Min b/t Rounds</p>
+            <p>Rest 1 Min b/t Sets</p>
+            <p>All Sets @Moderate Weight</p>
           </div>
         )}
       </div>
