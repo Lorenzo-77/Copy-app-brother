@@ -3,25 +3,24 @@ import '../../styles.css';
 
 const Sabado = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isPushingDevOpen, setIsPushingDevOpen] = useState(false);
-  const [isBackSquatOpen, setIsBackSquatOpen] = useState(false);
-  const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
+  const [isCleanJerkOpen, setIsCleanJerkOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-  const [isMidlineOpen, setIsMidlineOpen] = useState(false);
+  const [isGymStrongStaminaOpen, setIsGymStrongStaminaOpen] = useState(false);
+  const [isAccessoryMidlineOpen, setIsAccessoryMidlineOpen] = useState(false);
+  const [isProRunnerOpen, setIsProRunnerOpen] = useState(false);
 
-  const [oneRmDip, setOneRmDip] = useState('');
+  const [oneRmCleanJerk, setOneRmCleanJerk] = useState('');
   const [oneRmDeadlift, setOneRmDeadlift] = useState('');
 
-  // Función para manejar el cambio de 1RM Dip
-  const handle1RMDipChange = (e) => {
+  // Función para manejar el cambio de 1RM Clean & Jerk
+  const handle1RMCleanJerkChange = (e) => {
     const value = e.target.value;
     if (value >= 0) {
-      setOneRmDip(value);
+      setOneRmCleanJerk(value);
     }
   };
 
-  // Función para manejar el cambio de 1RM Deadlift
+  // Función para manejar el cambio de 1RM Deadlift (si es necesario en futuras secciones)
   const handle1RMDeadliftChange = (e) => {
     const value = e.target.value;
     if (value >= 0) {
@@ -40,10 +39,7 @@ const Sabado = () => {
     <div className="container">
       <h1>SÁBADO</h1>
 
-      {/* SESSION 1 */}
-      <h2>SESSION 1</h2>
-
-      {/* WARM UP */}
+      {/* SESSION 1: WARM UP */}
       <div className="section-block">
         <div
           className="section-header"
@@ -51,7 +47,7 @@ const Sabado = () => {
           aria-expanded={isWarmUpOpen}
           aria-controls="warm-up-content"
         >
-          <h3>WARM UP</h3>
+          <h3>SESSION 1: WARM UP</h3>
           <span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
@@ -69,80 +65,39 @@ const Sabado = () => {
         )}
       </div>
 
-      {/* PUSHING DEVELOPMENT 2 */}
+      {/* CLEAN & JERK */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsPushingDevOpen)}
-          aria-expanded={isPushingDevOpen}
-          aria-controls="pushing-dev-content"
+          onClick={() => toggleSection(setIsCleanJerkOpen)}
+          aria-expanded={isCleanJerkOpen}
+          aria-controls="clean-jerk-content"
         >
-          <h3>PUSHING DEVELOPMENT 2</h3>
-          <span>{isPushingDevOpen ? '▲' : '▼'}</span>
+          <h3>CLEAN & JERK</h3>
+          <span>{isCleanJerkOpen ? '▲' : '▼'}</span>
         </div>
-        {isPushingDevOpen && (
-          <div className="section-content" id="pushing-dev-content">
-            <p>Find a Heavy 1 Weighted Strict Parallel Dip</p>
-            <p>Then</p>
-            <p>3 Sets</p>
+        {isCleanJerkOpen && (
+          <div className="section-content" id="clean-jerk-content">
+            <p>4 Sets</p>
             <ul>
-              <li>
-                5 Weighted Strict Parallel Dip @ {calculateWeight(40, oneRmDip)}kg ({calculateWeight(40, oneRmDip)}kg)
-              </li>
+              <li>1 Squat Clean</li>
+              <li>1 Front Squat</li>
+              <li>1 Split Jerk</li>
             </ul>
             <p>Rest 60-90" b/t Sets</p>
-            <p>Then</p>
-            <p>3 x 12 Dumbbell Bench Press</p>
-            <p>Rest 30" b/t Sets</p>
-            <p>
-              <strong>*En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong>
-            </p>
-            <p>All sets @Moderate Weight</p>
-          </div>
-        )}
-      </div>
-
-  
-
-
-      {/* DEADLIFT */}
-      <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsDeadliftOpen)}
-          aria-expanded={isDeadliftOpen}
-          aria-controls="deadlift-content"
-        >
-          <h3>DEADLIFT</h3>
-          <span>{isDeadliftOpen ? '▲' : '▼'}</span>
-        </div>
-        {isDeadliftOpen && (
-          <div className="section-content" id="deadlift-content">
-            <label>
-              Ingresar 1RM de Deadlift (kg):
+            <p>Sets: {calculateWeight(70, oneRmCleanJerk)}kg - {calculateWeight(73, oneRmCleanJerk)}kg - {calculateWeight(76, oneRmCleanJerk)}kg - {calculateWeight(79, oneRmCleanJerk)}kg</p>
+          
+            <label htmlFor="oneRmCleanJerk">
+              Ingresar 1RM Clean & Jerk (kg):
               <input
                 type="number"
-                value={oneRmDeadlift}
-                onChange={handle1RMDeadliftChange}
+                id="oneRmCleanJerk"
+                value={oneRmCleanJerk}
+                onChange={handle1RMCleanJerkChange}
                 placeholder="Ingresa tu 1RM en kg"
               />
             </label>
-            {oneRmDeadlift && (
-              <>
-                <p>Work Up To {calculateWeight(79, oneRmDeadlift)}kg x 3 Reps</p>
-                <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado. // We go progressively up in weight to the weight given.</p>
-                <p>*Todas las repeticiones son Singles, No Touch And Go // All repetitions are Singles, No Touch And Go</p>
-                <p>Then</p>
-                <p>3 x 4 Sumo Deadlift @ {calculateWeight(66, oneRmDeadlift)}% (1 Min Rest)*</p>
-                <p>*Foco en velocidad de ejecución // Focus on speed of execution.</p>
-                <p>*Singles, No Touch And Go</p>
-                <p>
-                  <strong>1RM (Full):</strong> En este apartado el usuario cargará su RM que es un número
-                  (puede ser 130, 70, etc., lo que se debe hacer es donde están los % calcular con ese número. O sea, si
-                  coloca 100 en sets se coloca 61kg como ejemplo).
-                </p>
-              </>
-            )}
+
           </div>
         )}
       </div>
@@ -160,56 +115,121 @@ const Sabado = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>With a Running Clock</p>
-            <p>On The 00:00</p>
-            <p>For Time</p>
+            <p>5 Rounds For Time</p>
             <ul>
-              <li>45 Double Under Crossovers</li>
-              <li>45 Thrusters</li>
+              <li>9 Thrusters</li>
+              <li>9 Bar Facing Burpees</li>
             </ul>
-            <p>On The 10:00</p>
-            <p>For Time</p>
             <ul>
-              <li>45 Chest to Bar Pull Ups</li>
-              <li>45 Alternating Dumbbell Snatches</li>
+              <li>Barbell - 43/30 kg</li>
             </ul>
-            <p>Barbell - 42.5/30 kg</p>
-            <p>Dumbbell - 32.5/22.5 kg</p>
             <p><strong>NOTAS</strong></p>
-            <p><strong>SCORE OBJETIVO</strong>: 2-5 Min (Cada Parte)</p>
+            <p><strong>SCORE OBJETIVO</strong>: 4-8 Min</p>
           </div>
         )}
       </div>
 
-
-      {/* ACCESSORY */}
+      {/* GYMNASTICS + STRONGMAN STAMINA CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsAccessoryOpen)}
-          aria-expanded={isAccessoryOpen}
-          aria-controls="accessory-content"
+          onClick={() => toggleSection(setIsGymStrongStaminaOpen)}
+          aria-expanded={isGymStrongStaminaOpen}
+          aria-controls="gym-strong-stamina-content"
         >
-          <h3>ACCESSORY</h3>
-          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
+          <h3>GYMNASTICS + STRONGMAN STAMINA CONDITIONING</h3>
+          <span>{isGymStrongStaminaOpen ? '▲' : '▼'}</span>
         </div>
-        {isAccessoryOpen && (
-          <div className="section-content" id="accessory-content">
-            <p>3 Rounds</p>
+        {isGymStrongStaminaOpen && (
+          <div className="section-content" id="gym-strong-stamina-content">
+            <p>OTM 16 Min</p>
             <ul>
-              <li>10 Incline Dumbbell Bench Press</li>
-              <li>12 Shoulder Front Raises</li>
+              <li>Min 1: 15/12 Cal Assault Bike</li>
+              <li>Min 2: 7/5 Ring MuscleUps</li>
+              <li>Min 3: 30 m Sandbag Bearhug Carry</li>
+              <li>Min 4: 1-3 Handstand Walk Pirouettes</li>
             </ul>
-            <p>Rest 1 Min b/t Rounds</p>
+            <p>Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m Total)</p>
+            <ul>
+              <li>Sandbag - 90/70 kg</li>
+            </ul>
+          </div>
+        )}
+      </div>
 
-            <p>Then</p>
-            <p>3 Rounds</p>
+      {/* ACCESSORY & MIDLINE */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAccessoryMidlineOpen)}
+          aria-expanded={isAccessoryMidlineOpen}
+          aria-controls="accessory-midline-content"
+        >
+          <h3>ACCESSORY & MIDLINE</h3>
+          <span>{isAccessoryMidlineOpen ? '▲' : '▼'}</span>
+        </div>
+        {isAccessoryMidlineOpen && (
+          <div className="section-content" id="accessory-midline-content">
+            <p>3 Rounds For Quality</p>
             <ul>
-              <li>12 Bamboo Bar Upright Row</li>
-              <li>12 Dumbbell Reverse Flys</li>
+              <li>5/5 Split Squat Rock Back (3" Hold At Stretch Point)</li>
+              <li>10 Alternating Dead Bug (1-2" Hold Each Rep)</li>
+              <li>5 Ring Fallouts</li>
+              <li>10 Alternating Groiners</li>
+              <li>10 Cat Camel + Rock Back</li>
             </ul>
-            <p>Rest 1 Min b/t Sets</p>
-            <p>All Sets @Moderate Weight</p>
+            <p>Rest 30-60" b/t Sets</p>
+          </div>
+        )}
+      </div>
+
+      {/* SESSION 2: PRO RUNNER */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsProRunnerOpen)}
+          aria-expanded={isProRunnerOpen}
+          aria-controls="pro-runner-content"
+        >
+          <h3>SESSION 2: PRO RUNNER</h3>
+          <span>{isProRunnerOpen ? '▲' : '▼'}</span>
+        </div>
+        {isProRunnerOpen && (
+          <div className="section-content" id="pro-runner-content">
+            {/* Warm-Up */}
+            <h4>Warm-Up</h4>
+            <ul>
+              <li>5 Min @Easy Pace</li>
+              <li>5 Min @Moderate Pace</li>
+            </ul>
+
+            {/* Workout */}
+            <h4>Workout</h4>
+            <ul>
+              <li>5 Rounds</li>
+              <li>200 m in 00:53</li>
+              <li>200 m @Recovery Pace</li>
+            </ul>
+
+            {/* Rest */}
+            <h4>Rest</h4>
+            <ul>
+              <li>Rest 5 Min</li>
+            </ul>
+
+            {/* Second Workout */}
+            <h4>5 Rounds</h4>
+            <ul>
+              <li>200 m in 00:53</li>
+              <li>200 m @Recovery Pace</li>
+            </ul>
+
+            {/* Cool-Down */}
+            <h4>Cool-Down</h4>
+            <ul>
+              <li>5 Min @Easy Pace</li>
+              <li>5 Min @Recovery Pace</li>
+            </ul>
           </div>
         )}
       </div>

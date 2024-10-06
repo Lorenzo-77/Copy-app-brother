@@ -1,0 +1,3 @@
+1RM (Full) (En este apartado el usuario cargara su rm que es un numero puede ser 130, 70, etc, 
+lo que se debe hacer es donde estan los % calcular con ese numero osea si coloca 100 en sets 
+se coloca 61kg como ejemplo)(dónde estan los % es donde se debe calcular y reemplazar)

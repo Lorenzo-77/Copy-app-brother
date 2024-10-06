@@ -32,7 +32,7 @@ function Home() {
       default:
         return <div class="video-container">
         <iframe
-          src="https://www.youtube.com/embed/jG2945xmuhc?si=2Bg3B8FkKnK1aTp_"
+          src="https://www.youtube.com/embed/8Cu3xqnCNek?si=pfp5eZW8uvHvoPMf"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

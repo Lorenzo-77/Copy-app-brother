@@ -3,26 +3,40 @@ import '../../styles.css';
 
 const Viernes = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isSquatCleanOpen, setIsSquatCleanOpen] = useState(false);
-  const [isBackSquatOpen, setIsBackSquatOpen] = useState(false);
+  const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isSkillPracticeOpen, setIsSkillPracticeOpen] = useState(false);
-  const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
+  const [isAccessoryMidlineOpen, setIsAccessoryMidlineOpen] = useState(false);
+  const [isProRunnerOpen, setIsProRunnerOpen] = useState(false);
 
-  const [oneRmClean, setOneRmClean] = useState('');
-  const [oneRmBackSquat, setOneRmBackSquat] = useState('');
+  const [oneRmDeadlift, setOneRmDeadlift] = useState('');
+  const [calculatedWeightsDeadlift, setCalculatedWeightsDeadlift] = useState({
+    set60: '',
+  });
 
-  // Función para manejar el cambio de 1RM Clean
+  // Función para manejar el cambio de 1RM Deadlift
+  const handle1RMDeadliftChange = (e) => {
+    const value = e.target.value;
+    setOneRmDeadlift(value);
+
+    if (value) {
+      const rm = parseFloat(value);
+      const calculatedWeights = {
+        set60: (rm * 0.60).toFixed(2), // 60% del 1RM para Deadlift
+      };
+      setCalculatedWeightsDeadlift(calculatedWeights);
+    } else {
+      setCalculatedWeightsDeadlift({
+        set60: '',
+      });
+    }
+  };
+
+  // Función para manejar el cambio de 1RM Clean (si es necesario en futuras secciones)
   const handle1RMCleanChange = (e) => {
-    setOneRmClean(e.target.value);
+    // Implementar si se requiere en el futuro
   };
 
-  // Función para manejar el cambio de 1RM Back Squat
-  const handle1RMBackSquatChange = (e) => {
-    setOneRmBackSquat(e.target.value);
-  };
-
-  // Cálculo de pesos basados en porcentajes
+  // Cálculo de pesos basados en porcentajes (para futuras secciones si es necesario)
   const calculateWeight = (percentage, oneRm) => {
     return oneRm ? Math.round((parseFloat(oneRm) * (percentage / 100))) : '-';
   };
@@ -33,107 +47,64 @@ const Viernes = () => {
     <div className="container">
       <h1>VIERNES</h1>
 
-      {/* SESSION 1 */}
-      <h2>SESSION 1</h2>
-
-      {/* WARM UP */}
+      {/* SESSION 1: WARM UP */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsWarmUpOpen)}>
-          <h3>WARM UP</h3>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsWarmUpOpen)}
+          aria-expanded={isWarmUpOpen}
+          aria-controls="warm-up-content"
+        >
+          <h3>SESSION 1: WARM UP</h3>
           <span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
-          <div className="section-content">
+          <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Regressed Copenhagen Raise</li>
-              <li>8/8 Kettlebell Single Leg Hip Thrust</li>
-              <li>6/6 One Arm Muscle Snatch</li>
-              <li>6/6 One Arm Front Squats</li>
-              <li>6/6 One Arm Shoulder Press</li>
-              <li>8 Cuban Press</li>
+              <li>8 Sumo Inchworm + Push Ups</li>
+              <li>10 Alternating Kossacks</li>
+              <li>10/10 Spiderman + Reach</li>
+              <li>8/8 One Arm Suitcase Deadlift</li>
+              <li>8/8 One Arm RKB Swings</li>
+              <li>10 Handstand Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* SQUAT CLEAN */}
+      {/* DEADLIFT */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSquatCleanOpen)}>
-          <h3>SQUAT CLEAN</h3>
-          <span>{isSquatCleanOpen ? '▲' : '▼'}</span>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsDeadliftOpen)}
+          aria-expanded={isDeadliftOpen}
+          aria-controls="deadlift-content"
+        >
+          <h3>DEADLIFT</h3>
+          <span>{isDeadliftOpen ? '▲' : '▼'}</span>
         </div>
-        {isSquatCleanOpen && (
-          <div className="section-content">
-            <label>
-              Ingresar 1RM de Clean (kg):
+        {isDeadliftOpen && (
+          <div className="section-content" id="deadlift-content">
+            <label htmlFor="oneRmDeadlift">
+              Ingresar 1RM Deadlift (kg):
               <input
                 type="number"
-                value={oneRmClean}
-                onChange={handle1RMCleanChange}
+                id="oneRmDeadlift"
+                value={oneRmDeadlift}
+                onChange={handle1RMDeadliftChange}
                 placeholder="Ingresa tu 1RM en kg"
               />
             </label>
-            {oneRmClean && (
+            {oneRmDeadlift && (
               <>
-                <p>OTM 15 Min</p>
+                <p>3 Sets</p>
                 <ul>
-                  <li>Min 1: 3 Squat Clean @ {calculateWeight(62, oneRmClean)}% ({calculateWeight(62, oneRmClean)}kg)</li>
-                  <li>Min 2: 3 Squat Clean @ {calculateWeight(65, oneRmClean)}% ({calculateWeight(65, oneRmClean)}kg)</li>
-                  <li>Min 3: 3 Squat Clean @ {calculateWeight(68, oneRmClean)}% ({calculateWeight(68, oneRmClean)}kg)</li>
-                  <li>Min 4: REST</li>
-                  <li>Min 5: 2 Squat Clean @ {calculateWeight(72, oneRmClean)}% ({calculateWeight(72, oneRmClean)}kg)</li>
-                  <li>Min 6: 2 Squat Clean @ {calculateWeight(75, oneRmClean)}% ({calculateWeight(75, oneRmClean)}kg)</li>
-                  <li>Min 7: 2 Squat Clean @ {calculateWeight(78, oneRmClean)}% ({calculateWeight(78, oneRmClean)}kg)</li>
-                  <li>Min 8: REST</li>
-                  <li>Min 9: 1 Squat Clean @ {calculateWeight(82, oneRmClean)}% ({calculateWeight(82, oneRmClean)}kg)</li>
-                  <li>Min 10: 1 Squat Clean @ {calculateWeight(85, oneRmClean)}% ({calculateWeight(85, oneRmClean)}kg)</li>
-                  <li>Min 11: 1 Squat Clean @ {calculateWeight(88, oneRmClean)}% ({calculateWeight(88, oneRmClean)}kg)</li>
-                  <li>Min 12: REST</li>
-                  <li>Min 13: 1 Squat Clean @ {calculateWeight(82, oneRmClean)}% ({calculateWeight(82, oneRmClean)}kg)</li>
-                  <li>Min 14: 1 Squat Clean @ {calculateWeight(85, oneRmClean)}% ({calculateWeight(85, oneRmClean)}kg)</li>
-                  <li>Min 15: 1 Squat Clean @ {calculateWeight(88, oneRmClean)}% ({calculateWeight(88, oneRmClean)}kg)</li>
+                  <li>5 Deadlift @60% ({calculatedWeightsDeadlift.set60} kg)</li>
                 </ul>
-                <p>*Todos los Cleans son Singles, No hacer Touch And Go</p>
-                <p>*All reps are Singles, No Touch and Go</p>
-                <p><strong>1RM (Full):</strong> En este apartado el usuario cargará su RM que es un número
-                  (puede ser 130, 70, etc., lo que se debe hacer es donde están los % calcular con ese número. O sea, si coloca 100 en sets se coloca 61kg como ejemplo).</p>
-              </>
-            )}
-          </div>
-        )}
-      </div>
+                <p>Rest 60-90" b/t</p>
+                <p>*Singles, No Touch And Go</p>
 
-      {/* BACK SQUAT */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsBackSquatOpen)}>
-          <h3>BACK SQUAT</h3>
-          <span>{isBackSquatOpen ? '▲' : '▼'}</span>
-        </div>
-        {isBackSquatOpen && (
-          <div className="section-content">
-            <label>
-              Ingresar 1RM de Back Squat (kg):
-              <input
-                type="number"
-                value={oneRmBackSquat}
-                onChange={handle1RMBackSquatChange}
-                placeholder="Ingresa tu 1RM en kg"
-              />
-            </label>
-            {oneRmBackSquat && (
-              <>
-                <p>Build to 3 Reps @ {calculateWeight(86, oneRmBackSquat)}% ({calculateWeight(86, oneRmBackSquat)}kg)</p>
-                <p>Then</p>
-                <ul>
-                  <li>6 Back Squats @ {calculateWeight(64, oneRmBackSquat)}% ({calculateWeight(64, oneRmBackSquat)}kg)</li>
-                  <li>6 Back Squats @ {calculateWeight(68, oneRmBackSquat)}% ({calculateWeight(68, oneRmBackSquat)}kg)</li>
-                  <li>4 Back Squats @ {calculateWeight(72, oneRmBackSquat)}% ({calculateWeight(72, oneRmBackSquat)}kg)</li>
-                  <li>4 Back Squats @ {calculateWeight(76, oneRmBackSquat)}% ({calculateWeight(76, oneRmBackSquat)}kg)</li>
-                </ul>
-                <p>Rest 60-90" entre sets.</p>
-                <p><strong>1RM (Full):</strong> En este apartado el usuario cargará su RM que es un número
-                  (puede ser 130, 70, etc., lo que se debe hacer es donde están los % calcular con ese número. O sea, si coloca 100 en sets se coloca 61kg como ejemplo).</p>
               </>
             )}
           </div>
@@ -142,72 +113,105 @@ const Viernes = () => {
 
       {/* CONDITIONING */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsConditioningOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsConditioningOpen)}
+          aria-expanded={isConditioningOpen}
+          aria-controls="conditioning-content"
+        >
           <h3>CONDITIONING</h3>
           <span>{isConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isConditioningOpen && (
-          <div className="section-content">
+          <div className="section-content" id="conditioning-content">
             <p>4 Rounds For Time</p>
             <ul>
-              <li>15 m Handstand Walk</li>
-              <li>20 GHD Sit Ups</li>
-              <li>5 Sandbag to Shoulder</li>
+              <li>400 m Run</li>
+              <li>9 Double Kettlebell Hang Clean & Jerks</li>
+              <li>3 Rope Climbs</li>
             </ul>
             <ul>
-              <li>Handstand Walk - 7,5 m Unbroken Segments</li>
-              <li>Sandbag - 70/45 kg</li>
+              <li>Kettlebells - 2 x 24/16 kg</li>
             </ul>
             <p><strong>NOTAS</strong></p>
-            <p><strong>SCORE OBJETIVO</strong>: 14-18 Min</p>
+            <p><strong>SCORE OBJETIVO</strong>: 12-16 Min</p>
           </div>
         )}
       </div>
 
-      {/* SKILL PRACTICE + CONDITIONING */}
+      {/* ACCESSORY & MIDLINE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSkillPracticeOpen)}>
-          <h3>SKILL PRACTICE + CONDITIONING</h3>
-          <span>{isSkillPracticeOpen ? '▲' : '▼'}</span>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAccessoryMidlineOpen)}
+          aria-expanded={isAccessoryMidlineOpen}
+          aria-controls="accessory-midline-content"
+        >
+          <h3>ACCESSORY & MIDLINE</h3>
+          <span>{isAccessoryMidlineOpen ? '▲' : '▼'}</span>
         </div>
-        {isSkillPracticeOpen && (
-          <div className="section-content">
-            <p>5 Min Pullovers Practice</p>
-            <p>Then</p>
-            <p>OTM 8-10 Min</p>
+        {isAccessoryMidlineOpen && (
+          <div className="section-content" id="accessory-midline-content">
+            <p>3 Sets</p>
             <ul>
-              <li>Min 1: 18/14 Cal Row</li>
-              <li>Min 2: 2 Legless Rope Climb*</li>
+              <li>10 Horizontal Body Rows</li>
+              <li>10 Feet Elevated Weighted Bench Dips</li>
+              <li>10 Standing Wall Dumbbell Bicep Curls</li>
+              <li>15 Medball GHD Sit Ups</li>
             </ul>
-            <p>*Mujeres: 1 Legless Rope Climb + 1 Rope Climb</p>
-            <p>Legless - 4,57 m</p>
-          </div>
-        )}
-      </div>
-
-      {/* ACCESSORY */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
-          <h3>ACCESSORY</h3>
-          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
-        </div>
-        {isAccessoryOpen && (
-          <div className="section-content">
-            <p>3 Rounds</p>
-            <ul>
-              <li>15 Belt Squats</li>
-              <li>20 Hip Thrusts @Moderate Weight</li>
-            </ul>
-            <p>Rest 1 Min b/t Rounds</p>
-
-            <p>Then</p>
-            <p>3 Rounds</p>
-            <ul>
-              <li>10/10 Back Rack Drop Lunges</li>
-              <li>20 Reverse Hypers (Hold 2" Each Rep) w/Medball</li>
-            </ul>
-            <p>Rest 1 Min b/t Sets</p>
+            <p>Rest 30-60" b/t Sets</p>
             <p>All Sets @Moderate Weight</p>
+          </div>
+        )}
+      </div>
+
+      {/* SESSION 2: PRO RUNNER */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsProRunnerOpen)}
+          aria-expanded={isProRunnerOpen}
+          aria-controls="pro-runner-content"
+        >
+          <h3>SESSION 2: PRO RUNNER</h3>
+          <span>{isProRunnerOpen ? '▲' : '▼'}</span>
+        </div>
+        {isProRunnerOpen && (
+          <div className="section-content" id="pro-runner-content">
+            {/* Warm-Up */}
+            <h4>Warm-Up</h4>
+            <ul>
+              <li>5 Min @Easy Pace</li>
+              <li>5 Min @Moderate Pace</li>
+            </ul>
+
+            {/* Workout */}
+            <h4>Workout</h4>
+            <ul>
+              <li>5 Rounds</li>
+              <li>200 m in 00:53</li>
+              <li>200 m @Recovery Pace</li>
+            </ul>
+
+            {/* Rest */}
+            <h4>Rest</h4>
+            <ul>
+              <li>Rest 5 Min</li>
+            </ul>
+
+            {/* Second Workout */}
+            <h4>5 Rounds</h4>
+            <ul>
+              <li>200 m in 00:53</li>
+              <li>200 m @Recovery Pace</li>
+            </ul>
+
+            {/* Cool-Down */}
+            <h4>Cool-Down</h4>
+            <ul>
+              <li>5 Min @Easy Pace</li>
+              <li>5 Min @Recovery Pace</li>
+            </ul>
           </div>
         )}
       </div>

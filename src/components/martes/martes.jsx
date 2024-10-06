@@ -3,16 +3,21 @@ import '../../styles.css';
 
 function About() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isFrontSquatOpen, setIsFrontSquatOpen] = useState(false);
+  const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
+  const [isSnatchOpen, setIsSnatchOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-  const [isHSPUDevOpen, setIsHSPUDevOpen] = useState(false); // Para HANDSTAND PUSH UP DEVELOPMENT
   const [oneRepMax, setOneRepMax] = useState(''); 
   const [calculatedWeights, setCalculatedWeights] = useState({
-    set86: '',
-    set68: '',
-    set71: '',
-    set74: ''
+    set52: '',
+    set56: '',
+    set60: '',
+    set64: '',
+    set65: '',
+    set69: '',
+    set73: '',
+    set77: '',
+    set81: ''
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -24,10 +29,15 @@ function About() {
     if (value) {
       const rm = parseFloat(value);
       const calculatedWeights = {
-        set86: (rm * 0.86).toFixed(2),  // Para los 3 reps principales
-        set68: (rm * 0.68).toFixed(2),
-        set71: (rm * 0.71).toFixed(2),
-        set74: (rm * 0.74).toFixed(2)
+        set52: (rm * 0.52).toFixed(2),
+        set56: (rm * 0.56).toFixed(2),
+        set60: (rm * 0.60).toFixed(2),
+        set64: (rm * 0.64).toFixed(2),
+        set65: (rm * 0.65).toFixed(2),
+        set69: (rm * 0.69).toFixed(2),
+        set73: (rm * 0.73).toFixed(2),
+        set77: (rm * 0.77).toFixed(2),
+        set81: (rm * 0.81).toFixed(2)
       };
       setCalculatedWeights(calculatedWeights);
     }
@@ -58,34 +68,51 @@ function About() {
         )}
       </div>
 
-      {/* FRONT SQUAT */}
+      {/* SNATCH TECHNIQUE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsFrontSquatOpen)}>
-          <h3>FRONT SQUAT</h3>
-          <span>{isFrontSquatOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsSnatchTechniqueOpen)}>
+          <h3>SNATCH TECHNIQUE</h3>
+          <span>{isSnatchTechniqueOpen ? '▲' : '▼'}</span>
         </div>
-        {isFrontSquatOpen && (
+        {isSnatchTechniqueOpen && (
           <div className="section-content">
-            <p>Build to 3 Reps @<strong>{calculatedWeights.set86 || '86%'}</strong></p>
-            <p>Introduce tu 1RM para Front Squat:</p>
+            <p>4 Sets</p>
+            <ul>
+              <li>1 Snatch Lift Off</li>
+              <li>1 Pausing Squat Snatch (2" Pause At Knee Level)</li>
+              <li>1 High Hang Squat Snatch</li>
+            </ul>
+            <p>Sets: {calculatedWeights.set52} kg - {calculatedWeights.set56} kg - {calculatedWeights.set60} kg - {calculatedWeights.set64} kg</p>
+            <p>Introduce tu 1RM para Snatch:</p>
             <input 
               type="number" 
               value={oneRepMax} 
               onChange={handle1RMChange} 
               placeholder="1RM en kg" 
             />
-            {oneRepMax && (
-              <div>
-                <p>3 Sets con los siguientes pesos:</p>
-                <ul>
-                  <li>6 Front Squats {calculatedWeights.set68} kg (68%)</li>
-                  <li>6 Front Squats {calculatedWeights.set71} kg (71%)</li>
-                  <li>6 Front Squats {calculatedWeights.set74} kg (74%)</li>
-                </ul>
-              </div>
-            )}
+          </div>
+        )}
+      </div>
+
+      {/* SNATCH */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsSnatchOpen)}>
+          <h3>SNATCH</h3>
+          <span>{isSnatchOpen ? '▲' : '▼'}</span>
+        </div>
+        {isSnatchOpen && (
+          <div className="section-content">
+            <p>OTM 9 Min</p>
             <ul>
-              <li>Rest 60-90" entre sets</li>
+              <li>Min 1: 1 Squat Snatch @ {calculatedWeights.set65} kg (65%)</li>
+              <li>Min 2: 1 Squat Snatch @ {calculatedWeights.set69} kg (69%)</li>
+              <li>Min 3: 1 Squat Snatch @ {calculatedWeights.set73} kg (73%)</li>
+              <li>Min 4: 1 Squat Snatch @ {calculatedWeights.set69} kg (69%)</li>
+              <li>Min 5: 1 Squat Snatch @ {calculatedWeights.set73} kg (73%)</li>
+              <li>Min 6: 1 Squat Snatch @ {calculatedWeights.set77} kg (77%)</li>
+              <li>Min 7: 1 Squat Snatch @ {calculatedWeights.set73} kg (73%)</li>
+              <li>Min 8: 1 Squat Snatch @ {calculatedWeights.set77} kg (77%)</li>
+              <li>Min 9: 1 Squat Snatch @ {calculatedWeights.set81} kg (81%)</li>
             </ul>
           </div>
         )}
@@ -99,144 +126,56 @@ function About() {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>For Time</p>
+            <p>10 Rounds For Time</p>
             <ul>
-              <li>40 Burpee Box Jump Overs</li>
-              <li>40 Wall Balls</li>
-              <li>40/30 Cal Row</li>
-              <li>40 Wall Balls</li>
-              <li>40/30 Cal Row</li>
-              <li>40 Wall Balls</li>
-              <li>40 Burpee Box Jump Overs</li>
+              <li>4 Deadlift</li>
+              <li>3 Hang Power Snatches</li>
+              <li>2 Overhead Squats</li>
             </ul>
-            <ul>
-              <li>Medball - 9/6 kg</li>
-              <li>Box - 60/50 cm</li>
-            </ul>
+            <p>Barbell - 60/42.5 kg</p>
             <p><strong>NOTAS</strong></p>
-            <p><strong>SCORE OBJETIVO</strong>: 15-22 Min</p>
+            <p><strong>SCORE OBJETIVO</strong>: 5-9 Min</p>
           </div>
         )}
       </div>
 
-      {/* HANDSTAND PUSH UP DEVELOPMENT */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsHSPUDevOpen)}>
-          <h3>HANDSTAND PUSH UP DEVELOPMENT</h3>
-          <span>{isHSPUDevOpen ? '▲' : '▼'}</span>
-        </div>
-        {isHSPUDevOpen && (
-          <div className="section-content">
-            <p>Elegir la opción de acuerdo al resultado del TEST de Chest-to-Wall Handstand Push Ups. // Choose the option according to your Chest-to-Wall Handstand Push Ups Test</p>
-
-            {/* Test Sub 3 Min */}
-            <h4>1) Test Sub 3 Min</h4>
-            <p>AMRAP 9 Min</p>
-            <ul>
-              <li>7 Chest-to-Wall Handstand Push Ups</li>
-              <li>12 Alternating Pistols</li>
-              <li>35 Double Unders</li>
-            </ul>
-            <p>Then</p>
-            <p>3 x 15 Seated Dumbbell Strict Press</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p>Then</p>
-            <p>3 x 10 Barbell Skull Crushers</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-            <p>All sets @Moderate Weight</p>
-
-            <hr />
-
-            {/* Test entre 3 y 5 Min */}
-            <h4>2) Test entre 3 y 5 Min</h4>
-            <p>2 Sets</p>
-            <ul>
-              <li>3 Rounds</li>
-              <li>13 Unbroken Chest-to-Wall Handstand Push Ups</li>
-              <li>Rest 30" b/t Rounds</li>
-            </ul>
-            <p>Rest 2 Min b/t Sets</p>
-            <p>Then</p>
-            <p>3 x 15 Seated Dumbbell Strict Press</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p>Then</p>
-            <p>3 x 10 Barbell Skull Crushers</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-            <p>All sets @Moderate Weight</p>
-
-            <hr />
-
-            {/* Test entre 5 y 8 Min */}
-            <h4>3) Test entre 5 y 8 Min</h4>
-            <p>2 Sets</p>
-            <ul>
-              <li>3 Rounds</li>
-              <li>11 Unbroken Chest-to-Wall Handstand Push Ups</li>
-              <li>Rest 30" b/t Rounds</li>
-            </ul>
-            <p>Rest 2 Min b/t Sets</p>
-            <p>Then</p>
-            <p>3 x 15 Seated Dumbbell Strict Press</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p>Then</p>
-            <p>3 x 10 Barbell Skull Crushers</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-            <p>All sets @Moderate Weight</p>
-
-            <hr />
-
-            {/* Test arriba de 8 Min */}
-            <h4>4) Test arriba de 8 Min</h4>
-            <p>3 Sets</p>
-            <ul>
-              <li>15 Unbroken Chest-to-Wall Handstand Push Ups</li>
-            </ul>
-            <p>Rest 1 Min b/t</p>
-            <p>Then</p>
-            <p>3 Rounds</p>
-            <ul>
-              <li>25 Unbroken Pike Strict Handstand Push Ups</li>
-            </ul>
-            <p>Rest 30" b/t Rounds</p>
-            <p>Then</p>
-            <p>3 x 15 Seated Dumbbell Strict Press</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p>Then</p>
-            <p>3 x 10 Barbell Skull Crushers</p>
-            <p>Rest 30" b/t Rounds</p>
-            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-            <p>All sets @Moderate Weight</p>
-          </div>
-        )}
-      </div>
-
-      {/* ACCESSORY */}
+      {/* ACCESSORY & MIDLINE */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
-          <h3>ACCESSORY</h3>
+          <h3>ACCESSORY & MIDLINE</h3>
           <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
           <div className="section-content">
+            <p>3 Sets For Quality</p>
             <ul>
-              <li>3 Rounds</li>
+              <li>10 Flat Bench Dumbbell Fly</li>
               <li>10/10 One Arm Bent Over Row</li>
-              <li>10 Double Plate Cuban Press</li>
-              <li>Rest 1 Min b/t Rounds</li>
+              <li>10 Supine Leg Raises</li>
+              <li>10 Sumo Stance Good Morning</li>
             </ul>
-            <ul>
-              <li>Then</li>
-              <li>3 Rounds</li>
-              <li>30 m Double Kettlebell Overhead Carry</li>
-              <li>30 m Double Dumbbell Farmers Carry</li>
-              <li>Rest 1 Min b/t Rounds</li>
-            </ul>
+            <p>Rest 30-60" b/t Sets</p>
             <p>All Sets @Moderate Weight</p>
           </div>
         )}
+      </div>
+
+      {/* SESSION 2: PRO RUNNER */}
+      <div className="section-block">
+        <div className="section-header">
+          <h3>SESSION 2: PRO RUNNER</h3>
+        </div>
+        <div className="section-content">
+          <p>25 Min Run @Easy Pace</p>
+          <p>Rest 5 Min</p>
+          <p>OTM 8 Min</p>
+          <ul>
+            <li>50 m Accelerations**</li>
+            <li>Rest/Walk Rest of the minute</li>
+          </ul>
+          <p><strong>**Aceleraciones sin comienzos explosivos ni frenadas subitas.</strong></p>
+          <p><strong>**Accelerations without explosive starts or hard stops.</strong></p>
+        </div>
       </div>
     </div>
   );

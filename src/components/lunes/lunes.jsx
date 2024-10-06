@@ -3,33 +3,10 @@ import '../../styles.css';
 
 function Lunes() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
-  const [isSnatchOpen, setIsSnatchOpen] = useState(false);
-  const [isSnatchDeadliftOpen, setIsSnatchDeadliftOpen] = useState(false);
+  const [isGymnasticsConditioningOpen, setIsGymnasticsConditioningOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isMidlineOpen, setIsMidlineOpen] = useState(false);
-  const [oneRepMaxSnatch, setOneRepMaxSnatch] = useState('');
-
-  // Función para manejar el cambio de 1RM
-  const handle1RMChange = (event) => {
-    setOneRepMaxSnatch(event.target.value);
-  };
-
-  // Cálculo de pesos basados en porcentajes
-  const calculateWeights = (percentages) => {
-    return percentages.map(percentage => 
-      Math.round((oneRepMaxSnatch * percentage) / 100)
-    );
-  };
-
-  const snatchTechniquePercentages = [64, 67, 70, 73];
-  const snatchPercentages = [76, 81, 86];
-  const snatchDeadliftPercentages = [90, 95, 95, 100];
-  
-  const snatchTechniqueWeights = oneRepMaxSnatch ? calculateWeights(snatchTechniquePercentages) : [];
-  const snatchWeights = oneRepMaxSnatch ? calculateWeights(snatchPercentages) : [];
-  const snatchDeadliftWeights = oneRepMaxSnatch ? calculateWeights(snatchDeadliftPercentages) : [];
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
@@ -39,181 +16,135 @@ function Lunes() {
 
       {/* Sección WARM UP */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsWarmUpOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsWarmUpOpen)}
+          aria-expanded={isWarmUpOpen}
+          aria-controls="warm-up-content"
+        >
           <h3>WARM UP</h3>
           <span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
-          <div className="section-content">
+          <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Regressed Copenhagen Raise</li>
-              <li>8/8 Kettlebell Single Leg Hip Thrust</li>
-              <li>6/6 Goblet Lateral Box Step Ups</li>
+              <li>10/10 Eccentric Ankle Dorsiflexion</li>
+              <li>8/8 Single Leg KB Hip Thrust</li>
+              <li>10 Bootstraps</li>
+              <li>10 Squat Press Out</li>
               <li>8 Yoga Push Ups</li>
-              <li>10 Russian KB Swings</li>
-              <li>5 Cuban Press Complex (w/Empty Barbell)</li>
+              <li>10" Bottom Ring Support Hold + 10" Top Of Ring Support Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección SNATCH TECHNIQUE */}
+      {/* Sección GYMNASTICS CONDITIONING */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSnatchTechniqueOpen)}>
-          <h3>SNATCH TECHNIQUE</h3>
-          <span>{isSnatchTechniqueOpen ? '▲' : '▼'}</span>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsGymnasticsConditioningOpen)}
+          aria-expanded={isGymnasticsConditioningOpen}
+          aria-controls="gymnastics-conditioning-content"
+        >
+          <h3>GYMNASTICS CONDITIONING</h3>
+          <span>{isGymnasticsConditioningOpen ? '▲' : '▼'}</span>
         </div>
-        {isSnatchTechniqueOpen && (
-          <div className="section-content">
-            <p>Introduce tu 1RM para Snatch:</p>
-            <input 
-              type="number" 
-              value={oneRepMaxSnatch} 
-              onChange={handle1RMChange} 
-              placeholder="1RM en kg" 
-            />
-            {oneRepMaxSnatch && (
-              <div>
-                <p>4 Sets con los siguientes pesos:</p>
-                <ul>
-                  <li>Set 1: {snatchTechniqueWeights[0]} kg (64%)</li>
-                  <li>Set 2: {snatchTechniqueWeights[1]} kg (67%)</li>
-                  <li>Set 3: {snatchTechniqueWeights[2]} kg (70%)</li>
-                  <li>Set 4: {snatchTechniqueWeights[3]} kg (73%)</li>
-                </ul>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      {/* Sección SNATCH */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSnatchOpen)}>
-          <h3>SNATCH</h3>
-          <span>{isSnatchOpen ? '▲' : '▼'}</span>
-        </div>
-        {isSnatchOpen && (
-          <div className="section-content">
-            <p>3 Sets:</p>
+        {isGymnasticsConditioningOpen && (
+          <div className="section-content" id="gymnastics-conditioning-content">
+            <p>OTM 8 Min</p>
             <ul>
-              <li>3 Snatch @76% ({snatchWeights[0]} kg)</li>
-              <li>2 Snatch @81% ({snatchWeights[1]} kg)</li>
-              <li>1 Snatch @86% ({snatchWeights[2]} kg)</li>
+              <li>Min 1: 1-2 Legless Rope Climbs</li>
+              <li>Min 2: 6-10 Chest-to-Wall Handstand Push Ups</li>
             </ul>
-            <p>Rest 45" entre sets</p>
-          </div>
-        )}
-      </div>
-
-      {/* Sección SNATCH DEADLIFT & PULLS */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsSnatchDeadliftOpen)}>
-          <h3>SNATCH DEADLIFT & PULLS</h3>
-          <span>{isSnatchDeadliftOpen ? '▲' : '▼'}</span>
-        </div>
-        {isSnatchDeadliftOpen && (
-          <div className="section-content">
-            <p>4 Sets:</p>
-            <ul>
-              <li>1 Snatch Lift Off (Hold 2" At Knee Level)</li>
-              <li>1 Segmented Snatch Deadlift (2" Pause on each position)</li>
-              <li>1 Pause Snatch Pull (2" Pause At Knee Level)</li>
-            </ul>
-            {oneRepMaxSnatch && (
-              <ul>
-                <li>Set 1: {snatchDeadliftWeights[0]} kg (90%)</li>
-                <li>Set 2: {snatchDeadliftWeights[1]} kg (95%)</li>
-                <li>Set 3: {snatchDeadliftWeights[2]} kg (95%)</li>
-                <li>Set 4: {snatchDeadliftWeights[3]} kg (100%)</li>
-              </ul>
-            )}
-            <p>Rest 1-2 Min b/t sets</p>
+            <h4>NOTAS</h4>
+            <p><strong>ESTIMULO & OBJETIVOS</strong></p>
+            <p>
+              • Combinamos movimientos gimnásticos en un formato de OTM, donde el objetivo será el
+              completar la cantidad de repeticiones que elijan hacer en menos de 40 segundos para
+              tener la recuperación que deseamos.
+            </p>
           </div>
         )}
       </div>
 
       {/* Sección CONDITIONING */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsConditioningOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsConditioningOpen)}
+          aria-expanded={isConditioningOpen}
+          aria-controls="conditioning-content"
+        >
           <h3>CONDITIONING</h3>
           <span>{isConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isConditioningOpen && (
-          <div className="section-content">
+          <div className="section-content" id="conditioning-content">
             <p>For Time</p>
             <ul>
-              <li>9-7-5 Ring Muscle Ups</li>
-              <li>Squat Snatch</li>
+              <li>50/35 Cal Ski Erg</li>
+              <li>75 Double Unders</li>
+              <li>50/35 Cal Row</li>
+              <li>75 Double Unders</li>
+              <li>50/35 Cal Assault Bike</li>
+              <li>75 Double Unders</li>
+              <li>50/35 Cal Row</li>
+              <li>75 Double Unders</li>
+              <li>50/35 Cal Ski Erg</li>
             </ul>
-            <p>Time Cap: 10 Min</p>
-            <p>Barbell - 61/43 kg</p>
-            <p>SCORE OBJETIVO: 4-6 Min</p>
-          </div>
-        )}
-      </div>
-
-      {/* Sección HANDSTAND WALK CONDITIONING */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
-          <h3>HANDSTAND WALK CONDITIONING</h3>
-          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
-        </div>
-        {isAccessoryOpen && (
-          <div className="section-content">
-            <p>OTM 12 Min</p>
-            <ul>
-              <li>Min 1: 15/12 Cal Assault Bike</li>
-              <li>Min 2: 18 Toes to Bar</li>
-              <li>Min 3: 1-2 Handstand Walk Pirouettes</li>
-            </ul>
-            <p>Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m Total)</p>
+            <h4>NOTAS</h4>
+            <p><strong>SCORE OBJETIVO</strong>: 16-22 Min</p>
           </div>
         )}
       </div>
 
       {/* Sección ACCESSORY */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAccessoryOpen)}
+          aria-expanded={isAccessoryOpen}
+          aria-controls="accessory-content"
+        >
           <h3>ACCESSORY</h3>
           <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
-          <div className="section-content">
-            <p>3 Rounds</p>
+          <div className="section-content" id="accessory-content">
+            <p>3 Sets</p>
             <ul>
-              <li>12 Box Front Squats (Box justo debajo del Paralelo)</li>
-              <li>8 Good Mornings</li>
+              <li>8/8 Lateral Goblet Box Step Ups</li>
+              <li>8/8 Kettlebell Single Leg Deadlift</li>
+              <li>8/8 One Arm Shoulder Press</li>
+              <li>8/8 One Arm Upright Row</li>
             </ul>
-            <p>Rest 1 Min entre rounds</p>
-
-            <p>Then</p>
-            <p>3 Rounds</p>
-            <ul>
-              <li>12 Barbell Hip Thrusts</li>
-              <li>12 Heavy Russian Kettlebell Swings</li>
-            </ul>
-            <p>Rest 1 Min entre rounds</p>
+            <p>Rest 30-60" b/t Sets</p>
+            <p>All Sets @Moderate Weight</p>
           </div>
         )}
       </div>
 
       {/* Sección MIDLINE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsMidlineOpen)}>
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsMidlineOpen)}
+          aria-expanded={isMidlineOpen}
+          aria-controls="midline-content"
+        >
           <h3>MIDLINE</h3>
           <span>{isMidlineOpen ? '▲' : '▼'}</span>
         </div>
         {isMidlineOpen && (
-          <div className="section-content">
-            <p>3 Sets</p>
+          <div className="section-content" id="midline-content">
+            <p>10 Min For Quality</p>
             <ul>
-              <li>10/10 Lateral Med Ball Throws</li>
-              <li>10 Standing Med Ball Throws</li>
-              <li>8 Strict Hanging Leg Raises</li>
+              <li>15" Hollow Body Flutter Kicks</li>
+              <li>15" Side Star Plank (Each Side)</li>
+              <li>15" Sorenson Hold</li>
             </ul>
-            <p>Rest 1 Min entre sets</p>
           </div>
         )}
       </div>
