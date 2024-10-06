@@ -48,7 +48,7 @@ function Lunes() {
           aria-expanded={isGymnasticsConditioningOpen}
           aria-controls="gymnastics-conditioning-content"
         >
-          <h3>GYMNASTICS CONDITIONING</h3>
+          <h3>GYMNASTICS CONDITIONING'a</h3>
           <span>{isGymnasticsConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isGymnasticsConditioningOpen && (
