@@ -3,42 +3,34 @@ import '../../styles.css';
 
 const Viernes = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
+  const [isJerkTechniqueOpen, setIsJerkTechniqueOpen] = useState(false);
+  const [isCleanAndJerkOpen, setIsCleanAndJerkOpen] = useState(false);
+  const [isBackSquatOpen, setIsBackSquatOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isAccessoryMidlineOpen, setIsAccessoryMidlineOpen] = useState(false);
+  const [isActivationOpen, setIsActivationOpen] = useState(false);
+  const [isSkillPracticeOpen, setIsSkillPracticeOpen] = useState(false);
+  const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isProRunnerOpen, setIsProRunnerOpen] = useState(false);
 
-  const [oneRmDeadlift, setOneRmDeadlift] = useState('');
-  const [calculatedWeightsDeadlift, setCalculatedWeightsDeadlift] = useState({
-    set60: '',
-  });
+  const [oneRmCleanJerk, setOneRmCleanJerk] = useState('');
+  const [oneRmBackSquat, setOneRmBackSquat] = useState('');
+  const [calculatedWeightsCleanJerk, setCalculatedWeightsCleanJerk] = useState({});
+  const [calculatedWeightsBackSquat, setCalculatedWeightsBackSquat] = useState({});
 
-  // Función para manejar el cambio de 1RM Deadlift
-  const handle1RMDeadliftChange = (e) => {
+  const handle1RMChange = (e, setOneRm, setCalculatedWeights, percentages) => {
     const value = e.target.value;
-    setOneRmDeadlift(value);
-
+    setOneRm(value);
+    
     if (value) {
       const rm = parseFloat(value);
-      const calculatedWeights = {
-        set60: (rm * 0.60).toFixed(2), // 60% del 1RM para Deadlift
-      };
-      setCalculatedWeightsDeadlift(calculatedWeights);
+      const calculatedWeights = percentages.reduce((acc, percentage) => {
+        acc[`set${percentage}`] = (rm * (percentage / 100)).toFixed(2);
+        return acc;
+      }, {});
+      setCalculatedWeights(calculatedWeights);
     } else {
-      setCalculatedWeightsDeadlift({
-        set60: '',
-      });
+      setCalculatedWeights({});
     }
-  };
-
-  // Función para manejar el cambio de 1RM Clean (si es necesario en futuras secciones)
-  const handle1RMCleanChange = (e) => {
-    // Implementar si se requiere en el futuro
-  };
-
-  // Cálculo de pesos basados en porcentajes (para futuras secciones si es necesario)
-  const calculateWeight = (percentage, oneRm) => {
-    return oneRm ? Math.round((parseFloat(oneRm) * (percentage / 100))) : '-';
   };
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -62,49 +54,112 @@ const Viernes = () => {
           <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>8 Sumo Inchworm + Push Ups</li>
-              <li>10 Alternating Kossacks</li>
-              <li>10/10 Spiderman + Reach</li>
-              <li>8/8 One Arm Suitcase Deadlift</li>
-              <li>8/8 One Arm RKB Swings</li>
-              <li>10 Handstand Hold</li>
+              <li>10/10 Regressed Copenhagen Raise</li>
+              <li>8/8 Kettlebell Single Leg Hip Thrust</li>
+              <li>6/6 One Arm Muscle Snatch</li>
+              <li>6/6 One Arm Front Squats</li>
+              <li>6/6 One Arm Shoulder Press</li>
+              <li>8 Cuban Press</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* DEADLIFT */}
+      {/* JERK TECHNIQUE */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsDeadliftOpen)}
-          aria-expanded={isDeadliftOpen}
-          aria-controls="deadlift-content"
+          onClick={() => toggleSection(setIsJerkTechniqueOpen)}
+          aria-expanded={isJerkTechniqueOpen}
+          aria-controls="jerk-technique-content"
         >
-          <h3>DEADLIFT</h3>
-          <span>{isDeadliftOpen ? '▲' : '▼'}</span>
+          <h3>JERK TECHNIQUE</h3>
+          <span>{isJerkTechniqueOpen ? '▲' : '▼'}</span>
         </div>
-        {isDeadliftOpen && (
-          <div className="section-content" id="deadlift-content">
-            <label htmlFor="oneRmDeadlift">
-              Ingresar 1RM Deadlift (kg):
+        {isJerkTechniqueOpen && (
+          <div className="section-content" id="jerk-technique-content">
+            <h4>1) Foot Positioning</h4>
+            <p>1 x 5 Back Rack Jump to Split @Light to Moderate Weight</p>
+            <h4>2) Overhead Position</h4>
+            <p>2 x 3 Jerk Balance In Split @Moderate Weight</p>
+            <p>3 x 2 Tall Jerk @Light to Moderate Weight</p>
+          </div>
+        )}
+      </div>
+
+      {/* CLEAN & JERK */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsCleanAndJerkOpen)}
+          aria-expanded={isCleanAndJerkOpen}
+          aria-controls="clean-jerk-content"
+        >
+          <h3>CLEAN & JERK</h3>
+          <span>{isCleanAndJerkOpen ? '▲' : '▼'}</span>
+        </div>
+        {isCleanAndJerkOpen && (
+          <div className="section-content" id="clean-jerk-content">
+            <label htmlFor="oneRmCleanJerk">
+              Ingresar 1RM Clean & Jerk (kg):
               <input
                 type="number"
-                id="oneRmDeadlift"
-                value={oneRmDeadlift}
-                onChange={handle1RMDeadliftChange}
+                id="oneRmCleanJerk"
+                value={oneRmCleanJerk}
+                onChange={(e) => handle1RMChange(e, setOneRmCleanJerk, setCalculatedWeightsCleanJerk, [70, 73, 76, 79, 80, 85])}
                 placeholder="Ingresa tu 1RM en kg"
               />
             </label>
-            {oneRmDeadlift && (
+            {oneRmCleanJerk && (
               <>
-                <p>3 Sets</p>
+                <p>4 Sets</p>
                 <ul>
-                  <li>5 Deadlift @60% ({calculatedWeightsDeadlift.set60} kg)</li>
+                  <li>1 Squat Clean @ {calculatedWeightsCleanJerk.set70} kg</li>
+                  <li>1 Front Squat @ {calculatedWeightsCleanJerk.set73} kg</li>
+                  <li>1 Split Jerk @ {calculatedWeightsCleanJerk.set76} kg</li>
                 </ul>
-                <p>Rest 60-90" b/t</p>
-                <p>*Singles, No Touch And Go</p>
+                <p>Rest 60-90" b/t Sets</p>
+                <p>2 x 2 Squat Cleans @ {calculatedWeightsCleanJerk.set80} kg</p>
+                <p>2 x 1 Squat Clean @ {calculatedWeightsCleanJerk.set85} kg</p>
+              </>
+            )}
+          </div>
+        )}
+      </div>
 
+      {/* BACK SQUAT */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsBackSquatOpen)}
+          aria-expanded={isBackSquatOpen}
+          aria-controls="back-squat-content"
+        >
+          <h3>BACK SQUAT</h3>
+          <span>{isBackSquatOpen ? '▲' : '▼'}</span>
+        </div>
+        {isBackSquatOpen && (
+          <div className="section-content" id="back-squat-content">
+            <label htmlFor="oneRmBackSquat">
+              Ingresar 1RM Back Squat (kg):
+              <input
+                type="number"
+                id="oneRmBackSquat"
+                value={oneRmBackSquat}
+                onChange={(e) => handle1RMChange(e, setOneRmBackSquat, setCalculatedWeightsBackSquat, [84, 69, 72, 75])}
+                placeholder="Ingresa tu 1RM en kg"
+              />
+            </label>
+            {oneRmBackSquat && (
+              <>
+                <p>Build to 2 Reps @ {calculatedWeightsBackSquat.set84} kg</p>
+                <p>Then</p>
+                <ul>
+                  <li>6 Back Squats @ {calculatedWeightsBackSquat.set69} kg</li>
+                  <li>5 Back Squats @ {calculatedWeightsBackSquat.set72} kg</li>
+                  <li>4 Back Squats @ {calculatedWeightsBackSquat.set75} kg</li>
+                </ul>
+                <p>Rest 60-90" b/t Sets</p>
               </>
             )}
           </div>
@@ -124,48 +179,72 @@ const Viernes = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>4 Rounds For Time</p>
+            <p>2 Rounds For Time</p>
             <ul>
-              <li>400 m Run</li>
-              <li>9 Double Kettlebell Hang Clean & Jerks</li>
-              <li>3 Rope Climbs</li>
-            </ul>
-            <ul>
-              <li>Kettlebells - 2 x 24/16 kg</li>
+              <li>900 m Row</li>
+              <li>600 m Ski Erg</li>
+              <li>30 Thrusters @ Barbell - 42,5/30 kg</li>
             </ul>
             <p><strong>NOTAS</strong></p>
-            <p><strong>SCORE OBJETIVO</strong>: 12-16 Min</p>
+            <p><strong>SCORE OBJETIVO</strong>: 14-18 Min</p>
+            <p><strong>REEMPLAZOS/REPLACEMENTS</strong></p>
+            <p>No Row: 800 m Run</p>
+            <p>No Ski Erg: 150 Double Unders</p>
+            <h3>ACTIVATION</h3>
+           
+            <p>3 x 10 Glute Bridge</p>
+            <p>3 x 10 Single Leg Glute Bridge</p>
+            <p>3 x 15 Band Abducción (Mala postura)</p>
+
           </div>
         )}
       </div>
 
-      {/* ACCESSORY & MIDLINE */}
+
+      {/* SKILL PRACTICE */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsAccessoryMidlineOpen)}
-          aria-expanded={isAccessoryMidlineOpen}
-          aria-controls="accessory-midline-content"
+          onClick={() => toggleSection(setIsSkillPracticeOpen)}
+          aria-expanded={isSkillPracticeOpen}
+          aria-controls="skill-practice-content"
         >
-          <h3>ACCESSORY & MIDLINE</h3>
-          <span>{isAccessoryMidlineOpen ? '▲' : '▼'}</span>
+          <h3>SKILL PRACTICE + CONDITIONING</h3>
+          <span>{isSkillPracticeOpen ? '▲' : '▼'}</span>
         </div>
-        {isAccessoryMidlineOpen && (
-          <div className="section-content" id="accessory-midline-content">
-            <p>3 Sets</p>
-            <ul>
-              <li>10 Horizontal Body Rows</li>
-              <li>10 Feet Elevated Weighted Bench Dips</li>
-              <li>10 Standing Wall Dumbbell Bicep Curls</li>
-              <li>15 Medball GHD Sit Ups</li>
-            </ul>
-            <p>Rest 30-60" b/t Sets</p>
-            <p>All Sets @Moderate Weight</p>
+        {isSkillPracticeOpen && (
+          <div className="section-content" id="skill-practice-content">
+            <p>5 Min Pullovers Practice</p>
+            <p>Then</p>
+            <p>OTM 8-10 Min</p>
+            <p>Min 1: 16/12 Cal Row</p>
+            <p>Min 2: 1 Seated Legless Rope Climb + 1 Legless Rope Climb*</p>
           </div>
         )}
       </div>
 
-      {/* SESSION 2: PRO RUNNER */}
+      {/* ACCESSORY */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAccessoryOpen)}
+          aria-expanded={isAccessoryOpen}
+          aria-controls="accessory-content"
+        >
+          <h3>ACCESSORY</h3>
+          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
+        </div>
+        {isAccessoryOpen && (
+          <div className="section-content" id="accessory-content">
+            <p>3 Rounds</p>
+            <p>6/6 Goblet Lataeral Box Step Ups</p>
+            <p>6 Hip Thrusts @Heavy Weight</p>
+            <p>Rest 1 Min b/t Rounds</p>
+          </div>
+        )}
+      </div>
+
+      {/* PRO RUNNER */}
       <div className="section-block">
         <div
           className="section-header"
@@ -173,45 +252,26 @@ const Viernes = () => {
           aria-expanded={isProRunnerOpen}
           aria-controls="pro-runner-content"
         >
-          <h3>SESSION 2: PRO RUNNER</h3>
+          <h3>PRO RUNNER</h3>
           <span>{isProRunnerOpen ? '▲' : '▼'}</span>
         </div>
         {isProRunnerOpen && (
           <div className="section-content" id="pro-runner-content">
-            {/* Warm-Up */}
             <h4>Warm-Up</h4>
-            <ul>
-              <li>5 Min @Easy Pace</li>
-              <li>5 Min @Moderate Pace</li>
-            </ul>
+      <p>3 Min @ Easy Pace</p>
+      <p>Then</p>
+      <p>30" @ Hard Pace</p>
+      <p>30" @ Easy Pace</p>
 
-            {/* Workout */}
-            <h4>Workout</h4>
-            <ul>
-              <li>5 Rounds</li>
-              <li>200 m in 00:53</li>
-              <li>200 m @Recovery Pace</li>
-            </ul>
+      <h4>Workout</h4>
+      <p>4 Rounds</p>
+      <p>200 m in 00:51</p>
+      <p>Rest 1 Min</p>
+      <p>200 m in @ 06:02</p>
+      <p>Rest 30" b/t Rounds</p>
 
-            {/* Rest */}
-            <h4>Rest</h4>
-            <ul>
-              <li>Rest 5 Min</li>
-            </ul>
-
-            {/* Second Workout */}
-            <h4>5 Rounds</h4>
-            <ul>
-              <li>200 m in 00:53</li>
-              <li>200 m @Recovery Pace</li>
-            </ul>
-
-            {/* Cool-Down */}
-            <h4>Cool-Down</h4>
-            <ul>
-              <li>5 Min @Easy Pace</li>
-              <li>5 Min @Recovery Pace</li>
-            </ul>
+      <h4>Cool-Down</h4>
+      <p>5 Min @ Recovery Pace</p>
           </div>
         )}
       </div>
