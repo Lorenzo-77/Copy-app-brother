@@ -5,13 +5,13 @@ function Miercoles() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
   const [isCleanAndJerkOpen, setIsCleanAndJerkOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isStaminaConditioningOpen, setIsStaminaConditioningOpen] = useState(false);
+  const [isRowConditioningOpen, setIsRowConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isMidlineOpen, setIsMidlineOpen] = useState(false);
 
   const [oneRepMaxCleanAndJerk, setOneRepMaxCleanAndJerk] = useState('');
   const [calculatedWeightsCleanAndJerk, setCalculatedWeightsCleanAndJerk] = useState({
-    set69: '',
+    set72: '',
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -23,12 +23,12 @@ function Miercoles() {
     if (value) {
       const rm = parseFloat(value);
       const calculatedWeights = {
-        set69: (rm * 0.69).toFixed(2),
+        set72: (rm * 0.72).toFixed(2),
       };
       setCalculatedWeightsCleanAndJerk(calculatedWeights);
     } else {
       setCalculatedWeightsCleanAndJerk({
-        set69: '',
+        set72: '',
       });
     }
   };
@@ -57,7 +57,7 @@ function Miercoles() {
               <li>6/6 One Arm Muscle Snatch</li>
               <li>6/6 One Arm Thrusters</li>
               <li>6/6 One Arm Overhead Squats</li>
-              <li>10/10 Thoracic Extension Rotation</li>
+              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
             </ul>
           </div>
         )}
@@ -83,7 +83,7 @@ function Miercoles() {
               <li>1 Power Clean & Push Jerk</li>
             </ul>
             <p>*All Repetitions Are Singles</p>
-            <p>All Sets @69%: {calculatedWeightsCleanAndJerk.set69 ? `${calculatedWeightsCleanAndJerk.set69} kg` : '69%'}</p>
+            <p>All Sets @72%: {calculatedWeightsCleanAndJerk.set72 ? `${calculatedWeightsCleanAndJerk.set72} kg` : '72%'}</p>
             <p>Introduce tu 1RM para Clean & Jerk:</p>
             <input 
               type="number" 
@@ -108,60 +108,44 @@ function Miercoles() {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>With a Running Clock</p>
-            <p>On The 00:00</p>
             <p>For Time</p>
             <ul>
-              <li>12-9-6 Power Snatches</li>
-              <li>12-9-6 Burpee Box Jump Overs</li>
+              <li>32/27 Cal Ski Erg</li>
+              <li>8 Ring Muscle Ups</li>
+              <li>16 Alternating Dumbbell Snatches</li>
+              <li>8 Ring Muscle Ups</li>
+              <li>16 Alternating Dumbbell Snatches</li>
+              <li>8 Ring Muscle Ups</li>
+              <li>16 Alternating Dumbbell Snatches</li>
+              <li>32/27 Cal Ski Erg</li>
             </ul>
-            <p>On The 12:00</p>
-            <p>For Time</p>
-            <ul>
-              <li>6-9-12 Power Clean & Jerks</li>
-              <li>2-4-6 Rope Climbs</li>
-            </ul>
-            <p>Barbell - 60/42,5 kg</p>
-            <p>Rope - 4,57 m</p>
-            <h4>ACTIVACIÓN/ACTIVATION</h4>
-            <p>2 Rounds</p>
-            <ul>
-              <li>3 Power Snatch</li>
-              <li>3 Burpee Box Jump Overs</li>
-            </ul>
-            <p>Rest 30-45”</p>
-            <p>1 Round</p>
-            <ul>
-              <li>3 Clean & Jerks</li>
-              <li>1 Rope Climb</li>
-            </ul>
+            <p>Dumbbell - 32/22,5 kg</p>
             <h4>NOTAS</h4>
-            <p><strong>SCORE OBJETIVO</strong>: 6-10 Min (Cada parte)</p>
+            <p><strong>SCORE OBJETIVO</strong>: 6-10 Min</p>
+            <p>No Ski Erg: 27 Burpee to Target</p>
+            <p>No 32,5/22,5 kg Dumbbell: 24 Dumbbell Snatch c/22,5/15 kg</p>
           </div>
         )}
       </div>
 
-      {/* Sección STAMINA CONDITIONING */}
+      {/* Sección ROW CONDITIONING (OPCIONAL) */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsStaminaConditioningOpen)}
-          aria-expanded={isStaminaConditioningOpen}
-          aria-controls="stamina-conditioning-content"
+          onClick={() => toggleSection(setIsRowConditioningOpen)}
+          aria-expanded={isRowConditioningOpen}
+          aria-controls="row-conditioning-content"
         >
-          <h3>STAMINA CONDITIONING</h3>
-          <span>{isStaminaConditioningOpen ? '▲' : '▼'}</span>
+          <h3>ROW CONDITIONING (OPCIONAL)</h3>
+          <span>{isRowConditioningOpen ? '▲' : '▼'}</span>
         </div>
-        {isStaminaConditioningOpen && (
-          <div className="section-content" id="stamina-conditioning-content">
-            <p>Every 3:30 Min x 10:30 Min (3 Sets)</p>
+        {isRowConditioningOpen && (
+          <div className="section-content" id="row-conditioning-content">
+            <p>8 Rounds</p>
             <ul>
-              <li>15/12 Cal Ski Erg</li>
-              <li>15 Chest to Bar Pull Ups</li>
-              <li>15 m Double Kettlebell Overhead Walking Lunges</li>
+              <li>500 m @02:30/500 m</li>
             </ul>
-            <p>Kettlebells - 2 x 24/16 kg</p>
-            <p><strong>REEMPLAZOS/REPLACEMENTS:</strong> No Ski Erg: 12 Burpee to Target</p>
+            <p>Rest 1:30 Min b/t Rounds</p>
           </div>
         )}
       </div>
@@ -181,15 +165,15 @@ function Miercoles() {
           <div className="section-content" id="accessory-content">
             <p>3 Rounds</p>
             <ul>
-              <li>12 Dumbbell Bench Press</li>
-              <li>12 Rolling DB Triceps Extensions</li>
+              <li>12 Strict Parallel Dips</li>
+              <li>30 Banded Triceps Extensions</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
             <p>Then</p>
             <p>3 Rounds</p>
             <ul>
-              <li>10 Supinated Grip Strict Pull Ups</li>
-              <li>12 Barbell Bicep Curls</li>
+              <li>10 Pronated Grip Strict Pull Ups</li>
+              <li>12 Dumbbell Hammer Curls</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
             <p>All Sets @Moderate Weight</p>
@@ -210,13 +194,12 @@ function Miercoles() {
         </div>
         {isMidlineOpen && (
           <div className="section-content" id="midline-content">
-            <p>1 Min Wall Sit</p>
-            <p>2-3 Sets</p>
+            <p>3 Rounds For Quality</p>
             <ul>
-              <li>12 Ab Wheel Roll Outs</li>
-              <li>12/12 Hanging Oblique Knee Raises</li>
+              <li>15 Seated Single Leg Pike Ups (Each Leg)</li>
+              <li>15 Seated Single Leg Straddle Ups (Each Leg)</li>
+              <li>15" Bridge Hold</li>
             </ul>
-            <p>Rest 1 Min b/t Sets</p>
           </div>
         )}
       </div>

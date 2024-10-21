@@ -30,17 +30,12 @@ function Home() {
       case 'Sábado':
         return <Sabado />;
       default:
-        return <div class="video-container">
-      <iframe
-          src="https://www.youtube.com/embed/8Cu3xqnCNek?si=pfp5eZW8uvHvoPMf"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-      ;
+        return   <div className="text-container">
+
+    <p>
+      «Dos ratoncitos cayeron en un cubo de nata; el primer ratón enseguida se rindió y se ahogó, el segundo ratón decidió pelear, y se esforzó tanto que finalmente transformó la nata en mantequilla y consiguió escapar. Caballeros, desde este momento yo soy ese segundo ratón»
+    </p>
+  </div>
     }
   };
 

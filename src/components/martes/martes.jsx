@@ -13,8 +13,8 @@ function Martes() {
   // Estado para 1RM y pesos calculados
   const [oneRepMax, setOneRepMax] = useState('');
   const [calculatedWeights, setCalculatedWeights] = useState({
-    set82: '',
-    set65: ''
+    frontSquatSet86: '',
+    frontSquatSet68: ''
   });
 
   // Función para alternar secciones
@@ -28,14 +28,14 @@ function Martes() {
     if (value) {
       const rm = parseFloat(value);
       const calculated = {
-        set82: (rm * 0.82).toFixed(2),
-        set65: (rm * 0.65).toFixed(2)
+        frontSquatSet86: (rm * 0.86).toFixed(2),
+        frontSquatSet68: (rm * 0.68).toFixed(2)
       };
       setCalculatedWeights(calculated);
     } else {
       setCalculatedWeights({
-        set82: '',
-        set65: ''
+        frontSquatSet86: '',
+        frontSquatSet68: ''
       });
     }
   };
@@ -59,12 +59,12 @@ function Martes() {
           <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Banded Side Steps</li>
+              <li>10/10 Eccentric Ankle Dorsiflexion</li>
+              <li>8 Inchworm + Push Ups</li>
+              <li>10/10 Thoracic Extension Rotation</li>
               <li>8/8 Single Leg KB Hip Thrust</li>
-              <li>10 Bootstraps</li>
-              <li>10 Squat Press Out</li>
-              <li>8 Yoga Push Ups</li>
-              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
+              <li>8 Squat Press Out</li>
+              <li>10/10 Squat + Thoracic Extension Rotation</li>
             </ul>
           </div>
         )}
@@ -83,10 +83,10 @@ function Martes() {
         </div>
         {isFrontSquatOpen && (
           <div className="section-content" id="front-squat-content">
-            <p>Build to 2 Reps @ {calculatedWeights.set82 ? `${calculatedWeights.set82} kg` : '82%'}</p>
+            <p>Build to 2 Reps @ {calculatedWeights.frontSquatSet86 ? `${calculatedWeights.frontSquatSet86} kg` : '86%'}</p>
             <p>Then</p>
             <p>OTM 5 Min</p>
-            <p>4 Front Squats @ {calculatedWeights.set65 ? `${calculatedWeights.set65} kg` : '65%'}</p>
+            <p>4 Front Squats @ {calculatedWeights.frontSquatSet68 ? `${calculatedWeights.frontSquatSet68} kg` : '68%'}</p>
             <p><em>*Enfoque en velocidad de ejecución (Hacia abajo y hacia arriba)</em></p>
             <p><em>*Focus is on Speed of execution (Speed down and Up)</em></p>
             
@@ -102,43 +102,6 @@ function Martes() {
                 min="0"
               />
             </div>
-          </div>
-        )}
-      </div>
-
-      {/* Sección CONDITIONING con ACTIVACIÓN */}
-      <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsConditioningOpen)}
-          aria-expanded={isConditioningOpen}
-          aria-controls="conditioning-content"
-        >
-          <h3>CONDITIONING</h3>
-          <span>{isConditioningOpen ? '▲' : '▼'}</span>
-        </div>
-        {isConditioningOpen && (
-          <div className="section-content" id="conditioning-content">
-            <p>3 Sets</p>
-            <p>AMRAP 4 Min</p>
-            <ul>
-              <li>25 GHD Sit Ups</li>
-              <li>75 Double Unders</li>
-              <li>25 Wall Balls</li>
-              <li>10/7 Ring Muscle Ups</li>
-            </ul>
-            <p>Rest 4 Min b/t Sets</p>
-            <p>Medball - 9/6 kg</p>
-            
-            {/* ACTIVACIÓN/ACTIVATION dentro de CONDITIONING */}
-            <h4>ACTIVACIÓN/ACTIVATION</h4>
-            <p>1 Round</p>
-            <ul>
-              <li>5 GHD Sit Ups</li>
-              <li>20 Double Unders</li>
-              <li>5 Wall Balls</li>
-              <li>3/2 Ring Muscle Ups</li>
-            </ul>
           </div>
         )}
       </div>
@@ -159,117 +122,140 @@ function Martes() {
             <p>Elegir la opción de acuerdo al resultado del TEST de Chest-to-Wall Handstand Push Ups.</p>
             <p><em>// Choose the option according to your Chest-to-Wall Handstand Push Ups Test.</em></p>
 
-            {/* Opciones según resultados del TEST */}
             <h4>1) Test Sub 3 Min</h4>
-            <p>AMRAP 8 Min</p>
+            <p>2 Sets, Each For Time</p>
             <ul>
-              <li>Chest-to-Wall Handstand Push Ups*</li>
-              <li>Right Arm Dumbbell Snatches</li>
-              <li>Box Jump Overs (Step Down)</li>
-              <li>Left Arm Dumbbell Snatches</li>
+              <li>15 m Double Dumbbell Front Rack Walking Lunges</li>
+              <li>10 Chest-to-Wall Handstand Push Ups</li>
+              <li>3/2 Legless Rope Climbs</li>
+              <li>10 Chest-to-Wall Handstand Push Ups</li>
+              <li>15 m Double Dumbbell Front Rack Walking Lunges</li>
             </ul>
-            <p>Dumbbell - 32,5/22,5 kg</p>
-            <p>Box - 76/60 cm</p>
+            <p>REST 5 Min b/t Sets</p>
+            <p>Dumbbells - 2 x 22,5/15 kg</p>
+            <p>Lunges - 7,5 m Unbroken Segments</p>
+            <p>Rope - 4,57 m</p>
             <p>Then</p>
             <ul>
-              <li>3 x 15 Seated Dumbbell Strict Press</li>
+              <li>3 x 20 Seated Dumbbell Strict Press</li>
               <li>Rest 30" b/t Rounds</li>
-              <li>3 x 10 Inverted Skull Crushers</li>
+              <li>3 x 10 Rolling Dumbbell Triceps Extension</li>
               <li>Rest 30" b/t Rounds</li>
             </ul>
             <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
             <p><em>All sets @Moderate Weight</em></p>
-
-            <hr />
 
             <h4>2) Test entre 3 y 5 Min</h4>
-            <p>3 Sets</p>
-            <ul>
-              <li>12 Unbroken Chest-to-Wall Handstand Push Ups</li>
-              <li>Rest As Little As Possible</li>
-              <li>9 Unbroken Chest-to-Wall Handstand Push Ups</li>
-              <li>Rest As Little As Possible</li>
-              <li>7 Unbroken Chest-to-Wall Handstand Push Ups</li>
-            </ul>
-            <p>Rest 2 Min b/t Sets</p>
-            <p>Then</p>
-            <ul>
-              <li>3 x 15 Seated Dumbbell Strict Press</li>
-              <li>Rest 30" b/t Rounds</li>
-              <li>3 x 10 Inverted Skull Crushers</li>
-              <li>Rest 30" b/t Rounds</li>
-            </ul>
-            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-            <p><em>All sets @Moderate Weight</em></p>
-
-            <hr />
-
-            <h4>3) Test entre 5 y 8 Min</h4>
-            <p>3 Sets</p>
-            <ul>
-              <li>9 Unbroken Chest-to-Wall Handstand Push Ups</li>
-              <li>Rest As Little As Possible</li>
-              <li>7 Unbroken Chest-to-Wall Handstand Push Ups</li>
-              <li>Rest As Little As Possible</li>
-              <li>5 Unbroken Chest-to-Wall Handstand Push Ups</li>
-            </ul>
-            <p>Rest 2 Min b/t Sets</p>
-            <p>Then</p>
-            <ul>
-              <li>3 x 15 Seated Dumbbell Strict Press</li>
-              <li>Rest 30" b/t Rounds</li>
-              <li>3 x 10 Inverted Skull Crushers</li>
-              <li>Rest 30" b/t Rounds</li>
-            </ul>
-            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-            <p><em>All sets @Moderate Weight</em></p>
-
-            <hr />
-
-            <h4>4) Test arriba de 8 Min</h4>
             <p>2 Sets</p>
             <p>3 Rounds</p>
             <ul>
-              <li>27 Unbroken Pike Strict Handstand Push Ups</li>
+              <li>15 Unbroken Chest-to-Wall Handstand Push Ups</li>
               <li>Rest 30" b/t Rounds</li>
             </ul>
             <p>Rest 2 Min b/t Sets</p>
             <p>Then</p>
             <ul>
-              <li>3 x 15 Seated Dumbbell Strict Press</li>
+              <li>3 x 20 Seated Dumbbell Strict Press</li>
               <li>Rest 30" b/t Rounds</li>
-              <li>3 x 10 Inverted Skull Crushers</li>
+              <li>3 x 10 Rolling Dumbbell Triceps Extension</li>
               <li>Rest 30" b/t Rounds</li>
             </ul>
             <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
             <p><em>All sets @Moderate Weight</em></p>
 
-            {/* Notas adicionales */}
-            <h4>NOTAS</h4>
+            <h4>3) Test entre 5 y 8 Min</h4>
+            <p>2 Sets</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>En este trabajo deben seleccionar lo que van a hacer dependiendo de como hayan realizado el Test que se hizo en la semana de descarga de Strict Handstand Push Ups.</li>
-              <li>A su vez, utilizarán el número del Test de máxima cantidad de Chest-to-Wall Handstand Push Ups Unbroken tomado un tiempo atrás.</li>
+              <li>13 Unbroken Chest-to-Wall Handstand Push Ups</li>
+              <li>Rest 30" b/t Rounds</li>
             </ul>
+            <p>Rest 2 Min b/t Sets</p>
+            <p>Then</p>
+            <ul>
+              <li>3 x 20 Seated Dumbbell Strict Press</li>
+              <li>Rest 30" b/t Rounds</li>
+              <li>3 x 10 Rolling Dumbbell Triceps Extension</li>
+              <li>Rest 30" b/t Rounds</li>
+            </ul>
+            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
+            <p><em>All sets @Moderate Weight</em></p>
+
+            <h4>4) Test arriba de 8 Min</h4>
+            <p>3 Sets</p>
+            <ul>
+              <li>17 Unbroken Chest-to-Wall Handstand Push Ups</li>
+              <li>Rest 1 Min b/t</li>
+            </ul>
+            <p>Then</p>
+            <p>3 Rounds</p>
+            <ul>
+              <li>29 Unbroken Pike Strict Handstand Push Ups</li>
+              <li>Rest 30" b/t Rounds</li>
+            </ul>
+            <p>Then</p>
+            <ul>
+              <li>3 x 20 Seated Dumbbell Strict Press</li>
+              <li>Rest 30" b/t Rounds</li>
+              <li>3 x 10 Rolling Dumbbell Triceps Extension</li>
+              <li>Rest 30" b/t Rounds</li>
+            </ul>
+            <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
+            <p><em>All sets @Moderate Weight</em></p>
+
+            <h4>NOTAS</h4>
+            <p>• En este trabajo deben seleccionar lo que van a hacer dependiendo de como hayan realizado el Test que se hizo en la semana de descarga de Strict Handstand Push Ups.</p>
+            <p>• A su vez, utilizarán el número del Test de máxima cantidad de Chest-to-Wall Handstand Push Ups Unbroken tomado un tiempo atrás.</p>
 
             <h4>IMPORTANTE</h4>
+            <p>• En el caso de no haber hecho estos Tests, realizarán lo siguiente:</p>
             <ul>
-              <li>If you did not do both Tests, do the following:
-                <ol>
-                  <li>1 Set: Max Unbroken Chest-to-Wall Handstand Push Ups</li>
-                  <li>Then rest 5-10 minutes and we Will use these equivalencies to do one of the given options (You will keep using these for the next few weeks):
-                    <ol type="5">
-                      <li>20+ Unbroken Chest-to-Wall HSPU = Test Sub 3 Min</li>
-                      <li>15-19 Unbroken Chest-to-Wall HSPU = Test entre 3 y 5 Min</li>
-                      <li>10-14 Unbroken Chest-to-Wall HSPU = Test entre 5 y 8 Min</li>
-                      <li>9 o less Unbroken Chest-to-Wall HSPU = Test above de 8 Min</li>
-                    </ol>
-                  </li>
-                </ol>
-              </li>
+              <li>1 Set: Max Unbroken Chest-to-Wall Handstand Push Ups</li>
+            </ul>
+            <p>• Luego de esto descansar 5-10 Minutos y utilizaremos las siguientes equivalencias para realizar una de las opciones dadas (Y seguir utilizando esta equivalencia por las siguientes semanas):</p>
+            <ul>
+              <li>1) 20+ Unbroken Chest-to-Wall HSPU = Test Sub 3 Min</li>
+              <li>2) 15-19 Unbroken Chest-to-Wall HSPU = Test entre 3 y 5 Min</li>
+              <li>3) 10-14 Unbroken Chest-to-Wall HSPU = Test entre 5 y 8 Min</li>
+              <li>4) 9 o menos Unbroken Chest-to-Wall HSPU = Test encima de 8 Min</li>
             </ul>
 
             <h4>REEMPLAZOS/REPLACEMENTS</h4>
-            <p>No 32,5/22,5 kg Dumbbell: 2xReps con 22,5/15 kg</p>
+            <p>• No Rope: 1 Legless Rope Climb = 4 Unbroken Supinated Grip Strict Pull Ups</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sección CONDITIONING */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsConditioningOpen)}
+          aria-expanded={isConditioningOpen}
+          aria-controls="conditioning-content"
+        >
+          <h3>CONDITIONING</h3>
+          <span>{isConditioningOpen ? '▲' : '▼'}</span>
+        </div>
+        {isConditioningOpen && (
+          <div className="section-content" id="conditioning-content">
+            <p>4 Rounds For Time</p>
+            <ul>
+              <li>1000 m Bike Erg</li>
+              <li>80 Double Unders</li>
+              <li>20 GHD Sit Ups</li>
+              <li>8 Sandbag to Shoulder</li>
+            </ul>
+            <p>Sandbag - 70/45 kg</p>
+
+            <h4>NOTAS</h4>
+            <p>SCORE OBJETIVO</p>
+            <ul>
+              <li>19-24 Min</li>
+              <li>No Bike Erg: 400 m Run</li>
+              <li>No Sandbag: 10 Devil Press (2 x 22,5/15 kg)</li>
+              <li>GHD: 1) <a href="https://youtu.be/eWDk5jxAwCE">video 1</a> ; 2) <a href="https://youtu.be/O3huiwVg4UE">video 2</a></li>
+            </ul>
           </div>
         )}
       </div>
@@ -287,27 +273,25 @@ function Martes() {
         </div>
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
-            {/* Primera Parte de ACCESSORY */}
-            <p>3 Rounds</p>
+            <h4>3 Rounds</h4>
             <ul>
-              <li>10/10 Three Point Dumbbell Row</li>
-              <li>10/10 Elbow On Knee Banded External Rotation</li>
-              <li>Rest 1 Min b/t Rounds</li>
+              <li>10/10 One Arm Upright Row</li>
+              <li>10/10 Elbow On Knee Dumbbell External Rotation</li>
             </ul>
+            <p>Rest 1 Min b/t Rounds</p>
 
-            {/* Segunda Parte de ACCESSORY */}
-            <p>Then</p>
-            <p>3 Rounds</p>
+            <h4>Then</h4>
+            <h4>3 Rounds</h4>
             <ul>
-              <li>30 m One Arm Overhead Carry (Each Arm)</li>
-              <li>30 m One Arm Farmers Carry (Each Arm)</li>
-              <li>Rest 1 Min b/t Rounds</li>
+              <li>40 m One Arm Overhead Carry (Each Arm)</li>
+              <li>40 m One Arm Farmer's Carry (Each Arm)</li>
             </ul>
+            <p>Rest 1 Min b/t Rounds</p>
           </div>
         )}
       </div>
 
-      {/* Sección SESSION 2: PRO RUNNER */}
+      {/* Sección PRO RUNNER */}
       <div className="section-block">
         <div
           className="section-header"
@@ -315,33 +299,37 @@ function Martes() {
           aria-expanded={isProRunnerOpen}
           aria-controls="pro-runner-content"
         >
-          <h3>SESSION 2: PRO RUNNER</h3>
+          <h3>PRO RUNNER</h3>
           <span>{isProRunnerOpen ? '▲' : '▼'}</span>
         </div>
         {isProRunnerOpen && (
           <div className="section-content" id="pro-runner-content">
-            {/* Warm-Up */}
             <h4>Warm-Up</h4>
             <ul>
-              <li>5 Min @Very Easy to Moderate Pace (Aumentar ritmo cada minuto // Slowly increase pace each minute)</li>
+              <li>2 Min @ Easy Pace</li>
+              <li>2 Min @ Moderate Pace</li>
+              <li>1 Min @ Hard Pace</li>
             </ul>
 
-            {/* Workout */}
             <h4>Workout</h4>
             <ul>
-              <li>4 Rounds</li>
-              <li>8 Min @06:12/km</li>
-              <li>2 Min @Recovery Pace</li>
-              <li>6 Min @05:57/km</li>
-              <li>2 Min @Recovery Pace</li>
-              <li>8 Min @06:12/km</li>
+              <li>1000 m in 06:16</li>
+              <li>Rest 2 Min</li>
+              <li>800 m in 04:30</li>
+              <li>Rest 2 Min</li>
+              <li>400 m in 01:48</li>
+              <li>Rest 2 Min</li>
+              <li>200 m in 00:48</li>
+              <li>Rest 2 Min</li>
+              <li>400 m in 01:48</li>
+              <li>Rest 2 Min</li>
+              <li>800 m in 04:30</li>
+              <li>Rest 2 Min</li>
+              <li>1000 m in 06:16</li>
             </ul>
 
-            {/* Cool-Down */}
             <h4>Cool-Down</h4>
-            <ul>
-              <li>5 Min @Recovery Pace</li>
-            </ul>
+            <p>5 Min @ Recovery Pace</p>
           </div>
         )}
       </div>

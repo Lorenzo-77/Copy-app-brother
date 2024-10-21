@@ -6,60 +6,53 @@ function Lunes() {
   const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
   const [isSnatchOpen, setIsSnatchOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isRowConditioningOpen, setIsRowConditioningOpen] = useState(false);
+  const [isHandstandWalkConditioningOpen, setIsHandstandWalkConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isMidlineOpen, setIsMidlineOpen] = useState(false);
 
   const [oneRM, setOneRM] = useState('');
-  const [calculatedWeightsSnatchTechnique, setCalculatedWeightsSnatchTechnique] = useState({
-    set56: '',
+  const [calculatedWeightsSnatch, setCalculatedWeightsSnatch] = useState({
     set60: '',
     set64: '',
     set68: '',
-  });
-  const [calculatedWeightsSnatch, setCalculatedWeightsSnatch] = useState({
-    set70: '',
+    set72: '',
     set74: '',
     set78: '',
     set82: '',
     set86: '',
+    set90: '',
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
-  // Función para manejar el cambio de 1RM
   const handle1RMChange = (e) => {
     const value = e.target.value;
     setOneRM(value);
 
     if (value) {
       const rm = parseFloat(value);
-      setCalculatedWeightsSnatchTechnique({
-        set56: (rm * 0.56).toFixed(2),
+      setCalculatedWeightsSnatch({
         set60: (rm * 0.60).toFixed(2),
         set64: (rm * 0.64).toFixed(2),
         set68: (rm * 0.68).toFixed(2),
-      });
-      setCalculatedWeightsSnatch({
-        set70: (rm * 0.70).toFixed(2),
+        set72: (rm * 0.72).toFixed(2),
         set74: (rm * 0.74).toFixed(2),
         set78: (rm * 0.78).toFixed(2),
         set82: (rm * 0.82).toFixed(2),
         set86: (rm * 0.86).toFixed(2),
+        set90: (rm * 0.90).toFixed(2),
       });
     } else {
-      setCalculatedWeightsSnatchTechnique({
-        set56: '',
+      setCalculatedWeightsSnatch({
         set60: '',
         set64: '',
         set68: '',
-      });
-      setCalculatedWeightsSnatch({
-        set70: '',
+        set72: '',
         set74: '',
         set78: '',
         set82: '',
         set86: '',
+        set90: '',
       });
     }
   };
@@ -85,9 +78,9 @@ function Lunes() {
             <ul>
               <li>10/10 Regressed Copenhagen Raise</li>
               <li>8/8 Kettlebell Single Leg Hip Thrust</li>
-              <li>6/6 One Arm Muscle Snatches</li>
-              <li>6/6 One Arm Rack Squats</li>
-              <li>6/6 One Arm Shoulder Press</li>
+              <li>6/6 Lateral Box Step Ups</li>
+              <li>10 Russian KB Swings</li>
+              <li>10 Yoga Push Ups</li>
               <li>5 Cuban Press Complex (w/Empty Barbell)</li>
             </ul>
           </div>
@@ -114,9 +107,9 @@ function Lunes() {
               <li>1 High Hang Squat Snatch (Drop & Reset)</li>
               <li>1 Squat Snatch</li>
             </ul>
-            <p>Sets: {calculatedWeightsSnatchTechnique.set56 ? `${calculatedWeightsSnatchTechnique.set56}kg (56%)` : '56%'} - {calculatedWeightsSnatchTechnique.set60 ? `${calculatedWeightsSnatchTechnique.set60}kg (60%)` : '60%'} - {calculatedWeightsSnatchTechnique.set64 ? `${calculatedWeightsSnatchTechnique.set64}kg (64%)` : '64%'} - {calculatedWeightsSnatchTechnique.set68 ? `${calculatedWeightsSnatchTechnique.set68}kg (68%)` : '68%'}</p>
-            
-            {/* Input para 1RM dentro de SNATCH TECHNIQUE */}
+            <p>
+              Sets: {calculatedWeightsSnatch.set60}kg - {calculatedWeightsSnatch.set64}kg - {calculatedWeightsSnatch.set68}kg - {calculatedWeightsSnatch.set72}kg
+            </p>
             <div className="input-block">
               <label htmlFor="oneRM">Ingrese su 1RM (kg):</label>
               <input
@@ -147,18 +140,18 @@ function Lunes() {
           <div className="section-content" id="snatch-content">
             <p>OTM 12 Min</p>
             <ul>
-              <li>Min 1: 1 Squat Snatch @ {calculatedWeightsSnatch.set70}kg (70%)</li>
-              <li>Min 2: 1 Squat Snatch @ {calculatedWeightsSnatch.set74}kg (74%)</li>
-              <li>Min 3: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg (78%)</li>
-              <li>Min 4: 1 Squat Snatch @ {calculatedWeightsSnatch.set74}kg (74%)</li>
-              <li>Min 5: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg (78%)</li>
-              <li>Min 6: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg (82%)</li>
-              <li>Min 7: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg (78%)</li>
-              <li>Min 8: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg (82%)</li>
-              <li>Min 9: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg (86%)</li>
-              <li>Min 10: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg (78%)</li>
-              <li>Min 11: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg (82%)</li>
-              <li>Min 12: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg (86%)</li>
+              <li>Min 1: 1 Squat Snatch @ {calculatedWeightsSnatch.set74}kg</li>
+              <li>Min 2: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg</li>
+              <li>Min 3: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
+              <li>Min 4: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg</li>
+              <li>Min 5: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
+              <li>Min 6: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg</li>
+              <li>Min 7: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
+              <li>Min 8: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg</li>
+              <li>Min 9: 1 Squat Snatch @ {calculatedWeightsSnatch.set90}kg</li>
+              <li>Min 10: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
+              <li>Min 11: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg</li>
+              <li>Min 12: 1 Squat Snatch @ {calculatedWeightsSnatch.set90}kg</li>
             </ul>
           </div>
         )}
@@ -177,45 +170,53 @@ function Lunes() {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>4 Rounds For Time</p>
+            <p>Min 00:00 - 04:00: 2 Rounds For Time</p>
             <ul>
-              <li>400 m Run</li>
-              <li>15 Overhead Squats</li>
-              <li>15 Bar Facing Burpees</li>
+              <li>8 Power Snatches</li>
+              <li>8 Lateral Burpees Over the Bar</li>
+            </ul>
+            <p>Min 04:00 - 08:00: For Time</p>
+            <ul>
+              <li>35/27 Cal Assault Bike</li>
+            </ul>
+            <p>Min 08:00 - 16:00: 4 Rounds For Time</p>
+            <ul>
+              <li>8 Overhead Squats</li>
+              <li>12 Chest to Bar Pull Ups</li>
+            </ul>
+            <p>Min 16:00 - 20:00: For Time</p>
+            <ul>
+              <li>35/27 Cal Assault Bike</li>
+            </ul>
+            <p>Min 20:00 - 24:00: 2 Rounds For Time</p>
+            <ul>
+              <li>8 Lateral Burpees Over the Bar</li>
+              <li>8 Power Snatches</li>
             </ul>
             <p>Barbell - 60/42.5 kg</p>
-            <h4>NOTAS</h4>
-            <p><strong>SCORE OBJETIVO</strong>: 18-24 Min</p>
           </div>
         )}
       </div>
 
-      {/* Sección ROW CONDITIONING (OPCIONAL) */}
+      {/* Sección HANDSTAND WALK CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsRowConditioningOpen)}
-          aria-expanded={isRowConditioningOpen}
-          aria-controls="row-conditioning-content"
+          onClick={() => toggleSection(setIsHandstandWalkConditioningOpen)}
+          aria-expanded={isHandstandWalkConditioningOpen}
+          aria-controls="handstand-walk-conditioning-content"
         >
-          <h3>ROW CONDITIONING (OPCIONAL)</h3>
-          <span>{isRowConditioningOpen ? '▲' : '▼'}</span>
+          <h3>HANDSTAND WALK CONDITIONING</h3>
+          <span>{isHandstandWalkConditioningOpen ? '▲' : '▼'}</span>
         </div>
-        {isRowConditioningOpen && (
-          <div className="section-content" id="row-conditioning-content">
-            <p>4 Rounds</p>
+        {isHandstandWalkConditioningOpen && (
+          <div className="section-content" id="handstand-walk-conditioning-content">
+            <p>AMRAP 10 Min</p>
             <ul>
-              <li>250 m Row @02:28/500 m</li>
-              <li>250 m @Recovery Pace</li>
-              <li>No Additional Rest b/t Rounds</li>
+              <li>15/12 Cal Row</li>
+              <li>2 Pirouettes</li>
             </ul>
-            <p>Rest 5 Min</p>
-            <p>4 Rounds</p>
-            <ul>
-              <li>250 m Row @02:28/500 m</li>
-              <li>250 m @Recovery Pace</li>
-              <li>No Additional Rest b/t Rounds</li>
-            </ul>
+            <p>Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m Total)</p>
           </div>
         )}
       </div>
@@ -233,22 +234,19 @@ function Lunes() {
         </div>
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
-            {/* Primera Parte de ACCESSORY */}
             <p>3 Rounds</p>
             <ul>
-              <li>10 Front Squats</li>
+              <li>12 Front Squats</li>
               <li>8 Sumo Stance Good Mornings</li>
               <li>Rest 1 Min b/t Rounds</li>
             </ul>
-
-            {/* Segunda Parte de ACCESSORY */}
             <p>Then</p>
             <p>3 Rounds</p>
             <ul>
-              <li>6/6 Back Rack Reverse Lunges</li>
+              <li>8/8 Back Rack Reverse Lunges</li>
               <li>10-12 Banded GHR</li>
+              <li>Rest 1 Min b/t Sets</li>
             </ul>
-            <p>Rest 1 Min b/t Sets</p>
             <p>All Sets @Moderate Weight</p>
           </div>
         )}
@@ -267,12 +265,15 @@ function Lunes() {
         </div>
         {isMidlineOpen && (
           <div className="section-content" id="midline-content">
-            <p>10 Min For Quality</p>
+            <p>3 Sets For Quality</p>
             <ul>
-              <li>15" Hollow Body Flutter Kicks</li>
-              <li>15" Side Star Plank (Each Side)</li>
-              <li>15" Sorenson Hold</li>
+              <li>30" Handstand Floaters</li>
+              <li>3 x 20" Tuck Hold On Parallel Bars</li>
+              <li>12/12 Side Plank Raise (1-2" Hold Each Rep)</li>
+              <li>Rest 45-60" b/t Sets</li>
             </ul>
+            <p>Then</p>
+            <p>4 x 20 Plate Turkish Sit Ups (Rest 30" b/t)</p>
           </div>
         )}
       </div>
