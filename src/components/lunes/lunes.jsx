@@ -6,21 +6,21 @@ function Lunes() {
   const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
   const [isSnatchOpen, setIsSnatchOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isHandstandWalkConditioningOpen, setIsHandstandWalkConditioningOpen] = useState(false);
+  const [isHandstandWalkOpen, setIsHandstandWalkOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
   const [isMidlineOpen, setIsMidlineOpen] = useState(false);
 
   const [oneRM, setOneRM] = useState('');
-  const [calculatedWeightsSnatch, setCalculatedWeightsSnatch] = useState({
+  const [calculatedWeights, setCalculatedWeights] = useState({
     set60: '',
-    set64: '',
-    set68: '',
-    set72: '',
-    set74: '',
+    set67: '',
+    set71: '',
+    set75: '',
     set78: '',
     set82: '',
     set86: '',
     set90: '',
+    set94: '',
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -31,28 +31,28 @@ function Lunes() {
 
     if (value) {
       const rm = parseFloat(value);
-      setCalculatedWeightsSnatch({
+      setCalculatedWeights({
         set60: (rm * 0.60).toFixed(2),
-        set64: (rm * 0.64).toFixed(2),
-        set68: (rm * 0.68).toFixed(2),
-        set72: (rm * 0.72).toFixed(2),
-        set74: (rm * 0.74).toFixed(2),
+        set67: (rm * 0.67).toFixed(2),
+        set71: (rm * 0.71).toFixed(2),
+        set75: (rm * 0.75).toFixed(2),
         set78: (rm * 0.78).toFixed(2),
         set82: (rm * 0.82).toFixed(2),
         set86: (rm * 0.86).toFixed(2),
         set90: (rm * 0.90).toFixed(2),
+        set94: (rm * 0.94).toFixed(2),
       });
     } else {
-      setCalculatedWeightsSnatch({
+      setCalculatedWeights({
         set60: '',
-        set64: '',
-        set68: '',
-        set72: '',
-        set74: '',
+        set67: '',
+        set71: '',
+        set75: '',
         set78: '',
         set82: '',
         set86: '',
         set90: '',
+        set94: '',
       });
     }
   };
@@ -79,7 +79,7 @@ function Lunes() {
               <li>10/10 Regressed Copenhagen Raise</li>
               <li>8/8 Kettlebell Single Leg Hip Thrust</li>
               <li>6/6 Lateral Box Step Ups</li>
-              <li>10 Russian KB Swings</li>
+              <li>10 Banded External Rotation Face Pulls</li>
               <li>10 Yoga Push Ups</li>
               <li>5 Cuban Press Complex (w/Empty Barbell)</li>
             </ul>
@@ -104,11 +104,11 @@ function Lunes() {
             <ul>
               <li>1 Snatch Lift Off</li>
               <li>1 Pausing Squat Snatch (2" Pause At Knee Level)</li>
-              <li>1 High Hang Squat Snatch (Drop & Reset)</li>
+              <li>1 Hang Squat Snatch (Drop & Reset)</li>
               <li>1 Squat Snatch</li>
             </ul>
             <p>
-              Sets: {calculatedWeightsSnatch.set60}kg - {calculatedWeightsSnatch.set64}kg - {calculatedWeightsSnatch.set68}kg - {calculatedWeightsSnatch.set72}kg
+              Sets: {calculatedWeights.set60}kg - {calculatedWeights.set67}kg - {calculatedWeights.set71}kg - {calculatedWeights.set75}kg
             </p>
             <div className="input-block">
               <label htmlFor="oneRM">Ingrese su 1RM (kg):</label>
@@ -138,21 +138,20 @@ function Lunes() {
         </div>
         {isSnatchOpen && (
           <div className="section-content" id="snatch-content">
-            <p>OTM 12 Min</p>
+            <p>OTM 9 Min</p>
             <ul>
-              <li>Min 1: 1 Squat Snatch @ {calculatedWeightsSnatch.set74}kg</li>
-              <li>Min 2: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg</li>
-              <li>Min 3: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
-              <li>Min 4: 1 Squat Snatch @ {calculatedWeightsSnatch.set78}kg</li>
-              <li>Min 5: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
-              <li>Min 6: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg</li>
-              <li>Min 7: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
-              <li>Min 8: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg</li>
-              <li>Min 9: 1 Squat Snatch @ {calculatedWeightsSnatch.set90}kg</li>
-              <li>Min 10: 1 Squat Snatch @ {calculatedWeightsSnatch.set82}kg</li>
-              <li>Min 11: 1 Squat Snatch @ {calculatedWeightsSnatch.set86}kg</li>
-              <li>Min 12: 1 Squat Snatch @ {calculatedWeightsSnatch.set90}kg</li>
+              <li>Min 1: 1 Squat Snatch @ {calculatedWeights.set78}kg</li>
+              <li>Min 2: 1 Squat Snatch @ {calculatedWeights.set82}kg</li>
+              <li>Min 3: 1 Squat Snatch @ {calculatedWeights.set86}kg</li>
+              <li>Min 4: 1 Squat Snatch @ {calculatedWeights.set82}kg</li>
+              <li>Min 5: 1 Squat Snatch @ {calculatedWeights.set86}kg</li>
+              <li>Min 6: 1 Squat Snatch @ {calculatedWeights.set90}kg</li>
+              <li>Min 7: 1 Squat Snatch @ {calculatedWeights.set86}kg</li>
+              <li>Min 8: 1 Squat Snatch @ {calculatedWeights.set90}kg</li>
+              <li>Min 9: 1 Squat Snatch @ {calculatedWeights.set94}kg</li>
             </ul>
+            <p>Then</p>
+            <p>3 x 1 Heavy Squat Snatch Singles</p>
           </div>
         )}
       </div>
@@ -170,53 +169,38 @@ function Lunes() {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>Min 00:00 - 04:00: 2 Rounds For Time</p>
+            <p>4 Rounds For Time</p>
             <ul>
-              <li>8 Power Snatches</li>
-              <li>8 Lateral Burpees Over the Bar</li>
+              <li>7 Power Snatch</li>
+              <li>11 Thrusters</li>
+              <li>500/400 m Row</li>
             </ul>
-            <p>Min 04:00 - 08:00: For Time</p>
+            <p>Barbell - 50/35 kg</p>
+            <p>NOTAS</p>
+            <p>SCORE OBJETIVO</p>
             <ul>
-              <li>35/27 Cal Assault Bike</li>
+              <li>15-20 Min</li>
+              <li>No Row: 400 m Run</li>
             </ul>
-            <p>Min 08:00 - 16:00: 4 Rounds For Time</p>
-            <ul>
-              <li>8 Overhead Squats</li>
-              <li>12 Chest to Bar Pull Ups</li>
-            </ul>
-            <p>Min 16:00 - 20:00: For Time</p>
-            <ul>
-              <li>35/27 Cal Assault Bike</li>
-            </ul>
-            <p>Min 20:00 - 24:00: 2 Rounds For Time</p>
-            <ul>
-              <li>8 Lateral Burpees Over the Bar</li>
-              <li>8 Power Snatches</li>
-            </ul>
-            <p>Barbell - 60/42.5 kg</p>
           </div>
         )}
       </div>
 
-      {/* Sección HANDSTAND WALK CONDITIONING */}
+      {/* Sección HANDSTAND WALK O-COURSE PRACTICE */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsHandstandWalkConditioningOpen)}
-          aria-expanded={isHandstandWalkConditioningOpen}
-          aria-controls="handstand-walk-conditioning-content"
+          onClick={() => toggleSection(setIsHandstandWalkOpen)}
+          aria-expanded={isHandstandWalkOpen}
+          aria-controls="handstand-walk-content"
         >
-          <h3>HANDSTAND WALK CONDITIONING</h3>
-          <span>{isHandstandWalkConditioningOpen ? '▲' : '▼'}</span>
+          <h3>HANDSTAND WALK O-COURSE PRACTICE</h3>
+          <span>{isHandstandWalkOpen ? '▲' : '▼'}</span>
         </div>
-        {isHandstandWalkConditioningOpen && (
-          <div className="section-content" id="handstand-walk-conditioning-content">
-            <p>AMRAP 10 Min</p>
-            <ul>
-              <li>15/12 Cal Row</li>
-              <li>2 Pirouettes</li>
-            </ul>
-            <p>Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m Total)</p>
+        {isHandstandWalkOpen && (
+          <div className="section-content" id="handstand-walk-content">
+            <p>For Quality</p>
+            <p>10 Min Handstand Walk Obstacle Course Practice</p>
           </div>
         )}
       </div>
@@ -236,18 +220,10 @@ function Lunes() {
           <div className="section-content" id="accessory-content">
             <p>3 Rounds</p>
             <ul>
-              <li>12 Front Squats</li>
+              <li>15 Front Squats</li>
               <li>8 Sumo Stance Good Mornings</li>
               <li>Rest 1 Min b/t Rounds</li>
             </ul>
-            <p>Then</p>
-            <p>3 Rounds</p>
-            <ul>
-              <li>8/8 Back Rack Reverse Lunges</li>
-              <li>10-12 Banded GHR</li>
-              <li>Rest 1 Min b/t Sets</li>
-            </ul>
-            <p>All Sets @Moderate Weight</p>
           </div>
         )}
       </div>
@@ -265,15 +241,10 @@ function Lunes() {
         </div>
         {isMidlineOpen && (
           <div className="section-content" id="midline-content">
-            <p>3 Sets For Quality</p>
+            <p>5 Sets</p>
             <ul>
-              <li>30" Handstand Floaters</li>
-              <li>3 x 20" Tuck Hold On Parallel Bars</li>
-              <li>12/12 Side Plank Raise (1-2" Hold Each Rep)</li>
-              <li>Rest 45-60" b/t Sets</li>
+              <li>Pechito</li>
             </ul>
-            <p>Then</p>
-            <p>4 x 20 Plate Turkish Sit Ups (Rest 30" b/t)</p>
           </div>
         )}
       </div>

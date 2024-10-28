@@ -33,7 +33,7 @@ function Home() {
         return   <div className="text-container">
 
     <p>
-      «Dos ratoncitos cayeron en un cubo de nata; el primer ratón enseguida se rindió y se ahogó, el segundo ratón decidió pelear, y se esforzó tanto que finalmente transformó la nata en mantequilla y consiguió escapar. Caballeros, desde este momento yo soy ese segundo ratón»
+      «Keila Portate Bien»
     </p>
   </div>
     }

@@ -11,7 +11,7 @@ function Miercoles() {
 
   const [oneRepMaxCleanAndJerk, setOneRepMaxCleanAndJerk] = useState('');
   const [calculatedWeightsCleanAndJerk, setCalculatedWeightsCleanAndJerk] = useState({
-    set72: '',
+    set75: '',
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -23,12 +23,12 @@ function Miercoles() {
     if (value) {
       const rm = parseFloat(value);
       const calculatedWeights = {
-        set72: (rm * 0.72).toFixed(2),
+        set75: (rm * 0.75).toFixed(2),
       };
       setCalculatedWeightsCleanAndJerk(calculatedWeights);
     } else {
       setCalculatedWeightsCleanAndJerk({
-        set72: '',
+        set75: '',
       });
     }
   };
@@ -52,12 +52,12 @@ function Miercoles() {
           <div className="section-content" id="warm-up-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Regressed Copenhagen Raise</li>
-              <li>10/10 Single Leg Good Morning</li>
-              <li>6/6 One Arm Muscle Snatch</li>
-              <li>6/6 One Arm Thrusters</li>
-              <li>6/6 One Arm Overhead Squats</li>
-              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
+              <li>Sumo Inchworm + Push Ups</li>
+              <li>10 Alternating Kossacks</li>
+              <li>10/10 Spiderman + Reach</li>
+              <li>5/5 One Arm Muscle Snatch</li>
+              <li>5/5 One Arm Shoulder Press</li>
+              <li>10/10 Squat + Thoracic Extension Rotation</li>
             </ul>
           </div>
         )}
@@ -83,7 +83,7 @@ function Miercoles() {
               <li>1 Power Clean & Push Jerk</li>
             </ul>
             <p>*All Repetitions Are Singles</p>
-            <p>All Sets @72%: {calculatedWeightsCleanAndJerk.set72 ? `${calculatedWeightsCleanAndJerk.set72} kg` : '72%'}</p>
+            <p>All Sets @75%: {calculatedWeightsCleanAndJerk.set75 ? `${calculatedWeightsCleanAndJerk.set75} kg` : '75%'}</p>
             <p>Introduce tu 1RM para Clean & Jerk:</p>
             <input 
               type="number" 
@@ -110,20 +110,22 @@ function Miercoles() {
           <div className="section-content" id="conditioning-content">
             <p>For Time</p>
             <ul>
-              <li>32/27 Cal Ski Erg</li>
-              <li>8 Ring Muscle Ups</li>
-              <li>16 Alternating Dumbbell Snatches</li>
-              <li>8 Ring Muscle Ups</li>
-              <li>16 Alternating Dumbbell Snatches</li>
-              <li>8 Ring Muscle Ups</li>
-              <li>16 Alternating Dumbbell Snatches</li>
-              <li>32/27 Cal Ski Erg</li>
+              <li>40 Toes to Bar</li>
+              <li>20 Sandbag to Shoulder</li>
             </ul>
-            <p>Dumbbell - 32/22,5 kg</p>
+            <p>REST 5 Min</p>
+            <p>For Time</p>
+            <ul>
+              <li>20 Double Kettlebell Hang Clean & Jerks</li>
+              <li>40 Burpee Box Jump Overs</li>
+            </ul>
+            <p>Sandbag - 70/45 kg</p>
+            <p>Kettlebells - 2 x 32/24 kg</p>
+            <p>Box - 60/50 cm</p>
             <h4>NOTAS</h4>
-            <p><strong>SCORE OBJETIVO</strong>: 6-10 Min</p>
-            <p>No Ski Erg: 27 Burpee to Target</p>
-            <p>No 32,5/22,5 kg Dumbbell: 24 Dumbbell Snatch c/22,5/15 kg</p>
+            <p><strong>SCORE OBJETIVO</strong>: 4-8 Min (Cada parte)</p>
+            <p>No Sandbag: 20 Devil Press (2 x 22,5/15 kg)</p>
+            <p>No 32/24 kg Kettlebells: 25 Reps w/24/16 kg</p>
           </div>
         )}
       </div>
@@ -141,11 +143,23 @@ function Miercoles() {
         </div>
         {isRowConditioningOpen && (
           <div className="section-content" id="row-conditioning-content">
-            <p>8 Rounds</p>
-            <ul>
-              <li>500 m @02:30/500 m</li>
-            </ul>
-            <p>Rest 1:30 Min b/t Rounds</p>
+            <p>600 m @02:30/500 m</p>
+            <p>Rest 30"</p>
+            <p>250 m @02:26/500 m</p>
+            <p>Rest 30"</p>
+            <p>200 m @02:22/500 m</p>
+            <p>Rest 2 Min</p>
+            <p>500 m @02:30/500 m</p>
+            <p>Rest 30"</p>
+            <p>200 m @02:26/500 m</p>
+            <p>Rest 30"</p>
+            <p>150 m @02:22/500 m</p>
+            <p>Rest 2 Min</p>
+            <p>400 m @02:30/500 m</p>
+            <p>Rest 30"</p>
+            <p>150 m @02:26/500 m</p>
+            <p>Rest 30"</p>
+            <p>100 m @02:22/500 m</p>
           </div>
         )}
       </div>
@@ -165,15 +179,15 @@ function Miercoles() {
           <div className="section-content" id="accessory-content">
             <p>3 Rounds</p>
             <ul>
-              <li>12 Strict Parallel Dips</li>
-              <li>30 Banded Triceps Extensions</li>
+              <li>12 Decline Dumbbell Bench Press</li>
+              <li>12 Dumbbell Overhead Triceps Extensions</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
             <p>Then</p>
             <p>3 Rounds</p>
             <ul>
-              <li>10 Pronated Grip Strict Pull Ups</li>
-              <li>12 Dumbbell Hammer Curls</li>
+              <li>10 Wide Grip Pronated Grip Strict Pull Ups</li>
+              <li>12 Barbell Preacher Curls</li>
             </ul>
             <p>Rest 1 Min b/t Rounds</p>
             <p>All Sets @Moderate Weight</p>
@@ -194,12 +208,13 @@ function Miercoles() {
         </div>
         {isMidlineOpen && (
           <div className="section-content" id="midline-content">
-            <p>3 Rounds For Quality</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>15 Seated Single Leg Pike Ups (Each Leg)</li>
-              <li>15 Seated Single Leg Straddle Ups (Each Leg)</li>
-              <li>15" Bridge Hold</li>
+              <li>30 Ab Mat Sit Ups</li>
+              <li>30 Plank Shoulder Taps</li>
+              <li>30 Russian Twists</li>
             </ul>
+            <p>Rest 1 Min b/t Rounds</p>
           </div>
         )}
       </div>
