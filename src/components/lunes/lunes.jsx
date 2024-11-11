@@ -4,7 +4,7 @@ import '../../styles.css';
 function Lunes() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
   const [isSnatchTechniqueOpen, setIsSnatchTechniqueOpen] = useState(false);
-  const [isSnatchOpen, setIsSnatchOpen] = useState(false);
+  const [isSnatchComplexOpen, setIsSnatchComplexOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isHandstandWalkOpen, setIsHandstandWalkOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
@@ -12,15 +12,14 @@ function Lunes() {
 
   const [oneRM, setOneRM] = useState('');
   const [calculatedWeights, setCalculatedWeights] = useState({
+    set49: '',
+    set53: '',
+    set57: '',
     set60: '',
-    set67: '',
-    set71: '',
-    set75: '',
-    set78: '',
-    set82: '',
-    set86: '',
-    set90: '',
-    set94: '',
+    set64: '',
+    set68: '',
+    set72: '',
+    set76: ''
   });
 
   const toggleSection = (setState) => setState(prevState => !prevState);
@@ -32,27 +31,25 @@ function Lunes() {
     if (value) {
       const rm = parseFloat(value);
       setCalculatedWeights({
+        set49: (rm * 0.49).toFixed(2),
+        set53: (rm * 0.53).toFixed(2),
+        set57: (rm * 0.57).toFixed(2),
         set60: (rm * 0.60).toFixed(2),
-        set67: (rm * 0.67).toFixed(2),
-        set71: (rm * 0.71).toFixed(2),
-        set75: (rm * 0.75).toFixed(2),
-        set78: (rm * 0.78).toFixed(2),
-        set82: (rm * 0.82).toFixed(2),
-        set86: (rm * 0.86).toFixed(2),
-        set90: (rm * 0.90).toFixed(2),
-        set94: (rm * 0.94).toFixed(2),
+        set64: (rm * 0.64).toFixed(2),
+        set68: (rm * 0.68).toFixed(2),
+        set72: (rm * 0.72).toFixed(2),
+        set76: (rm * 0.76).toFixed(2),
       });
     } else {
       setCalculatedWeights({
+        set49: '',
+        set53: '',
+        set57: '',
         set60: '',
-        set67: '',
-        set71: '',
-        set75: '',
-        set78: '',
-        set82: '',
-        set86: '',
-        set90: '',
-        set94: '',
+        set64: '',
+        set68: '',
+        set72: '',
+        set76: ''
       });
     }
   };
@@ -61,25 +58,24 @@ function Lunes() {
     <div className="container">
       <h1>Lunes</h1>
 
-      {/* Sección WARM UP */}
+      {/* WARM UP */}
       <div className="section-block">
         <div
           className="section-header"
           onClick={() => toggleSection(setIsWarmUpOpen)}
           aria-expanded={isWarmUpOpen}
-          aria-controls="warm-up-content"
         >
           <h3>WARM UP</h3>
           <span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
-          <div className="section-content" id="warm-up-content">
+          <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
               <li>10/10 Regressed Copenhagen Raise</li>
               <li>8/8 Kettlebell Single Leg Hip Thrust</li>
               <li>6/6 Lateral Box Step Ups</li>
-              <li>10 Banded External Rotation Face Pulls</li>
+              <li>20 Banded Pull Aparts</li>
               <li>10 Yoga Push Ups</li>
               <li>5 Cuban Press Complex (w/Empty Barbell)</li>
             </ul>
@@ -87,167 +83,160 @@ function Lunes() {
         )}
       </div>
 
-      {/* Sección SNATCH TECHNIQUE */}
+      {/* SNATCH TECHNIQUE */}
       <div className="section-block">
         <div
           className="section-header"
           onClick={() => toggleSection(setIsSnatchTechniqueOpen)}
           aria-expanded={isSnatchTechniqueOpen}
-          aria-controls="snatch-technique-content"
         >
           <h3>SNATCH TECHNIQUE</h3>
           <span>{isSnatchTechniqueOpen ? '▲' : '▼'}</span>
         </div>
         {isSnatchTechniqueOpen && (
-          <div className="section-content" id="snatch-technique-content">
-            <p>4 Sets</p>
+          <div className="section-content">
+            <p>3 Sets</p>
             <ul>
               <li>1 Snatch Lift Off</li>
-              <li>1 Pausing Squat Snatch (2" Pause At Knee Level)</li>
+              <li>1 Pausing Power Snatch (2" Pause At Knee Level)</li>
               <li>1 Hang Squat Snatch (Drop & Reset)</li>
-              <li>1 Squat Snatch</li>
+              <li>1 Pausing Squat Snatch (2" Pause At Knee Level)</li>
+              <li>1 Low Hang Squat Snatch</li>
             </ul>
-            <p>
-              Sets: {calculatedWeights.set60}kg - {calculatedWeights.set67}kg - {calculatedWeights.set71}kg - {calculatedWeights.set75}kg
-            </p>
+            <p>Sets: {calculatedWeights.set49}kg - {calculatedWeights.set53}kg - {calculatedWeights.set57}kg</p>
             <div className="input-block">
-              <label htmlFor="oneRM">Ingrese su 1RM (kg):</label>
-              <input
-                type="number"
-                id="oneRM"
-                value={oneRM}
-                onChange={handle1RMChange}
-                placeholder="Ingresa tu 1RM en kg"
-                min="0"
-              />
-            </div>
+        <label>Ingrese su 1RM en kg:</label>
+        <input
+          type="number"
+          value={oneRM}
+          onChange={handle1RMChange}
+          placeholder="Ej: 100"
+        />
+      </div>
           </div>
         )}
       </div>
 
-      {/* Sección SNATCH */}
+      {/* SNATCH COMPLEX */}
       <div className="section-block">
         <div
           className="section-header"
-          onClick={() => toggleSection(setIsSnatchOpen)}
-          aria-expanded={isSnatchOpen}
-          aria-controls="snatch-content"
+          onClick={() => toggleSection(setIsSnatchComplexOpen)}
+          aria-expanded={isSnatchComplexOpen}
         >
-          <h3>SNATCH</h3>
-          <span>{isSnatchOpen ? '▲' : '▼'}</span>
+          <h3>SNATCH COMPLEX</h3>
+          <span>{isSnatchComplexOpen ? '▲' : '▼'}</span>
         </div>
-        {isSnatchOpen && (
-          <div className="section-content" id="snatch-content">
-            <p>OTM 9 Min</p>
+        {isSnatchComplexOpen && (
+          <div className="section-content">
+            <p>5 Sets</p>
             <ul>
-              <li>Min 1: 1 Squat Snatch @ {calculatedWeights.set78}kg</li>
-              <li>Min 2: 1 Squat Snatch @ {calculatedWeights.set82}kg</li>
-              <li>Min 3: 1 Squat Snatch @ {calculatedWeights.set86}kg</li>
-              <li>Min 4: 1 Squat Snatch @ {calculatedWeights.set82}kg</li>
-              <li>Min 5: 1 Squat Snatch @ {calculatedWeights.set86}kg</li>
-              <li>Min 6: 1 Squat Snatch @ {calculatedWeights.set90}kg</li>
-              <li>Min 7: 1 Squat Snatch @ {calculatedWeights.set86}kg</li>
-              <li>Min 8: 1 Squat Snatch @ {calculatedWeights.set90}kg</li>
-              <li>Min 9: 1 Squat Snatch @ {calculatedWeights.set94}kg</li>
+              <li>1 Snatch Segmented Deadlift</li>
+              <li>1 Hang Squat Snatch</li>
+              <li>1 High Hang Squat Snatch</li>
             </ul>
-            <p>Then</p>
-            <p>3 x 1 Heavy Squat Snatch Singles</p>
+            <p>Sets: {calculatedWeights.set60}kg - {calculatedWeights.set64}kg - {calculatedWeights.set68}kg - {calculatedWeights.set72}kg - {calculatedWeights.set76}kg</p>
           </div>
         )}
       </div>
 
-      {/* Sección CONDITIONING */}
+      {/* CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
           onClick={() => toggleSection(setIsConditioningOpen)}
           aria-expanded={isConditioningOpen}
-          aria-controls="conditioning-content"
         >
           <h3>CONDITIONING</h3>
           <span>{isConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isConditioningOpen && (
-          <div className="section-content" id="conditioning-content">
-            <p>4 Rounds For Time</p>
+          <div className="section-content">
+            <p>3 Sets</p>
+            <p>AMRAP 4 Min</p>
             <ul>
-              <li>7 Power Snatch</li>
-              <li>11 Thrusters</li>
-              <li>500/400 m Row</li>
+              <li>250/200 m Ski Erg</li>
+              <li>8 Right Arm Dumbbell Snatches</li>
+              <li>8 Right Arm Dumbbell Overhead Walking Lunge Steps</li>
+              <li>8 Left Arm Dumbbell Snatches</li>
+              <li>8 Left Arm Dumbbell Overhead Walking Lunge Steps</li>
+              <li>Max Burpee Box Jump Overs</li>
             </ul>
-            <p>Barbell - 50/35 kg</p>
-            <p>NOTAS</p>
-            <p>SCORE OBJETIVO</p>
-            <ul>
-              <li>15-20 Min</li>
-              <li>No Row: 400 m Run</li>
-            </ul>
+            <p>REST 4 Min b/t Sets</p>
+            <p>Dumbbell - 32.5/22.5 kg</p>
+            <p>Box - 60/50 cm</p>
           </div>
         )}
       </div>
 
-      {/* Sección HANDSTAND WALK O-COURSE PRACTICE */}
+      {/* HANDSTAND WALK CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
           onClick={() => toggleSection(setIsHandstandWalkOpen)}
           aria-expanded={isHandstandWalkOpen}
-          aria-controls="handstand-walk-content"
         >
-          <h3>HANDSTAND WALK O-COURSE PRACTICE</h3>
+          <h3>HANDSTAND WALK CONDITIONING</h3>
           <span>{isHandstandWalkOpen ? '▲' : '▼'}</span>
         </div>
         {isHandstandWalkOpen && (
-          <div className="section-content" id="handstand-walk-content">
-            <p>For Quality</p>
-            <p>10 Min Handstand Walk Obstacle Course Practice</p>
+          <div className="section-content">
+            <p>AMRAP 8 Min</p>
+            <ul>
+              <li>5 Sandbag to Shoulder</li>
+              <li>7.5 m Sandbag Carry</li>
+              <li>15 m Handstand Walk</li>
+              <li>7.5 m Sandbag Carry</li>
+            </ul>
+            <p>Sandbag - 70/45 kg</p>
           </div>
         )}
       </div>
 
-      {/* Sección ACCESSORY */}
+      {/* ACCESSORY */}
       <div className="section-block">
         <div
           className="section-header"
           onClick={() => toggleSection(setIsAccessoryOpen)}
           aria-expanded={isAccessoryOpen}
-          aria-controls="accessory-content"
         >
           <h3>ACCESSORY</h3>
           <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
-          <div className="section-content" id="accessory-content">
-            <p>3 Rounds</p>
+          <div className="section-content">
             <ul>
-              <li>15 Front Squats</li>
-              <li>8 Sumo Stance Good Mornings</li>
-              <li>Rest 1 Min b/t Rounds</li>
+              <li>3 x 12 Goblet Squats</li>
+              <li>4 x 6 Good Mornings (Moderate Weight)</li>
+              <li>3 x 8/8 Goblet Box Step Ups</li>
+              <li>3 x 8-10 Banded GHR</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección MIDLINE */}
+      {/* MIDLINE */}
       <div className="section-block">
         <div
           className="section-header"
           onClick={() => toggleSection(setIsMidlineOpen)}
           aria-expanded={isMidlineOpen}
-          aria-controls="midline-content"
         >
           <h3>MIDLINE</h3>
           <span>{isMidlineOpen ? '▲' : '▼'}</span>
         </div>
         {isMidlineOpen && (
-          <div className="section-content" id="midline-content">
-            <p>5 Sets</p>
+          <div className="section-content">
+            <p>2 Sets:</p>
             <ul>
-              <li>Pechito</li>
+              <li>15 Back Extensions (Weighted)</li>
+              <li>15 Sit-Ups with Twist</li>
             </ul>
           </div>
         )}
       </div>
+
+     
     </div>
   );
 }

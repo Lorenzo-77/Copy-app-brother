@@ -11,7 +11,8 @@ const Sabado = () => {
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
 
   const [oneRmBenchPress, setOneRmBenchPress] = useState('');
-  const [oneRmDeadlift, setOneRmDeadlift] = useState('');
+  const [oneRmDeadlift, setOneRmDeadlift] = useState('');  // Estado para 1RM de Deadlift
+  const [oneRmCloseGripBenchPress, setOneRmCloseGripBenchPress] = useState('');
 
   const toggleSection = (setState) => setState(prevState => !prevState);
 
@@ -27,13 +28,26 @@ const Sabado = () => {
   const handle1RMDeadliftChange = (e) => {
     const value = e.target.value;
     if (value >= 0) {
-      setOneRmDeadlift(value);
+      setOneRmDeadlift(value);  // Guardamos el valor del 1RM de Deadlift
+    }
+  };
+
+  // Función para manejar el cambio de 1RM Close Grip Bench Press
+  const handle1RMCloseGripBenchPressChange = (e) => {
+    const value = e.target.value;
+    if (value >= 0) {
+      setOneRmCloseGripBenchPress(value);
     }
   };
 
   // Cálculo de pesos basados en porcentajes
   const calculateWeight = (percentage, oneRm) => {
     return oneRm ? Math.round((parseFloat(oneRm) * (percentage / 100))) : '-';
+  };
+
+  // Cálculo de Deadlift (añadido aquí)
+  const calculateDeadliftWeight = (percentage) => {
+    return calculateWeight(percentage, oneRmDeadlift);  // Calculamos con el 1RM de Deadlift
   };
 
   return (
@@ -58,9 +72,9 @@ const Sabado = () => {
               <li>8 Sumo Inchworm + Push Ups</li>
               <li>10 Alternating Kossacks</li>
               <li>10/10 Spiderman + Reach</li>
-              <li>5/5 One Arm Suitcase Deadlift</li>
               <li>5/5 One Arm RKB Swings</li>
               <li>5/5 One Arm Shoulder Press</li>
+              <li>10" Supinated Bar Hang</li>
             </ul>
           </div>
         )}
@@ -74,31 +88,26 @@ const Sabado = () => {
           aria-expanded={isPushingDevelopmentOpen}
           aria-controls="pushing-development-content"
         >
-          <h3>PUSHING DEVELOPMENT</h3>
+          <h3>PUSHING DEVELOPMENT 2</h3>
           <span>{isPushingDevelopmentOpen ? '▲' : '▼'}</span>
         </div>
         {isPushingDevelopmentOpen && (
           <div className="section-content" id="pushing-development-content">
-            <p>Find a Heavy 1 Bench Press</p>
-            <label htmlFor="oneRmBenchPress">
-              Ingresar 1RM Bench Press (kg):
+            <p>Find a Heavy 1 Close Grip Bench Press</p>
+            <label htmlFor="oneRmCloseGripBenchPress">
+              Ingresar 1RM Close Grip Bench Press (kg):
               <input
                 type="number"
-                id="oneRmBenchPress"
-                value={oneRmBenchPress}
-                onChange={handle1RMBenchPressChange}
+                id="oneRmCloseGripBenchPress"
+                value={oneRmCloseGripBenchPress}
+                onChange={handle1RMCloseGripBenchPressChange}
                 placeholder="Ingresa tu 1RM en kg"
               />
             </label>
             <p>Then</p>
             <p>3 Sets</p>
-            <p>5 Bench Press @ {calculateWeight(70, oneRmBenchPress)}kg of Heavy 1</p>
+            <p>5 Close Grip Bench Press @ {calculateWeight(70, oneRmCloseGripBenchPress)}kg of Heavy 1</p>
             <p>Rest 60-90" b/t Sets</p>
-            <p>Then</p>
-            <p>3 x 15 Incline Dumbbell Bench Press</p>
-            <p>Rest 30" b/t Sets</p>
-            <p><strong>Nota:</strong> En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</p>
-            <p>All sets @ Moderate Weight</p>
           </div>
         )}
       </div>
@@ -116,11 +125,7 @@ const Sabado = () => {
         </div>
         {isDeadliftOpen && (
           <div className="section-content" id="deadlift-content">
-            <p>Work Up To 83% @ {calculateWeight(83, oneRmDeadlift)}kg x 3 Reps</p>
-            <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado.</p>
-            <p><strong>Nota:</strong> Todas las repeticiones son Singles, No Touch And Go</p>
-            <p>Then</p>
-            <p>3 x 3 Deadlift @ {calculateWeight(70, oneRmDeadlift)}kg (1 Min Rest)</p>
+            {/* Campo de entrada para el 1RM de Deadlift */}
             <label htmlFor="oneRmDeadlift">
               Ingresar 1RM Deadlift (kg):
               <input
@@ -128,11 +133,18 @@ const Sabado = () => {
                 id="oneRmDeadlift"
                 value={oneRmDeadlift}
                 onChange={handle1RMDeadliftChange}
-                placeholder="Ingresa tu 1RM en kg"
+                placeholder="Ingresa tu 1RM de Deadlift"
               />
             </label>
-            <p><strong>Foco en velocidad de ejecución</strong></p>
+            <p>Work Up To 76% @ {calculateDeadliftWeight(76)}kg x 3 Reps</p>
+            <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado.</p>
+            <p><strong>Nota:</strong> Todas las repeticiones son Singles, No Touch And Go</p>
+            <p>Then</p>
+            <p>3 x 4 Deadlift @ {calculateDeadliftWeight(60)}kg (1 Min Rest)</p>
+            <p><strong>Foco en velocidad</strong></p>
             <p><strong>Singles, No Touch And Go</strong></p>
+            <p>Then</p>
+            <p>2 x 8 Sumo Deadlift @ {calculateDeadliftWeight(50)}kg</p>
           </div>
         )}
       </div>
@@ -150,19 +162,20 @@ const Sabado = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>8 Rounds For Time</p>
+            <p>For Time</p>
+            <p>10-9-8-7-6-5-4-3-2-1</p>
             <ul>
-              <li>12 Deadlift</li>
-              <li>9 Hang Power Clean</li>
-              <li>6 Push Jerks</li>
+              <li>Toes to Bar</li>
+              <li>Deadlift</li>
+              <li>Bar Facing Burpees</li>
             </ul>
-            <p>Barbell - 70/47,5 kg</p>
-            <p>Time Cap: 15 Min</p>
+            <p>Barbell - 102/70 kg</p>
+            <p>Time Cap: 7-12 Min</p>
           </div>
         )}
       </div>
 
-      {/* SKILL CONDITIONING */}
+      {/* SKILL PRACTICE & CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
@@ -170,24 +183,43 @@ const Sabado = () => {
           aria-expanded={isSkillPracticeOpen}
           aria-controls="skill-practice-content"
         >
-          <h3>SKILL CONDITIONING</h3>
+          <h3>SKILL PRACTICE & CONDITIONING</h3>
           <span>{isSkillPracticeOpen ? '▲' : '▼'}</span>
         </div>
         {isSkillPracticeOpen && (
           <div className="section-content" id="skill-practice-content">
-            <p>OTM 6-8 Min</p>
-            <p>Min 1: 13/10 Cal Assault Bike</p>
-            <p>Min 2: 2-3 Pirouettes</p>
-            <p>Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m Total)</p>
-            <p><strong>Estimulo & Objetivos</strong></p>
-            <p>Trabajo en formato de OTM, donde el objetivo está en practicar la caminata de manos con diferentes Skills.</p>
-            <p>En el caso de que no puedan completar los movimientos en menos de 50 segundos, escalen cantidades.</p>
+            <p>5 Min Double Under Crossovers Practice</p>
+            <p>Then</p>
+            <p>OTM 6 Min</p>
+            <p>Min 1: 1 Seated Legless Rope Climb + 1 Legless Rope Climb (Women: 1 Rope Climb)</p>
+            <p>Min 2: Bike Erg Recovery</p>
           </div>
         )}
       </div>
 
+      {/* ASSAULT BIKE CONDITIONING */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAssaultBikeOpen)}
+          aria-expanded={isAssaultBikeOpen}
+          aria-controls="assault-bike-content"
+        >
+          <h3>ASSAULT BIKE CONDITIONING</h3>
+          <span>{isAssaultBikeOpen ? '▲' : '▼'}</span>
+        </div>
+        {isAssaultBikeOpen && (
+          <div className="section-content" id="assault-bike-content">
+            <p>20 Sec on 30 Sec off</p>
+            <ul>
+              <li>Max Effort</li>
+              <li>Rest 2 Min b/t Rounds</li>
+            </ul>
+          </div>
+        )}
+      </div>
 
-      {/* ACCESSORY WORK */}
+      {/* ACCESSORY */}
       <div className="section-block">
         <div
           className="section-header"
@@ -195,18 +227,18 @@ const Sabado = () => {
           aria-expanded={isAccessoryOpen}
           aria-controls="accessory-content"
         >
-          <h3>ACCESSORY </h3>
+          <h3>ACCESSORY</h3>
           <span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
-            <p>3 Rounds</p>
+            <p>3 Rounds For Quality</p>
             <ul>
-              <li>10 Incline Dumbbell Bench Press</li>
-              <li>12 Shoulder Full Raises</li>
-              <li>Rest 1 Min b/t Rounds</li>
+              <li>8 Strict Pull Ups</li>
+              <li>10 Dumbbell Chest Supported Rows</li>
+              <li>12 Banded Face Pulls</li>
+              <li>15 Band Tricep Extensions</li>
             </ul>
-            <p>Descanso 30-60" entre Sets</p>
           </div>
         )}
       </div>
