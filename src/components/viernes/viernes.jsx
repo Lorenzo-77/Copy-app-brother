@@ -23,13 +23,13 @@ const Viernes = () => {
         acc[`${section}set${percentage}`] = (rm * (percentage / 100)).toFixed(2);
         return acc;
       }, {});
-      setCalculatedWeights(prev => ({ ...prev, ...newCalculatedWeights }));
+      setCalculatedWeights((prev) => ({ ...prev, ...newCalculatedWeights }));
     } else {
       setCalculatedWeights({});
     }
   };
 
-  const toggleSection = (setState) => setState(prevState => !prevState);
+  const toggleSection = (setState) => setState((prevState) => !prevState);
 
   return (
     <div className="container">
@@ -69,19 +69,23 @@ const Viernes = () => {
               type="number"
               id="oneRmJerk"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [63, 66, 69, 72], 'jerk')}
+              onChange={(e) => handle1RMChange(e, [66, 69, 72, 75], 'jerk')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
               <>
                 <p>1) Foot Positioning</p>
-                <p>3 x 4 Back Rack Step to Split @Light Weight</p>
+                <p>2 x 3 Back Rack Step to Split @Light Weight</p>
+                <p>2 x 3 Back Rack Jump to Split @Light to Moderate Weight</p>
                 <p>2) Overhead Position</p>
-                <p>2 x 5 Press In Split @Light Weight</p>
+                <p>2 x 3 Press In Split @Light Weight</p>
+                <p>1 x 3 Jerk Balance In Split @Moderate Weight</p>
                 <p>3) Complex</p>
                 <p>4 Sets</p>
                 <p>2 Behind the Neck Split Jerk</p>
-                <p>Sets: @{calculatedWeights.jerkset63}kg - @{calculatedWeights.jerkset66}kg - @{calculatedWeights.jerkset69}kg - @{calculatedWeights.jerkset72}kg</p>
+                <p>
+                  Sets: @{calculatedWeights.jerkset66}kg - @{calculatedWeights.jerkset69}kg - @{calculatedWeights.jerkset72}kg - @{calculatedWeights.jerkset75}kg
+                </p>
               </>
             )}
           </div>
@@ -101,7 +105,7 @@ const Viernes = () => {
               type="number"
               id="oneRmCleanAndJerk"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [67, 70, 73, 76, 79], 'cleanAndJerk')}
+              onChange={(e) => handle1RMChange(e, [70, 73, 76, 79, 82], 'cleanAndJerk')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
@@ -112,7 +116,10 @@ const Viernes = () => {
                 <p>1 Low Hang Squat Clean</p>
                 <p>1 Split Jerk</p>
                 <p>Rest 60-90" b/t Sets</p>
-                <p>Sets: @{calculatedWeights.cleanAndJerkset67}kg - @{calculatedWeights.cleanAndJerkset70}kg - @{calculatedWeights.cleanAndJerkset73}kg - @{calculatedWeights.cleanAndJerkset76}kg - @{calculatedWeights.cleanAndJerkset79}kg</p>
+                <p>
+                  Sets: @{calculatedWeights.cleanAndJerkset70}kg - @{calculatedWeights.cleanAndJerkset73}kg - @{calculatedWeights.cleanAndJerkset76}kg -
+                  @{calculatedWeights.cleanAndJerkset79}kg - @{calculatedWeights.cleanAndJerkset82}kg
+                </p>
               </>
             )}
           </div>
@@ -132,15 +139,14 @@ const Viernes = () => {
               type="number"
               id="oneRmBackSquat"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [78, 65], 'backSquat')}
+              onChange={(e) => handle1RMChange(e, [82, 68], 'backSquat')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
               <>
-                <p>Build to 3 Reps @{calculatedWeights.backSquatset78}kg </p>
+                <p>Build to 2 Reps @{calculatedWeights.backSquatset82}kg</p>
                 <p>Then OTM 5 Min</p>
-                <p>3 Back Squats @{calculatedWeights.backSquatset65}kg</p>
-
+                <p>3 Back Squats @{calculatedWeights.backSquatset68}kg</p>
               </>
             )}
           </div>
@@ -155,55 +161,17 @@ const Viernes = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>4 Rounds For Time</p>
-            <p>15/12 Cal Assault Bike</p>
-            <p>8/6 Ring Muscle Ups</p>
-            <p>8 Squat Cleans</p>
-            <p>400 m Run</p>
-            <p>Barbell - 61/43 kg</p>
-          </div>
-        )}
-      </div>
-
-      {/* ACCESSORY */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
-          <h3>ACCESSORY</h3>
-          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
-        </div>
-        {isAccessoryOpen && (
-          <div className="section-content">
-            <p>3 x 8/8 Back Rack Front Foot Elevated Split Squats</p>
-            <p>3 x 12 Hip Thrusts @Moderate/Heavy Weight</p>
-            <p>3 x 15 Banded Reverse Squats</p>
-            <p>3 x 12 Reverse Hypers (Hold 1" Each Rep) w/Medball</p>
-          </div>
-        )}
-      </div>
-
-      {/* PRO RUNNER */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsProRunnerOpen)}>
-          <h3>SESSION 2: PRO RUNNER</h3>
-          <span>{isProRunnerOpen ? '▲' : '▼'}</span>
-        </div>
-        {isProRunnerOpen && (
-          <div className="section-content">
-            <p>Warm-Up</p>
-            <p>3 Rounds</p>
-            <p>1 Min @Moderate Pace</p>
-            <p>1 Min @Easy Pace</p>
-            <p>*Comenzar cada minuto con 5" de aceleración*</p>
-            <p>Sprint for 5 seconds at the top of each minute.</p>
-
-            <p>Workout</p>
-            <p>5 Rounds</p>
-            <p>200 m @Max Pace</p>
-            <p>400 m @Recovery Pace</p>
-            <p>Rest 2 Min b/t Rounds</p>
-
-            <p>Cool-Down</p>
-            <p>10 Min @Easy Pace</p>
+            <p>For Time</p>
+            <p>12 Burpee Box Get Overs</p>
+            <p>24 Chest to Bar Pull Ups</p>
+            <p>36 Toes to Bar</p>
+            <p>90 Wall Balls</p>
+            <p>36 Toes to Bar</p>
+            <p>24 Chest to Bar Pull Ups</p>
+            <p>12 Burpee Box Get Overs</p>
+            <p>Medball - 9/6 kg</p>
+            <p>Box - 120/100 cm</p>
+            <p>SCORE OBJETIVO: 16-22 Min</p>
           </div>
         )}
       </div>

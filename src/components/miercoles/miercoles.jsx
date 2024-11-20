@@ -5,16 +5,15 @@ function Miercoles() {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
   const [isOHSOpen, setIsOHSOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isStaminaConditioningOpen, setIsStaminaConditioningOpen] = useState(false);
   const [isRowConditioningOpen, setIsRowConditioningOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
 
   const [oneRepMax, setOneRepMax] = useState('');
   const [calculatedWeights, setCalculatedWeights] = useState({
-    set65: '',
+    set68: '',
   });
 
-  const toggleSection = (setState) => setState(prevState => !prevState);
+  const toggleSection = (setState) => setState((prevState) => !prevState);
 
   const handle1RMChange = (e) => {
     const value = e.target.value;
@@ -23,21 +22,21 @@ function Miercoles() {
     if (value) {
       const rm = parseFloat(value);
       const calculated = {
-        set65: (rm * 0.65).toFixed(2),
+        set68: (rm * 0.68).toFixed(2),
       };
       setCalculatedWeights(calculated);
     } else {
       setCalculatedWeights({
-        set65: '',
+        set68: '',
       });
     }
   };
 
   return (
     <div className="container">
-      <h1>Miercoles</h1>
+      <h1>Miércoles</h1>
 
-      {/* Sección WARM UP */}
+      {/* WARM UP */}
       <div className="section-block">
         <div
           className="section-header"
@@ -53,17 +52,17 @@ function Miercoles() {
             <p>2 Rounds For Quality</p>
             <ul>
               <li>10/10 Eccentric Ankle Dorsiflexion</li>
-              <li>6 Sumo Inchworm + Push Ups</li>
-              <li>10 Alternating Kossacks</li>
-              <li>10/10 Spiderman + Reach</li>
+              <li>10 Bootstraps</li>
+              <li>10/10 Squat + Thoracic Extension Rotation</li>
               <li>5/5 One Arm Muscle Snatch</li>
-              <li>5/5 One Arm Thrusters</li>
+              <li>5/5 One Arm KB Rack Squats</li>
+              <li>5/5 One Arm Shoulder Press</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* Sección OVERHEAD SQUAT DEVELOPMENT */}
+      {/* OVERHEAD SQUAT DEVELOPMENT */}
       <div className="section-block">
         <div
           className="section-header"
@@ -81,19 +80,21 @@ function Miercoles() {
               <li>3 Behind the Neck Snatch Grip Push Press</li>
               <li>3 Overhead Squats</li>
             </ul>
-            <p>All Sets @65%: {calculatedWeights.set65 ? `${calculatedWeights.set65} kg` : '65%'}</p>
+            <p>
+              All Sets @68%: {calculatedWeights.set68 ? `${calculatedWeights.set68} kg` : '68%'}
+            </p>
             <p>Introduce tu 1RM para Overhead Squat:</p>
-            <input 
-              type="number" 
-              value={oneRepMax} 
-              onChange={handle1RMChange} 
-              placeholder="1RM en kg" 
+            <input
+              type="number"
+              value={oneRepMax}
+              onChange={handle1RMChange}
+              placeholder="1RM en kg"
             />
           </div>
         )}
       </div>
 
-      {/* Sección CONDITIONING */}
+      {/* CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
@@ -106,50 +107,39 @@ function Miercoles() {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>3 Rounds For Time</p>
+            <p>With a Running Clock</p>
+            <p>On the 00:00</p>
             <ul>
-              <li>50 Double Unders</li>
-              <li>5 Power Snatches</li>
+              <li>21 Box Jump Overs (Step Down)</li>
+              <li>15 Power Clean & Jerks (80/55 kg)</li>
+              <li>9/6 Ring Muscle Ups</li>
             </ul>
-            <p>REST 3 Min</p>
-            <p>3 Rounds For Time</p>
+            <p>On the 12:00</p>
             <ul>
-              <li>50 Double Unders</li>
-              <li>5 Squat Snatches</li>
+              <li>21 Deficit Kipping Handstand Push Ups</li>
+              <li>15 Power Snatches (70/47.5 kg)</li>
+              <li>9/6 Ring Muscle Ups</li>
             </ul>
-            <p>Barbell - 70/47.5 kg</p>
+            <p>On the 24:00</p>
+            <ul>
+              <li>150 Double Unders</li>
+              <li>15 Thrusters (60/42.5 kg)</li>
+              <li>9/6 Ring Muscle Ups</li>
+            </ul>
+            <p>
+              Box - 76/60 cm
+              <br />
+              Deficit - 15/10 cm
+            </p>
             <h4>NOTAS</h4>
-            <p><strong>SCORE OBJETIVO</strong>: 4-6 Min (Cada parte)</p>
+            <p>
+              <strong>SCORE OBJETIVO:</strong> 4-8 Min (Cada parte)
+            </p>
           </div>
         )}
       </div>
 
-      {/* Sección STAMINA CONDITIONING */}
-      <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsStaminaConditioningOpen)}
-          aria-expanded={isStaminaConditioningOpen}
-          aria-controls="stamina-conditioning-content"
-        >
-          <h3>STAMINA CONDITIONING</h3>
-          <span>{isStaminaConditioningOpen ? '▲' : '▼'}</span>
-        </div>
-        {isStaminaConditioningOpen && (
-          <div className="section-content" id="stamina-conditioning-content">
-            <p>For Total Time</p>
-            <ul>
-              <li>30 Double Dumbbell Bench Press</li>
-              <li>Rest 1 Min</li>
-              <li>45 m Handstand Walk</li>
-            </ul>
-            <p>Dumbbells - 2 x 32.5/22.5 kg</p>
-            <p>Handstand Walk - 7.5 m Unbroken Segments</p>
-          </div>
-        )}
-      </div>
-
-      {/* Sección ROW CONDITIONING */}
+      {/* ROW CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
@@ -162,19 +152,18 @@ function Miercoles() {
         </div>
         {isRowConditioningOpen && (
           <div className="section-content" id="row-conditioning-content">
-            <p>1500 m @02:28/500 m</p>
-            <p>Rest 2 minutes</p>
-            <p>3 Rounds</p>
+            <p>4 Sets</p>
             <ul>
-              <li>400 m @02:30/500 m</li>
-              <li>500 m @Recovery Pace</li>
-              <li>300 m @02:27/500 m</li>
+              <li>300 m @02:30/500 m</li>
+              <li>300 m @Marathon Pace</li>
+              <li>100 m SPRINT</li>
             </ul>
+            <p>Rest 2 Min b/t Sets</p>
           </div>
         )}
       </div>
 
-      {/* Sección ACCESSORY */}
+      {/* ACCESSORY */}
       <div className="section-block">
         <div
           className="section-header"
@@ -187,11 +176,17 @@ function Miercoles() {
         </div>
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
-            <p>3 x 15 Dumbbell Bench Press</p>
-            <p>4 x 8 Barbell Bent Over Row</p>
-            <p>3 x 12 Rolling Dumbbell Triceps Extensions</p>
-            <p>3 x 10 Hammer Curls</p>
-            <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
+            <ul>
+              <li>3 x 15 Incline Dumbbell Bench Press</li>
+              <li>4 x 8 Barbell Prone Row</li>
+              <li>3 x 12 Inverted Skull Crushers</li>
+              <li>3 x 12 Barbell Preacher Curls</li>
+            </ul>
+            <p>
+              30" Rest b/t Rounds; Rest As Needed b/t Movements
+              <br />
+              Peso Moderado/pesado; si no llega, modifique el peso, no el tiempo de descanso.
+            </p>
           </div>
         )}
       </div>

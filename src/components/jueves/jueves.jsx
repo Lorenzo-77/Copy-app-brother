@@ -3,10 +3,6 @@ import '../../styles.css';
 
 function Navbar() {
     const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-    const [isGymTestOpen, setIsGymTestOpen] = useState(false);
-    const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-    const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-    const [isMidlineOpen, setIsMidlineOpen] = useState(false);
     const [isTestOpen, setIsTestOpen] = useState(false); // Nuevo estado para los tests
 
     const toggleSection = (setState) => setState(prevState => !prevState);

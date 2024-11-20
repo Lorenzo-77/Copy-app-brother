@@ -33,7 +33,7 @@ function Home() {
         return   <div className="text-container">
 
     <p>
-      «Keila Portate Bien»
+      «Haz de cada día una obra maestra»
     </p>
   </div>
     }
