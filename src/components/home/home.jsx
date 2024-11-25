@@ -33,12 +33,12 @@ function Home() {
         return   <div className="text-container">
 
     <p>
-      «Haz de cada día una obra maestra»
+      «En mi mate, el azúcar no está permitido 🍃»
     </p>
   </div>
     }
   };
-
+  
   return (
     <div id='home' className='container home-container'>
       <div className="days-container">
