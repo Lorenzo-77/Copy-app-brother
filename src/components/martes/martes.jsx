@@ -13,12 +13,12 @@ function Martes() {
   // Estado para 1RM y pesos calculados
   const [oneRepMax, setOneRepMax] = useState('');
   const [calculatedWeights, setCalculatedWeights] = useState({
-    frontSquatSet81: '',
-    frontSquatSet66: ''
+    frontSquatSet78: '',
+    frontSquatSet57: ''
   });
 
   // Función para alternar secciones
-  const toggleSection = (setState) => setState(prevState => !prevState);
+  const toggleSection = (setState) => setState((prevState) => !prevState);
 
   // Función para manejar el cambio de 1RM
   const handle1RMChange = (e) => {
@@ -28,13 +28,13 @@ function Martes() {
     if (value) {
       const rm = parseFloat(value);
       setCalculatedWeights({
-        frontSquatSet81: (rm * 0.81).toFixed(2),
-        frontSquatSet66: (rm * 0.66).toFixed(2)
+        frontSquatSet78: (rm * 0.78).toFixed(2),
+        frontSquatSet57: (rm * 0.57).toFixed(2)
       });
     } else {
       setCalculatedWeights({
-        frontSquatSet81: '',
-        frontSquatSet66: ''
+        frontSquatSet78: '',
+        frontSquatSet57: ''
       });
     }
   };
@@ -60,10 +60,10 @@ function Martes() {
             <ul>
               <li>10/10 Regressed Copenhagen Raise</li>
               <li>10/10 Single Leg Good Morning</li>
-              <li>10 Samson Walking Lunge Steps</li>
               <li>6/6 One Arm Suitcase Deadlift</li>
               <li>6/6 One Arm Rack Squats</li>
               <li>6/6 One Arm Shoulder Press</li>
+              <li>10" Handstand Hold</li>
             </ul>
           </div>
         )}
@@ -82,12 +82,19 @@ function Martes() {
         </div>
         {isFrontSquatOpen && (
           <div className="section-content" id="front-squat-content">
-            <p>Build to 2 Reps @ {calculatedWeights.frontSquatSet81 ? `${calculatedWeights.frontSquatSet81} kg` : '81%'}</p>
+            <p>
+              Build to 3 Reps @{' '}
+              {calculatedWeights.frontSquatSet78 ? `${calculatedWeights.frontSquatSet78} kg` : '78%'}
+            </p>
             <p>Then</p>
             <p>3 Sets</p>
-            <p>5 Pause Front Squats @ {calculatedWeights.frontSquatSet66 ? `${calculatedWeights.frontSquatSet66} kg` : '66%'} <em>(3" Pause At Bottom)</em></p>
+            <p>
+              5 1,25 Pause Front Squats @{' '}
+              {calculatedWeights.frontSquatSet57 ? `${calculatedWeights.frontSquatSet57} kg` : '57%'}{' '}
+              <em>(3" Pause At Bottom)</em>
+            </p>
             <p>Rest 60-90" b/t Sets</p>
-            
+
             <div className="input-block">
               <label htmlFor="oneRepMax">Ingrese su 1RM (kg):</label>
               <input
@@ -103,7 +110,7 @@ function Martes() {
         )}
       </div>
 
-      {/* Sección CONDITIONING */}
+      {/* CONDITIONING */}
       <div className="section-block">
         <div
           className="section-header"
@@ -116,78 +123,140 @@ function Martes() {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>4 Rounds For Total Time</p>
+            <p>Every 3 Min x 24 Min (4 Sets Each)</p>
             <ul>
+              <li>A) 250/200 m Ski Erg</li>
               <li>15 Thrusters</li>
-              <li>20 Burpee Box Jump Overs</li>
-              <li>25 GHD Sit Ups</li>
+              <li>B) 500/400 m Assault Bike</li>
+              <li>7/5 Ring Muscle Ups</li>
             </ul>
-            <p>Rest 1 Min b/t Rounds</p>
             <p>Barbell - 43/30 kg</p>
-            <p>Box - 60/50 cm</p>
-            <p><strong>SCORE OBJETIVO</strong>: 16-21 Min</p>
-            <p><strong>REEMPLAZOS:</strong> No GHD: 1) <a href="https://youtu.be/eWDk5jxAwCE">Video 1</a>; 2) <a href="https://youtu.be/O3huiwVg4UE">Video 2</a></p>
+            <p>
+              <strong>SCORE OBJETIVO:</strong> 1:30-2:00 Min (Cada Set)
+            </p>
+            <p><strong>REEMPLAZOS:</strong></p>
+            <ul>
+              <li>No Ski Erg: 12 Burpee to Target</li>
+              <li>No Assault Bike: 200 m Run</li>
+            </ul>
           </div>
         )}
       </div>
 
-      {/* Sección HANDSTAND PUSH UP DEVELOPMENT */}
-      <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsHandstandPushUpDevOpen)}
-          aria-expanded={isHandstandPushUpDevOpen}
-          aria-controls="handstand-pushup-dev-content"
-        >
-          <h3>HANDSTAND PUSH UP DEVELOPMENT</h3>
-          <span>{isHandstandPushUpDevOpen ? '▲' : '▼'}</span>
-        </div>
-        {isHandstandPushUpDevOpen && (
-          <div className="section-content" id="handstand-pushup-dev-content">
-            <p>Elegir la opción de acuerdo al resultado del TEST de Chest-to-Wall Handstand Push Ups.</p>
-            <ol>
-              <li>
-                <strong>Test: 18+ Reps</strong>
-                <ul>
-                  <li>For Total Time</li>
-                  <li>25/20 Cal Ski Erg</li>
-                  <li>30 Alternating Dumbbell Snatches</li>
-                  <li>25 Strict Handstand Push Ups</li>
-                  <li>REST 3 Min</li>
-                  <li>25/20 Cal Ski Erg</li>
-                  <li>30 Alternating Dumbbell Snatches</li>
-                  <li>25 Chest-to-Wall Handstand Push Ups</li>
-                  <li>Dumbbell - 22.5/15 kg</li>
-                  <li>Then</li>
-                  <li>3 x 15 Seated Barbell Strict Press</li>
-                  <li>Rest 30" b/t Rounds</li>
-                  <li>Then</li>
-                  <li>3 x 10 Barbell Skull Crushers</li>
-                  <li>Rest 30" b/t Rounds</li>
-                  <li>All sets @Moderate Weight</li>
-                  <p><strong>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</strong></p>
-                </ul>
-              </li>
-              <li>
-                <strong>Test: 10-17 Reps</strong>
-                <ul>
-                  <li>4 Sets, Every 2:30 Min</li>
-                  <li>15 Unbroken Chest-to-Wall Handstand Push Ups</li>
-                  <li>Then</li>
-                  <li>3 x 15 Seated Barbell Strict Press</li>
-                  <li>Rest 30" b/t Rounds</li>
-                  <li>Then</li>
-                  <li>3 x 10 Barbell Skull Crushers</li>
-                  <li>Rest 30" b/t Rounds</li>
-                  <li>All sets @Moderate Weight</li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-        )}
-      </div>
+{/* HANDSTAND PUSH UP DEVELOPMENT */}
+<div className="section-block">
+  <div
+    className="section-header"
+    onClick={() => toggleSection(setIsHandstandPushUpDevOpen)}
+    aria-expanded={isHandstandPushUpDevOpen}
+    aria-controls="handstand-pushup-dev-content"
+  >
+    <h3>HANDSTAND PUSH UP DEVELOPMENT</h3>
+    <span>{isHandstandPushUpDevOpen ? '▲' : '▼'}</span>
+  </div>
+  {isHandstandPushUpDevOpen && (
+    <div className="section-content" id="handstand-pushup-dev-content">
+      <p>
+        Elegir la opción de acuerdo al resultado del TEST de Chest-to-Wall Handstand Push Ups.{' '}
+        <strong>// Choose the option according to your Chest-to-Wall Handstand Push Ups Test</strong>
+      </p>
 
-      {/* Sección ACCESSORY */}
+      <h4>1) Test: 18+ Reps</h4>
+      <p><strong>AMRAP 10 Min</strong></p>
+      <ul>
+        <li>250/200 m Row</li>
+        <li>3 [1 Wall Walk + 2 Chest-to-Wall Handstand Push Ups]</li>
+        <li>35 Double Unders</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Banded Seated Barbell Strict Press</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Inverted Skull Crushers</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>All sets @Moderate Weight</p>
+      <p><em>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</em></p>
+
+      <hr />
+
+      <h4>2) Test: 10-17 Reps</h4>
+      <p><strong>8 Rounds</strong></p>
+      <ul>
+        <li>8 Unbroken Chest-to-Wall Handstand Push Ups</li>
+        <li>Rest 40" b/t Rounds</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Banded Seated Barbell Strict Press</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Inverted Skull Crushers</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>All sets @Moderate Weight</p>
+      <p><em>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</em></p>
+
+      <hr />
+
+      <h4>3) Test: 5-9 Reps</h4>
+      <p><strong>10 Rounds</strong></p>
+      <ul>
+        <li>11 Unbroken Chest-to-Wall Handstand Push Ups</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Banded Seated Barbell Strict Press</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Inverted Skull Crushers</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>All sets @Moderate Weight</p>
+      <p><em>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</em></p>
+
+      <hr />
+
+      <h4>4) Test: 1-5 Reps</h4>
+      <p><strong>3 Sets</strong></p>
+      <ul>
+        <li>5 Pause Eccentric Only Handstand Push Ups (2" Pause At Bottom)</li>
+        <li>Rest 30"</li>
+        <li>AMRAP 1 Min Pike Strict Handstand Push Ups</li>
+        <li>Rest 1:30 Min b/t Sets</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Banded Seated Barbell Strict Press</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>Then</p>
+      <ul>
+        <li>3 x 10 Inverted Skull Crushers</li>
+        <li>Rest 30" b/t Rounds</li>
+      </ul>
+      <p>All sets @Moderate Weight</p>
+      <p><em>**En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</em></p>
+
+      <hr />
+
+      <h4>NOTAS</h4>
+      <p>
+        En este trabajo deben seleccionar lo que van a hacer dependiendo de cómo hayan realizado el Test que se hizo en la semana de descarga de Chest-to-Wall Handstand Push Ups.
+      </p>
+    </div>
+  )}
+</div>
+
+      {/* ACCESSORY */}
       <div className="section-block">
         <div
           className="section-header"
@@ -200,13 +269,12 @@ function Martes() {
         </div>
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
-            <p>10-12 x 3 Sets</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>Alternating Dumbbell Snatch</li>
-              <li>Seated Shoulder Press</li>
-              <li>Russian Twists</li>
-              <li>Rest 1 min b/t sets</li>
+              <li>30 Band Pull Aparts</li>
+              <li>10/10 Elbow On Knee Banded External Rotation</li>
             </ul>
+            <p>Rest 1 Min b/t Rounds</p>
           </div>
         )}
       </div>

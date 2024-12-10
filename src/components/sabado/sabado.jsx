@@ -70,7 +70,7 @@ const Sabado = () => {
             <p>Find a Heavy 1 Incline Pause Bench Press</p>
             <p>Then</p>
             <p>3 Sets</p>
-            <p>5 Incline Pause Bench Press @ {calculateWeight(40)}kg</p>
+            <p>5 Wide Grip Bench Press @70% of Heavy 1</p>
             <p>Rest 60-90" b/t Sets</p>
           </div>
         )}
@@ -97,14 +97,14 @@ const Sabado = () => {
               onChange={handle1RMChange}
               placeholder="Ingresa tu 1RM en kg"
             />
-            <p>Work Up To {calculateWeight(82)}kg x 3 Reps</p>
+            <p>Work Up To {calculateWeight(74)}kg x 3 Reps</p>
             <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado. // We go progressively up in weight to the weight given.</p>
             <p>All repetitions are Singles, No Touch And Go</p>
             <p>Then</p>
-            <p>3 x 3 Deadlift @ {calculateWeight(65)}kg (1 Min Rest)</p>
+            <p>4 x 3 Banded Deadlift @ {calculateWeight(55)}kg (1 Min Rest)</p>
             <p>Foco en velocidad. Todas las repeticiones son Singles, No Touch And Go</p>
             <p>Then</p>
-            <p>2 x 8 Sumo Deadlift @ {calculateWeight(60)}kg</p>
+            <p>4 x 3 Deficit Deadlift @ {calculateWeight(60)}kg (9/5 cm)</p>
           </div>
         )}
       </div>
@@ -122,22 +122,17 @@ const Sabado = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>For Time</p>
+            <p>2 Rounds For Time</p>
             <ul>
-              <li>50 Kipping Handstand Push Ups</li>
-              <li>50 Toes to Bar</li>
-              <li>50 Cal Assault Bike</li>
-              <li>50 Double Dumbbell Box Step Overs</li>
-              <li>15 m Right Arm Overhead, Left Arm Front Rack Walking Lunges</li>
-              <li>15 m Left Arm Overhead, Right Arm Front Rack Walking Lunges</li>
+              <li>10 Bar Muscle Ups</li>
+              <li>20 Bar Facing Burpees</li>
+              <li>30 Deadlift</li>
+              <li>40 Wall Balls</li>
             </ul>
-            <p>Time Cap: Men 18 Min; Women 23 Min</p>
-            <p>Dumbbells - 2 x 22.5/15 kg</p>
-            <p>Box - 60/50 cm</p>
-            <p>Lunges - 15 m Segment (3 m Unbroken Check Points)</p>
+            <p>Barbell - 102/70 kg</p>
+            <p>Medball - 9/6 kg</p>
             <p>NOTAS</p>
-            <p>SCORE OBJETIVO: 14-20 Min (Hombres); 16-23 Min (Mujeres)</p>
-            <p>ESTIMULO & OBJETIVOS: TEST. Realizar este workout como si fuera en competencia.</p>
+            <p>SCORE OBJETIVO: 10-16 Min</p>
           </div>
         )}
       </div>
@@ -176,9 +171,10 @@ const Sabado = () => {
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
             <p>3 x 12 Incline Dumbbell Bench Press</p>
-            <p>3 x 30/30 One Arm Banded Upright Row</p>
-            <p>3 x 12 Shoulder Full Raises</p>
-            <p>3 x 50 Banded Face Pulls</p>
+            <p>4 x 8/8 One Arm Elbowing Row</p>
+            <p>3 x 12 Shoulder Front Raises</p>
+            <p>3 x 12 Dumbbell Reverse Flys</p>
+            <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
           </div>
         )}
       </div>

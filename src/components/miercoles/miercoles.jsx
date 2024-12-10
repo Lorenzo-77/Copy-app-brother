@@ -57,7 +57,7 @@ function Miercoles() {
               <li>10/10 Spiderman + Reach</li>
               <li>5/5 One Arm Muscle Snatch</li>
               <li>6/6 One Arm Overhead Squats (2" Pause At Bottom)</li>
-              <li>10" Bottom Ring Support Hold + 10" Top of Ring Support Hold</li>
+              <li>10 Kip Swings On Bar</li>
             </ul>
           </div>
         )}
@@ -78,8 +78,8 @@ function Miercoles() {
           <div className="section-content" id="ohs-content">
             <p>OTM 4 Min</p>
             <ul>
-              <li>3 Behind the Neck Snatch Grip Push Press</li>
-              <li>3 Overhead Squats</li>
+              <li>1 Behind the Neck Snatch Grip Push Press</li>
+              <li>2 Pausing Snatch Balance (2" Pause At Bottom)</li>
             </ul>
             <p>
               All Sets @71%: {calculatedWeights.set71 ? `${calculatedWeights.set71} kg` : '71%'}
@@ -108,17 +108,31 @@ function Miercoles() {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>4 Sets</p>
-            <p>AMRAP 3 Min</p>
+            <p>For Total Time</p>
+            <p>3 Rounds</p>
             <ul>
-              <li>12/9 Cal Assault Bike</li>
-              <li>8/6 Ring Muscle Ups</li>
-              <li>4 Sandbag to Shoulder</li>
-              <li>2 Rope Climbs</li>
+              <li>15 Chest to Bar Pull Ups</li>
+              <li>18 Alternating Dumbbell Snatches (22.5/15 kg)</li>
+              <li>12 Box Jump Overs (60/50 cm; Step Down)</li>
             </ul>
-            <p>Rest 3 Min b/t Sets</p>
-            <p>Sandbag - 70/45 kg</p>
-            <p>Rope - 4,57 m</p>
+            <p>Rest 2 Min</p>
+            <p>3 Rounds</p>
+            <ul>
+              <li>3 Rope Climbs</li>
+              <li>12 Alternating Dumbbell Snatches (32.5/22.5 kg)</li>
+              <li>8 Box Jump Overs (76/60 cm; Step Down)</li>
+            </ul>
+            <p>Replacements:</p>
+            <ul>
+              <li>No 32.5/22.5 kg Dumbbell: 18 Reps w/2 x 22.5/15 kg</li>
+            </ul>
+            <p>SKILL PRACTICE + CONDITIONING</p>
+            <p>OTM 6 Min</p>
+            <ul>
+              <li>Min 1: 15 m Double Dumbbell Front Rack Walking Lunges</li>
+              <li>Min 2: 10-30 Double Under Crossovers</li>
+            </ul>
+            <p>Dumbbells - 2 x 22.5/15 kg</p>
           </div>
         )}
       </div>
@@ -136,9 +150,9 @@ function Miercoles() {
         </div>
         {isRowConditioningOpen && (
           <div className="section-content" id="row-conditioning-content">
-            <p>16 Rounds</p>
-            <p>250 m @02:28/500 m</p>
-            <p>Rest 30" b/t Rounds</p>
+            <p>5 Rounds</p>
+            <p>300 m @02:30/500 m</p>
+            <p>500 m @Recovery Pace</p>
           </div>
         )}
       </div>
@@ -157,10 +171,10 @@ function Miercoles() {
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
             <ul>
-              <li>3 x 12 Strict Parallel Dips</li>
-              <li>4 x 8/8 One Arm Dumbbell Three Point Row</li>
-              <li>3 x 50 Banded Triceps Extensions</li>
-              <li>3 x 50 Banded Biceps Curls</li>
+              <li>3 x 15 Close Grip Dumbbell Bench Press</li>
+              <li>4 x 8 Barbell Upright Row</li>
+              <li>3 x 50/50 One Arm Banded Triceps Extensions</li>
+              <li>3 x 50/50 One Arm Banded Biceps Curls</li>
             </ul>
             <p>
               30" Rest b/t Rounds; Rest As Needed b/t Movements
@@ -198,4 +212,3 @@ function Miercoles() {
 }
 
 export default Miercoles;
-

@@ -69,23 +69,25 @@ const Viernes = () => {
               type="number"
               id="oneRmJerk"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [69, 72, 75, 78], 'jerk')}
+              onChange={(e) => handle1RMChange(e, [66, 69, 72, 75], 'jerk')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
               <>
                 <p>1) Foot Positioning</p>
-                <p>1 x 3 Back Rack Step to Split @Light Weight</p>
-                <p>3 x 3 Back Rack Jump to Split @Light to Moderate Weight</p>
+                <p>2 x 3 Back Rack Jump to Split @Light to Moderate Weight</p>
+                <p>1 x 3 Back Rack Drop to Split @Light to Moderate Weight</p>
+
                 <p>2) Overhead Position</p>
-                <p>1 x 5 Press In Split @Light Weight</p>
-                <p>3 x 3 Jerk Balance In Split @Moderate Weight</p>
+                <p>1 x 3 Jerk Balance In Split @Moderate Weight</p>
+                <p>2 x 2 Tall Jerk @Light to Moderate Weight</p>
+
                 <p>3) Complex</p>
                 <p>4 Sets</p>
                 <p>1 Behind the Neck Split Jerk</p>
                 <p>1 Pausing Split Jerk* (Pause In Dip And Receiving Position)</p>
                 <p>
-                  Sets: @{calculatedWeights.jerkset69}kg - @{calculatedWeights.jerkset72}kg - @{calculatedWeights.jerkset75}kg - @{calculatedWeights.jerkset78}kg
+                  Sets: @{calculatedWeights.jerkset66}kg - @{calculatedWeights.jerkset69}kg - @{calculatedWeights.jerkset72}kg - @{calculatedWeights.jerkset75}kg
                 </p>
               </>
             )}
@@ -106,19 +108,19 @@ const Viernes = () => {
               type="number"
               id="oneRmCleanAndJerk"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [73, 76, 79, 82, 85], 'cleanAndJerk')}
+              onChange={(e) => handle1RMChange(e, [64, 68, 72, 76, 80], 'cleanAndJerk')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
               <>
                 <p>5 Sets</p>
-                <p>1 Segmented Clean Deadlift</p>
+                <p>1 Clean Lift Off</p>
+                <p>1 Squat Clean</p>
                 <p>1 Hang Squat Clean</p>
-                <p>1 Front Squat</p>
                 <p>1 Split Jerk</p>
                 <p>Rest 60-90" b/t Sets</p>
                 <p>
-                  Sets: @{calculatedWeights.cleanAndJerkset73}kg - @{calculatedWeights.cleanAndJerkset76}kg - @{calculatedWeights.cleanAndJerkset79}kg - @{calculatedWeights.cleanAndJerkset82}kg - @{calculatedWeights.cleanAndJerkset85}kg
+                  Sets: @{calculatedWeights.cleanAndJerkset64}kg - @{calculatedWeights.cleanAndJerkset68}kg - @{calculatedWeights.cleanAndJerkset72}kg - @{calculatedWeights.cleanAndJerkset76}kg - @{calculatedWeights.cleanAndJerkset80}kg
                 </p>
               </>
             )}
@@ -126,10 +128,10 @@ const Viernes = () => {
         )}
       </div>
 
-      {/* BACK SQUAT */}
+      {/* BOX BACK SQUAT */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection(setIsBackSquatOpen)}>
-          <h3>BACK SQUAT</h3>
+          <h3>BOX BACK SQUAT</h3>
           <span>{isBackSquatOpen ? '▲' : '▼'}</span>
         </div>
         {isBackSquatOpen && (
@@ -139,14 +141,15 @@ const Viernes = () => {
               type="number"
               id="oneRmBackSquat"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [86, 71], 'backSquat')}
+              onChange={(e) => handle1RMChange(e, [70], 'backSquat')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
               <>
-                <p>Build to 2 Reps @{calculatedWeights.backSquatset86}kg</p>
-                <p>Then OTM 5 Min</p>
-                <p>3 Back Squats @{calculatedWeights.backSquatset71}kg</p>
+                <p>3 Sets</p>
+                <p>6 Box Back Squats</p>
+                <p>All Sets @{calculatedWeights.backSquatset70}kg</p>
+                <p>Box - Altura de paralelo</p>
               </>
             )}
           </div>
@@ -161,17 +164,15 @@ const Viernes = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>5 Rounds For Time</p>
-            <p>21 Wall Balls</p>
-            <p>7 Bar Muscle Ups</p>
-            <p>Rest 5 Min</p>
-            <p>5 Rounds For Time</p>
-            <p>12 Sumo Deadlift High Pull</p>
+            <p>4 Sets</p>
+            <p>AMRAP 2 Min</p>
+            <p>24 GHD Sit Ups</p>
             <p>2 Handstand Walk Segments</p>
-            <p>Medball - 9/6 kg</p>
-            <p>Barbell - 52/35 kg</p>
-            <p>Handstand Walk - 7,5 m Unbroken Segments</p>
-            <p>SCORE OBJETIVO: 6-10 Min (Cada parte)</p>
+            <p>Max Squat Cleans</p>
+            <p>Rest 2 Min b/t Rounds</p>
+            <p>Handstand Walk - 7.5 m Unbroken Segments</p>
+            <p>Barbell - 61/43 kg</p>
+            <p>No GHD: 1) <a href="https://youtu.be/eWDk5jxAwCE">Link 1</a>; 2) <a href="https://youtu.be/O3huiwVg4UE">Link 2</a></p>
           </div>
         )}
       </div>
@@ -184,12 +185,11 @@ const Viernes = () => {
         </div>
         {isAccessoryOpen && (
           <div className="section-content">
-            <p>3 x 12/12 Back Rack Front Foot Elevated Split Squats</p>
-            <p>3 x 12 Hip Thrusts</p>
-            <p>3 x 12 Barbell Reverse Lunges</p>
-            <p>4 x 10 GHD Machine</p>
-            <p>3 x 12-15 Goblet Squats</p>
-            <p>3 x 12 Kettlebell Swings</p>
+            <p>3 x 6/6 Front Rack Box Step Ups</p>
+            <p>4 x 6 Hip Thrusts @Heavy Weight</p>
+            <p>3 x 6/6 Goblet Cossack Squats</p>
+            <p>4 x 8 Reverse Hypers (Hold 1" Each Rep) w/Medball</p>
+            <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
           </div>
         )}
       </div>
@@ -202,9 +202,14 @@ const Viernes = () => {
         </div>
         {isProRunnerOpen && (
           <div className="section-content">
-            <p>10 x 100m Sprints</p>
-            <p>Rest 90s Between Sprints</p>
-            <p>Focus on Speed and Form</p>
+            <p>Warm-Up: 5 Min @Very Easy to Moderate Pace (Aumentar ritmo cada minuto)</p>
+            <p>Workout: 8 Min @06:16/km</p>
+            <p>2 Min @Recovery Pace</p>
+            <p>4 Min @05:38/km</p>
+            <p>2 Min @Recovery Pace</p>
+            <p>4 Min @05:16/km</p>
+            <p>2 Min @Recovery Pace</p>
+            <p>Cooldown: 3 Min @Easy Pace</p>
           </div>
         )}
       </div>
@@ -213,4 +218,3 @@ const Viernes = () => {
 };
 
 export default Viernes;
-
