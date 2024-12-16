@@ -48,7 +48,7 @@ const Sabado = () => {
               <li>10/10 Spiderman + Reach</li>
               <li>5/5 One Arm RKB Swings</li>
               <li>5/5 One Arm Shoulder Press</li>
-              <li>10" Bar Hang</li>
+              <li>10" Wall Facing Handstand Hold</li>
             </ul>
           </div>
         )}
@@ -67,10 +67,10 @@ const Sabado = () => {
         </div>
         {isPushingDevelopmentOpen && (
           <div className="section-content" id="pushing-development-content">
-            <p>Find a Heavy 1 Incline Pause Bench Press</p>
+            <p>Find a Heavy 1 Seated Overhead Pin Press (Altura de la frente)</p>
             <p>Then</p>
             <p>3 Sets</p>
-            <p>5 Wide Grip Bench Press @70% of Heavy 1</p>
+            <p>5 Seated Overhead Pin Press @70% of Heavy 1</p>
             <p>Rest 60-90" b/t Sets</p>
           </div>
         )}
@@ -97,14 +97,14 @@ const Sabado = () => {
               onChange={handle1RMChange}
               placeholder="Ingresa tu 1RM en kg"
             />
-            <p>Work Up To {calculateWeight(74)}kg x 3 Reps</p>
+            <p>Work Up To {calculateWeight(77)}kg x 3 Reps</p>
             <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado. // We go progressively up in weight to the weight given.</p>
             <p>All repetitions are Singles, No Touch And Go</p>
             <p>Then</p>
-            <p>4 x 3 Banded Deadlift @ {calculateWeight(55)}kg (1 Min Rest)</p>
+            <p>4 x 3 Banded Deadlift @ {calculateWeight(58)}kg (1 Min Rest)</p>
             <p>Foco en velocidad. Todas las repeticiones son Singles, No Touch And Go</p>
             <p>Then</p>
-            <p>4 x 3 Deficit Deadlift @ {calculateWeight(60)}kg (9/5 cm)</p>
+            <p>4 x 3 Deficit Deadlift @ {calculateWeight(63)}kg (9/5 cm)</p>
           </div>
         )}
       </div>
@@ -122,22 +122,61 @@ const Sabado = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
-            <p>2 Rounds For Time</p>
+            <p>For Time</p>
+            <p>10-9-8-7-6-5-4-3-2-1</p>
             <ul>
-              <li>10 Bar Muscle Ups</li>
-              <li>20 Bar Facing Burpees</li>
-              <li>30 Deadlift</li>
-              <li>40 Wall Balls</li>
+              <li>GHD Sit Ups</li>
+              <li>Strict Handstand Push Ups</li>
             </ul>
-            <p>Barbell - 102/70 kg</p>
-            <p>Medball - 9/6 kg</p>
+            <p>Rest 5 Min</p>
+            <p>For Time</p>
+            <p>1-2-3-4-5-6-7-8-9-10</p>
+            <ul>
+              <li>Deadlift</li>
+              <li>Bar Facing Burpees</li>
+            </ul>
+            <p>Barbell - 100/70 kg</p>
             <p>NOTAS</p>
-            <p>SCORE OBJETIVO: 10-16 Min</p>
+            <p>SCORE OBJETIVO: 4-8 Min (Cada parte)</p>
+            <p>REEMPLAZOS/REPLACEMENTS</p>
+            <ul>
+              <li>No GHD: 1) <a href="https://youtu.be/eWDk5jxAwCE">Video 1</a>; 2) <a href="https://youtu.be/O3huiwVg4UE">Video 2</a></li>
+            </ul>
           </div>
         )}
       </div>
 
-      {/* ASSAULT BIKE CONDITIONING */}
+      {/* SKILL PRACTICE & CONDITIONING */}
+      <div className="section-block">
+        <div
+          className="section-header"
+          onClick={() => toggleSection(setIsAssaultBikeOpen)}
+          aria-expanded={isAssaultBikeOpen}
+          aria-controls="skill-practice-content"
+        >
+          <h3>SKILL PRACTICE & CONDITIONING</h3>
+          <span>{isAssaultBikeOpen ? '▲' : '▼'}</span>
+        </div>
+        {isAssaultBikeOpen && (
+          <div className="section-content" id="skill-practice-content">
+            <p>10 Min Handstand Walk O-Course Practice</p>
+            <p>Then</p>
+            <p>OTM 12 Min</p>
+            <ul>
+              <li>Min 1: 1 Seated Legless Rope Climb</li>
+              <li>Min 2: Handstand Walk O-Course</li>
+              <li>Min 3: Bike @Easy Pace</li>
+            </ul>
+            <p>REEMPLAZOS/REPLACEMENTS</p>
+            <ul>
+              <li>No Bike: 1 Min Run</li>
+              <li>No O-Course: Armar uno con discos</li>
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* ASSAULT BIKE CONDITIONING (OPCIONAL) */}
       <div className="section-block">
         <div
           className="section-header"
@@ -150,9 +189,12 @@ const Sabado = () => {
         </div>
         {isAssaultBikeOpen && (
           <div className="section-content" id="assault-bike-content">
-            <p>For Time</p>
-            <p>300/240 Cal Assault Bike</p>
-            <p>Alternate b/t: 20/16 Cal @ Easy Pace, 20/16 Cal @ Hard Pace</p>
+            <p>6 Rounds</p>
+            <ul>
+              <li>1 Min @Very Hard Pace</li>
+              <li>2 Min @Recovery Pace</li>
+            </ul>
+            <p>No Rest b/t Rounds</p>
           </div>
         )}
       </div>
@@ -170,10 +212,10 @@ const Sabado = () => {
         </div>
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
-            <p>3 x 12 Incline Dumbbell Bench Press</p>
-            <p>4 x 8/8 One Arm Elbowing Row</p>
-            <p>3 x 12 Shoulder Front Raises</p>
-            <p>3 x 12 Dumbbell Reverse Flys</p>
+            <p>3 x 15 Close Grip Dumbbell Bench Press</p>
+            <p>3 x 20/20 One Arm Banded Upright Row</p>
+            <p>3 x 12 Shoulder Lateral Raises</p>
+            <p>3 x 12 Trap Three Raise</p>
             <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
           </div>
         )}

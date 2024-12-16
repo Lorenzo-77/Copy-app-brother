@@ -11,7 +11,7 @@ function Miercoles() {
 
   const [oneRepMax, setOneRepMax] = useState('');
   const [calculatedWeights, setCalculatedWeights] = useState({
-    set71: '',
+    set74: '',
   });
 
   const toggleSection = (setState) => setState((prevState) => !prevState);
@@ -23,12 +23,12 @@ function Miercoles() {
     if (value) {
       const rm = parseFloat(value);
       const calculated = {
-        set71: (rm * 0.71).toFixed(2),
+        set74: (rm * 0.74).toFixed(2),
       };
       setCalculatedWeights(calculated);
     } else {
       setCalculatedWeights({
-        set71: '',
+        set74: '',
       });
     }
   };
@@ -55,9 +55,9 @@ function Miercoles() {
               <li>8 Sumo Inchworm + Push Ups</li>
               <li>10 Alternating Kossacks</li>
               <li>10/10 Spiderman + Reach</li>
-              <li>5/5 One Arm Muscle Snatch</li>
-              <li>6/6 One Arm Overhead Squats (2" Pause At Bottom)</li>
-              <li>10 Kip Swings On Bar</li>
+              <li>10 Russian KB Swings</li>
+              <li>8 Yoga Push Ups</li>
+              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
             </ul>
           </div>
         )}
@@ -82,7 +82,7 @@ function Miercoles() {
               <li>2 Pausing Snatch Balance (2" Pause At Bottom)</li>
             </ul>
             <p>
-              All Sets @71%: {calculatedWeights.set71 ? `${calculatedWeights.set71} kg` : '71%'}
+              All Sets @74%: {calculatedWeights.set74 ? `${calculatedWeights.set74} kg` : '74%'}
             </p>
             <p>Introduce tu 1RM para Overhead Squat:</p>
             <input
@@ -109,30 +109,34 @@ function Miercoles() {
         {isConditioningOpen && (
           <div className="section-content" id="conditioning-content">
             <p>For Total Time</p>
-            <p>3 Rounds</p>
-            <ul>
-              <li>15 Chest to Bar Pull Ups</li>
-              <li>18 Alternating Dumbbell Snatches (22.5/15 kg)</li>
-              <li>12 Box Jump Overs (60/50 cm; Step Down)</li>
-            </ul>
-            <p>Rest 2 Min</p>
-            <p>3 Rounds</p>
-            <ul>
-              <li>3 Rope Climbs</li>
-              <li>12 Alternating Dumbbell Snatches (32.5/22.5 kg)</li>
-              <li>8 Box Jump Overs (76/60 cm; Step Down)</li>
-            </ul>
+            <p>15/12 Cal Assault Bike</p>
+            <p>12 Power Clean & Jerks</p>
+            <p>9/8 Ring Muscle Ups</p>
+
+            <p>Rest 1 Min</p>
+
+            <p>15/12 Cal Assault Bike</p>
+            <p>9 Power Clean & Jerks</p>
+            <p>7/6 Ring Muscle Ups</p>
+
+            <p>Rest 1 Min</p>
+
+            <p>15/12 Cal Assault Bike</p>
+            <p>6 Power Clean & Jerks</p>
+            <p>5/4 Ring Muscle Ups</p>
+
+            <p>Rest 1 Min</p>
+
+            <p>15/12 Cal Assault Bike</p>
+            <p>3 Power Clean & Jerks</p>
+            <p>3/2 Ring Muscle Ups</p>
+
+            <p>Barbell - 60/42.5 kg</p>
+
             <p>Replacements:</p>
             <ul>
-              <li>No 32.5/22.5 kg Dumbbell: 18 Reps w/2 x 22.5/15 kg</li>
+              <li>No Assault Bike: 10 Shuttle Runs (7.5 m Segment; 1 rep = 15 m)</li>
             </ul>
-            <p>SKILL PRACTICE + CONDITIONING</p>
-            <p>OTM 6 Min</p>
-            <ul>
-              <li>Min 1: 15 m Double Dumbbell Front Rack Walking Lunges</li>
-              <li>Min 2: 10-30 Double Under Crossovers</li>
-            </ul>
-            <p>Dumbbells - 2 x 22.5/15 kg</p>
           </div>
         )}
       </div>
@@ -150,9 +154,17 @@ function Miercoles() {
         </div>
         {isRowConditioningOpen && (
           <div className="section-content" id="row-conditioning-content">
-            <p>5 Rounds</p>
-            <p>300 m @02:30/500 m</p>
-            <p>500 m @Recovery Pace</p>
+            <p>4 Rounds</p>
+            <p>250 m @02:26/500 m</p>
+            <p>250 m @Recovery Pace</p>
+            <p>No Rest b/t Rounds</p>
+
+            <p>Rest 5 Min</p>
+
+            <p>4 Rounds</p>
+            <p>250 m @02:26/500 m</p>
+            <p>250 m @Recovery Pace</p>
+            <p>No Rest b/t Rounds</p>
           </div>
         )}
       </div>
@@ -171,10 +183,10 @@ function Miercoles() {
         {isAccessoryOpen && (
           <div className="section-content" id="accessory-content">
             <ul>
-              <li>3 x 15 Close Grip Dumbbell Bench Press</li>
-              <li>4 x 8 Barbell Upright Row</li>
-              <li>3 x 50/50 One Arm Banded Triceps Extensions</li>
-              <li>3 x 50/50 One Arm Banded Biceps Curls</li>
+              <li>3 x 15 Close Grip Incline Dumbbell Bench Press</li>
+              <li>4 x 8 Pendlay Rows</li>
+              <li>3 x 12 Double Dumbbell Triceps Kickback</li>
+              <li>3 x 10 Standing Wall DB Bicep Curls</li>
             </ul>
             <p>
               30" Rest b/t Rounds; Rest As Needed b/t Movements

@@ -69,25 +69,24 @@ const Viernes = () => {
               type="number"
               id="oneRmJerk"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [66, 69, 72, 75], 'jerk')}
+              onChange={(e) => handle1RMChange(e, [70, 73, 76, 79], 'jerk')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
               <>
                 <p>1) Foot Positioning</p>
-                <p>2 x 3 Back Rack Jump to Split @Light to Moderate Weight</p>
-                <p>1 x 3 Back Rack Drop to Split @Light to Moderate Weight</p>
+                <p>1 x 3 Back Rack Jump to Split @Light to Moderate Weight</p>
+                <p>2 x 3 Back Rack Drop to Split @Light to Moderate Weight</p>
 
                 <p>2) Overhead Position</p>
-                <p>1 x 3 Jerk Balance In Split @Moderate Weight</p>
-                <p>2 x 2 Tall Jerk @Light to Moderate Weight</p>
+                <p>3 x 2 Tall Jerk @Light to Moderate Weight</p>
 
                 <p>3) Complex</p>
                 <p>4 Sets</p>
-                <p>1 Behind the Neck Split Jerk</p>
-                <p>1 Pausing Split Jerk* (Pause In Dip And Receiving Position)</p>
+                <p>1 Pausing Split Jerk*</p>
+                <p>1 Split Jerk</p>
                 <p>
-                  Sets: @{calculatedWeights.jerkset66}kg - @{calculatedWeights.jerkset69}kg - @{calculatedWeights.jerkset72}kg - @{calculatedWeights.jerkset75}kg
+                  Sets: @{calculatedWeights.jerkset70}kg - @{calculatedWeights.jerkset73}kg - @{calculatedWeights.jerkset76}kg - @{calculatedWeights.jerkset79}kg
                 </p>
               </>
             )}
@@ -108,7 +107,7 @@ const Viernes = () => {
               type="number"
               id="oneRmCleanAndJerk"
               value={oneRm}
-              onChange={(e) => handle1RMChange(e, [64, 68, 72, 76, 80], 'cleanAndJerk')}
+              onChange={(e) => handle1RMChange(e, [68, 72, 76, 80, 84], 'cleanAndJerk')}
               placeholder="Ingresa tu 1RM en kg"
             />
             {oneRm && (
@@ -120,7 +119,7 @@ const Viernes = () => {
                 <p>1 Split Jerk</p>
                 <p>Rest 60-90" b/t Sets</p>
                 <p>
-                  Sets: @{calculatedWeights.cleanAndJerkset64}kg - @{calculatedWeights.cleanAndJerkset68}kg - @{calculatedWeights.cleanAndJerkset72}kg - @{calculatedWeights.cleanAndJerkset76}kg - @{calculatedWeights.cleanAndJerkset80}kg
+                  Sets: @{calculatedWeights.cleanAndJerkset68}kg - @{calculatedWeights.cleanAndJerkset72}kg - @{calculatedWeights.cleanAndJerkset76}kg - @{calculatedWeights.cleanAndJerkset80}kg - @{calculatedWeights.cleanAndJerkset84}kg
                 </p>
               </>
             )}
@@ -164,15 +163,14 @@ const Viernes = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p>4 Sets</p>
-            <p>AMRAP 2 Min</p>
-            <p>24 GHD Sit Ups</p>
-            <p>2 Handstand Walk Segments</p>
-            <p>Max Squat Cleans</p>
-            <p>Rest 2 Min b/t Rounds</p>
-            <p>Handstand Walk - 7.5 m Unbroken Segments</p>
-            <p>Barbell - 61/43 kg</p>
-            <p>No GHD: 1) <a href="https://youtu.be/eWDk5jxAwCE">Link 1</a>; 2) <a href="https://youtu.be/O3huiwVg4UE">Link 2</a></p>
+            <p>Every 6 Min x 18 Min (3 Sets)</p>
+            <p>For Time</p>
+            <p>21 Wall Balls</p>
+            <p>15 Chest to Bar Pull Ups</p>
+            <p>15 Thrusters</p>
+            <p>9 Bar Muscle Ups</p>
+            <p>Medball - 9/6 kg</p>
+            <p>Barbell - 42,5/30 kg</p>
           </div>
         )}
       </div>
@@ -185,11 +183,10 @@ const Viernes = () => {
         </div>
         {isAccessoryOpen && (
           <div className="section-content">
-            <p>3 x 6/6 Front Rack Box Step Ups</p>
-            <p>4 x 6 Hip Thrusts @Heavy Weight</p>
-            <p>3 x 6/6 Goblet Cossack Squats</p>
-            <p>4 x 8 Reverse Hypers (Hold 1" Each Rep) w/Medball</p>
-            <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
+            <p>3 x 8/8 Front Rack Box Step Ups</p>
+            <p>4 x 8 Hip Thrusts @Heavy Weight</p>
+            <p>3 x 8/8 Goblet Cossack Squats</p>
+            <p>4 x 10 Reverse Hypers (Hold 2" Each Rep) w/Medball</p>
           </div>
         )}
       </div>
@@ -203,13 +200,9 @@ const Viernes = () => {
         {isProRunnerOpen && (
           <div className="section-content">
             <p>Warm-Up: 5 Min @Very Easy to Moderate Pace (Aumentar ritmo cada minuto)</p>
-            <p>Workout: 8 Min @06:16/km</p>
-            <p>2 Min @Recovery Pace</p>
-            <p>4 Min @05:38/km</p>
-            <p>2 Min @Recovery Pace</p>
-            <p>4 Min @05:16/km</p>
-            <p>2 Min @Recovery Pace</p>
-            <p>Cooldown: 3 Min @Easy Pace</p>
+            <p>Workout: 8 Min @06:38/km</p>
+            <p>8 Min @05:38/km</p>
+            <p>8 Min @06:38/km</p>
           </div>
         )}
       </div>

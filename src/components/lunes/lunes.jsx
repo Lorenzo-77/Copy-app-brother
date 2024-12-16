@@ -8,18 +8,16 @@ function Lunes() {
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isHandstandWalkOpen, setIsHandstandWalkOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
-  const [isMidlineOpen, setIsMidlineOpen] = useState(false);
 
   const [oneRM, setOneRM] = useState('');
   const [calculatedWeights, setCalculatedWeights] = useState({
-    set57: '',
-    set61: '',
-    set65: '',
+    set60: '',
+    set64: '',
     set68: '',
-    set72: '',
-    set76: '',
-    set80: '',
-    set84: ''
+    set70: '',
+    set74: '',
+    set78: '',
+    set82: ''
   });
 
   const toggleSection = (setState) => setState((prevState) => !prevState);
@@ -31,25 +29,23 @@ function Lunes() {
     if (value) {
       const rm = parseFloat(value);
       setCalculatedWeights({
-        set57: (rm * 0.57).toFixed(2),
-        set61: (rm * 0.61).toFixed(2),
-        set65: (rm * 0.65).toFixed(2),
+        set60: (rm * 0.60).toFixed(2),
+        set64: (rm * 0.64).toFixed(2),
         set68: (rm * 0.68).toFixed(2),
-        set72: (rm * 0.72).toFixed(2),
-        set76: (rm * 0.76).toFixed(2),
-        set80: (rm * 0.80).toFixed(2),
-        set84: (rm * 0.84).toFixed(2)
+        set70: (rm * 0.70).toFixed(2),
+        set74: (rm * 0.74).toFixed(2),
+        set78: (rm * 0.78).toFixed(2),
+        set82: (rm * 0.82).toFixed(2)
       });
     } else {
       setCalculatedWeights({
-        set57: '',
-        set61: '',
-        set65: '',
+        set60: '',
+        set64: '',
         set68: '',
-        set72: '',
-        set76: '',
-        set80: '',
-        set84: ''
+        set70: '',
+        set74: '',
+        set78: '',
+        set82: ''
       });
     }
   };
@@ -97,15 +93,15 @@ function Lunes() {
           <div className="section-content">
             <p>3 Sets</p>
             <ul>
-              <li>1 Snatch Lift Off</li>
-              <li>1 Power Snatch</li>
-              <li>1 Low Hang Squat Snatch</li>
-              <li>1 Pausing Squat Snatch (2" Pause At Knee Level)</li>
-              <li>1 Low Hang Squat Snatch</li>
+              <li>1 Snatch Segmented Deadlift</li>
+              <li>1 High Hang Squat Snatch</li>
+              <li>1 Hang Squat Snatch</li>
+              <li>(Drop & Reset)</li>
+              <li>1 Slow-Pull Squat Snatch</li>
             </ul>
             <p>
-              Sets: {calculatedWeights.set57}kg - {calculatedWeights.set61}kg -{' '}
-              {calculatedWeights.set65}kg
+              Sets: {calculatedWeights.set60}kg - {calculatedWeights.set64}kg -{' '}
+              {calculatedWeights.set68}kg
             </p>
             <div className="input-block">
               <label>Ingrese su 1RM en kg:</label>
@@ -134,46 +130,74 @@ function Lunes() {
           <div className="section-content">
             <p>5 Sets</p>
             <ul>
-              <li>1 Snatch Segmented Deadlift</li>
-              <li>2 Low Hang Squat Snatch</li>
+              <li>1 Snatch Lift Off</li>
+              <li>1 Slow-Pull Squat Snatch</li>
+              <li>1 High Hang Squat Snatch</li>
+              <li>(Drop & Reset)</li>
+              <li>1 Squat Snatch</li>
             </ul>
             <p>
-              Sets: {calculatedWeights.set68}kg - {calculatedWeights.set72}kg -{' '}
-              {calculatedWeights.set76}kg - {calculatedWeights.set80}kg -{' '}
-              {calculatedWeights.set84}kg
+              Sets: {calculatedWeights.set70}kg - {calculatedWeights.set74}kg -{' '}
+              {calculatedWeights.set78}kg - {calculatedWeights.set82}kg
             </p>
           </div>
         )}
       </div>
 
-      {/* CONDITIONING */}
-      <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsConditioningOpen)}
-          aria-expanded={isConditioningOpen}
-        >
-          <h3>CONDITIONING</h3>
-          <span>{isConditioningOpen ? '▲' : '▼'}</span>
-        </div>
-        {isConditioningOpen && (
-          <div className="section-content">
-            <p>With a Running Clock</p>
-            <p>On the 00:00 For Time:</p>
-            <ul>
-              <li>30 Power Snatches</li>
-              <li>30 Chest to Bar Pull Ups</li>
-            </ul>
-            <p>Time Cap: 8 Min</p>
-            <p>On the 10:00 For Time:</p>
-            <ul>
-              <li>30 Overhead Squats</li>
-              <li>15 Wall Walks</li>
-            </ul>
-            <p>Barbell - 61/43 kg</p>
-          </div>
-        )}
-      </div>
+    {/* CONDITIONING */}
+<div className="section-block">
+  <div
+    className="section-header"
+    onClick={() => toggleSection(setIsConditioningOpen)}
+    aria-expanded={isConditioningOpen}
+  >
+    <h3>CONDITIONING</h3>
+    <span>{isConditioningOpen ? '▲' : '▼'}</span>
+  </div>
+  {isConditioningOpen && (
+    <div className="section-content">
+      <p>AMRAP 3 Min</p>
+      <ul>
+        <li>21/15 Cal Row</li>
+        <li>21 Overhead Squats (35/25 kg)</li>
+        <li>Max Burpee Box Jumps</li>
+      </ul>
+      <p>Rest 3 Min</p>
+
+      <p>AMRAP 3 Min</p>
+      <ul>
+        <li>21/15 Cal Row</li>
+        <li>18 Overhead Squats (42,5/30 kg)</li>
+        <li>Max Burpee Box Jumps</li>
+      </ul>
+      <p>Rest 3 Min</p>
+
+      <p>AMRAP 3 Min</p>
+      <ul>
+        <li>21/15 Cal Row</li>
+        <li>15 Overhead Squats (50/35 kg)</li>
+        <li>Max Burpee Box Jumps</li>
+      </ul>
+      <p>Rest 3 Min</p>
+
+      <p>AMRAP 3 Min</p>
+      <ul>
+        <li>21/15 Cal Row</li>
+        <li>12 Overhead Squats (60/42,5 kg)</li>
+        <li>Max Burpee Box Jumps</li>
+      </ul>
+
+      <p>Box - 60/50 cm</p>
+      <p>
+        <strong>REEMPLAZOS/REPLACEMENTS</strong>
+      </p>
+      <ul>
+        <li>No Row: 25 American Kettlebell Swings (24/16 kg)</li>
+      </ul>
+    </div>
+  )}
+</div>
+
 
       {/* HANDSTAND WALK CONDITIONING */}
       <div className="section-block">
@@ -187,22 +211,15 @@ function Lunes() {
         </div>
         {isHandstandWalkOpen && (
           <div className="section-content">
-            <p>3 Rounds For Quality</p>
+            <p>OTM 12 Min</p>
             <ul>
-              <li>90 Double Unders</li>
-              <li>3 Handstand Walk Segments</li>
+              <li>Min 1: 2-3 Sandbag Bearhug Carry Segments</li>
+              <li>Min 2: 2-3 Handstand Walk Segments</li>
             </ul>
-            <p>REST 3 Min</p>
-            <p>3 Rounds For Quality</p>
-            <ul>
-              <li>60 Double Unders</li>
-              <li>3 Handstand Walk Pirouettes</li>
-            </ul>
-            <p>
-              Pirouette - 1 Rep = 1 Turnaround (1x1m) + 3 m Handstand Walk (4 m
-              Total)
-            </p>
-            <p>Handstand Walk - 7.5 m Unbroken Segments</p>
+            <p>Sandbag - 70/45 kg</p>
+            <p>            REEMPLAZOS/REPLACEMENTS
+            • No Sandbag: 2-3 Double Kettlebell Front Rack Carry Segments (2 x 24/16 kg)</p>
+
           </div>
         )}
       </div>
@@ -220,12 +237,11 @@ function Lunes() {
         {isAccessoryOpen && (
           <div className="section-content">
             <ul>
-              <li>3 x 10 Double Kettlebell Front Squats</li>
-              <li>3 x 30 Banded Good Mornings</li>
-              <li>3 x 8/8 Double Dumbbell Box Step Ups (Farmers Hold)</li>
+              <li>3 x 12 Front Squats</li>
+              <li>4 x 6 Sumo Stance Good Mornings</li>
+              <li>3 x 8/8 Back Rack Reverse Lunges</li>
               <li>4 x 8-10 Banded GHR</li>
             </ul>
-            <p>30" REST BETWEEN EXERCISES</p>
           </div>
         )}
       </div>
