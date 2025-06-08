@@ -49,14 +49,23 @@ h1, h2, h3, h4, h5 {
   padding: 0 16px;
 }
 
+/* Corrige el fondo fijo solo en desktop */
+@media (min-width: 769px) {
+  body {
+    background-attachment: fixed;
+  }
+}
+
+/* Corrige el fondo en mobile */
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
-    background-position: center top;
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 
   body::before {
-    background-color: rgba(0, 0, 0, 0.6); /* Podés oscurecer un poquito más en mobile */
+    position: absolute; /* en vez de fixed */
   }
 }
