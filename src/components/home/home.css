@@ -1,69 +1,86 @@
-/* Contenedor principal más compacto */
+/* Contenedor principal */
 .container {
-  padding: 10px;
-  background-color: #f0f8ff; /* Azul claro */
-  color: #000000; /* Texto negro para mayor contraste */
+  padding: 20px;
+  background-color: transparent;
 }
 
-/* Contenedor de los botones de los días */
+/* Logo con fondo y animación */
+.logo-wrapper {
+  background-color: #1C1C1E;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 30px auto 10px;
+  max-width: 240px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  animation: fadeIn 1s ease-out;
+}
+
+/* Contenedor de los botones */
 .days-container {
   display: flex;
-  flex-wrap: wrap; /* Permitir que los botones se ajusten a nuevas líneas */
-  gap: 5px; /* Espaciado entre los botones */
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
-  margin-top: 10px; /* Menos espacio superior */
+  margin-top: 30px;
 }
 
-/* Botones para los días de la semana */
+/* Botones de días */
 .day-button {
-  flex: 1 1 30%; /* Los botones ocuparán 30% del ancho, ajustándose a varias filas si es necesario */
-  padding: 8px 16px; /* Tamaño compacto de los botones */
-  background-color: #56005e; /* Azul oscuro */
-  color: white; /* Texto blanco para contraste */
+  flex: 1 1 30%;
+  padding: 16px 24px;
+  background: linear-gradient(145deg, #0B1F3A, #13355F);
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-size: 1rem; /* Tamaño de texto ajustado */
+  transition: all 0.2s ease;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
 .day-button:hover {
-  background-color: #1c001f; /* Azul un poco más claro para el hover */
+  background-color: #1D4ED8;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(29, 78, 216, 0.3);
 }
 
-/* Contenedor de la rutina */
+/* Contenido de la rutina */
 .routine-container {
-  margin-top: 15px; /* Menos espacio entre el selector de días y la rutina */
-  text-align: left; /* Alineación del texto a la izquierda */
-  background-color: #e6f2ff; /* Azul muy claro para el fondo */
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin-top: 30px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(138, 0, 212, 0.3);
+  color: #bbbbbb;
 }
-
 
 p {
-  font-size: 1rem; /* Tamaño de fuente legible pero compacto */
-  color: #333333; /* Gris oscuro */
+  color: #dddddd;
+  font-size: 1rem;
 }
 
-/* Ajustes para pantallas móviles */
+/* Animación entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .container {
-    padding: 5px;
-  }
-
-  .days-container {
-    gap: 5px;
-  }
-
   .day-button {
-    flex: 1 1 45%; /* Los botones ocuparán 45% del ancho en pantallas más pequeñas */
-    padding: 6px 12px; /* Botones más pequeños en móvil */
-    font-size: 0.9rem;
+    flex: 1 1 45%;
+    padding: 12px 18px;
+    font-size: 1rem;
   }
 
   .routine-container {
-    font-size: 0.9rem; /* Tamaño de texto reducido para móvil */
+    font-size: 0.95rem;
   }
 }

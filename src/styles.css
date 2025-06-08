@@ -1,116 +1,144 @@
-/* Estilo general para el contenedor principal */
+/* Contenedor general del día */
 .container {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.507); /* Fondo negro */
-    color: white; /* Texto blanco */
-  }
-  
-  /* Estilo general para cada bloque de sección */
-  .section-block {
-    margin-bottom: 20px;
-    background-color: white; /* Fondo blanco */
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    color: black; /* Texto negro para que contraste con el fondo blanco */
-  }
-  
-  /* Encabezado de cada sección */
-  .section-header {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #d6d6d6; /* Azul oscuro */
-    color: white;
-    cursor: pointer;
-  }
-  
-  .section-header h3 {
-    margin: 0;
-  }
-  
-  .section-header span {
-    font-size: 1.5rem;
-  }
-  
-  /* Contenido dentro de cada sección */
-  .section-content {
-    padding: 15px;
-    background-color: #fff;
-  }
-  
-  p, h2 {
-    color: black; /* Texto negro para garantizar visibilidad en el fondo blanco */
-  }
-  
-  /* Estilo para listas generales */
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  li {
-    color: black;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo para la lista de sets específicos */
-  .set-list {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .set-list li {
-    margin-right: 10px;
-  }
-  
-  /* Estilo para los campos de entrada */
-  input[type="number"] {
-    background-color: white; /* Fondo blanco */
-    color: black; /* Texto negro */
-    border: 2px solid #007bff; /* Borde azul */
-    border-radius: 4px;
+  padding: 20px;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+/* Cada bloque seccionado (acordeón) */
+.section-block {
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  overflow: hidden;
+  color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.section-block:hover {
+  transform: translateY(-2px);
+}
+
+/* Header (título de la sección) */
+.section-header {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, #0B1F3A, #13355F);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.2s ease;
+}
+
+.section-header:hover {
+  background-color: #1D4ED8;
+}
+
+.section-header h3 {
+  margin: 0;
+}
+
+.section-header span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Contenido interno desplegable */
+.section-content {
+  padding: 15px 20px;
+  background-color: #252525;
+  color: #dddddd;
+}
+
+.section-content p, h2 {
+  color: #dddddd;
+  margin-bottom: 12px;
+}
+
+/* Lista general */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+li {
+  color: #eeeeee;
+  margin-bottom: 10px;
+}
+
+/* Lista de sets */
+.set-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.set-list li {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+/* Campo input numérico */
+input[type="number"] {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 2px solid #1D4ED8;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input[type="number"] {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border: 2px solid #1D4ED8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input[type="number"]::placeholder {
+  color: #aaaaaa;
+}
+
+input[type="number"]:focus {
+  border-color: #3B82F6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
     padding: 10px;
+  }
+
+  .section-header {
     font-size: 1rem;
-    width: 100%; /* Ancho completo */
+    padding: 12px 16px;
   }
-  .video-container {
-    position: relative; 
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
-    height: 0; /* Altura cero, se usa padding para crear el espacio */
-    overflow: hidden; /* Ocultar cualquier contenido que desborde */
-    margin-bottom: 20px; /* Añadir espacio inferior si es necesario */
+
+  .section-content {
+    font-size: 0.95rem;
   }
-  
-  .video-container iframe {
-    position: absolute; /* Posicionamiento absoluto */
-    top: 0; 
-    left: 0;
-    width: 100%; /* Ancho al 100% del contenedor */
-    height: 100%; /* Altura al 100% del contenedor */
+
+  .set-list {
+    flex-direction: column;
   }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding: 5px;
-    }
-  
-    .days-container {
-      gap: 5px;
-    }
-  
-    .day-button {
-      flex: 1 1 45%; /* Los botones ocuparán 45% del ancho en pantallas más pequeñas */
-      padding: 6px 12px; /* Botones más pequeños en móvil */
-      font-size: 0.9rem;
-    }
-  
-    .routine-container {
-      font-size: 0.9rem; /* Tamaño de texto reducido para móvil */
-    }
-  
-    /* El contenedor del video no debería tener modificaciones específicas aquí */
+
+  input[type="number"] {
+    font-size: 0.95rem;
   }
-  
+}

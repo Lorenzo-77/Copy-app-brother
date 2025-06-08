@@ -6,6 +6,8 @@ import Miercoles from "../miercoles/miercoles";
 import Jueves from "../jueves/jueves";
 import Viernes from "../viernes/viernes";
 import Sabado from '../sabado/sabado';
+import logo from '../../img/logo.png';
+
 
 function Home() {
   const [selectedDay, setSelectedDay] = useState(null);
@@ -30,16 +32,11 @@ function Home() {
       case 'Sábado':
         return <Sabado />;
       default:
-        return <div class="video-container">
-      <iframe
-          src="https://www.youtube.com/embed/8Cu3xqnCNek?si=pfp5eZW8uvHvoPMf"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
+        return <div className="logo-wrapper">
+  <img src={logo}  alt="Gerald.Dev Logo" className="logo" />
+</div>
+
+
       ;
     }
   };

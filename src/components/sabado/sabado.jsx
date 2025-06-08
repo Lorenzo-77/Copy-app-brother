@@ -3,196 +3,125 @@ import '../../styles.css';
 
 const Sabado = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
-  const [isPushingDevelopmentOpen, setIsPushingDevelopmentOpen] = useState(false);
   const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
   const [isActivationOpen, setIsActivationOpen] = useState(false);
+  const [isGymnasticsOpen, setIsGymnasticsOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
 
   const [oneRmDeadlift, setOneRmDeadlift] = useState('');
 
-  const toggleSection = (setState) => setState(prevState => !prevState);
+  const toggleSection = (setState) => setState(prev => !prev);
 
-  // Función para manejar el cambio de 1RM Deadlift
-  const handle1RMDeadliftChange = (e) => {
+  const handle1RMChange = (e) => {
     const value = e.target.value;
-    if (value >= 0) {
-      setOneRmDeadlift(value);
-    }
+    if (value >= 0) setOneRmDeadlift(value);
   };
 
-  // Cálculo de pesos basados en porcentajes
-  const calculateWeight = (percentage, oneRm) => {
-    return oneRm ? Math.round((parseFloat(oneRm) * (percentage / 100))) : '-';
+  const calcWeight = (percent) => {
+    return oneRmDeadlift ? Math.round((parseFloat(oneRmDeadlift) * percent) / 100) + 'kg' : '-';
   };
 
   return (
     <div className="container">
       <h1>SÁBADO</h1>
 
-      {/* SESSION 1: WARM UP */}
+      {/* WARM UP */}
       <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsWarmUpOpen)}
-          aria-expanded={isWarmUpOpen}
-          aria-controls="warm-up-content"
-        >
-          <h3>SESSION 1: WARM UP</h3>
-          <span>{isWarmUpOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsWarmUpOpen)}>
+          <h3>WARM UP</h3><span>{isWarmUpOpen ? '▲' : '▼'}</span>
         </div>
         {isWarmUpOpen && (
-          <div className="section-content" id="warm-up-content">
+          <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>8 Sumo Inchworm + Push Ups</li>
-              <li>10 Alternating Kossacks</li>
+              <li>8 Inchworm + Push Ups</li>
+              <li>10 Alternating Cossacks</li>
               <li>10/10 Spiderman + Reach</li>
-              <li>8/8 One Arm Suitcase Deadlift</li>
-              <li>8/8 One Arm RKB Swings</li>
-              <li>10 Handstand Hold</li>
+              <li>6/6 One Arm Suitcase Deadlift</li>
+              <li>6/6 One Arm Shoulder Press</li>
+              <li>10" Wall Facing Handstand Hold</li>
             </ul>
-          </div>
-        )}
-      </div>
-
-      {/* PUSHING DEVELOPMENT */}
-      <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsPushingDevelopmentOpen)}
-          aria-expanded={isPushingDevelopmentOpen}
-          aria-controls="pushing-development-content"
-        >
-          <h3>PUSHING DEVELOPMENT</h3>
-          <span>{isPushingDevelopmentOpen ? '▲' : '▼'}</span>
-        </div>
-        {isPushingDevelopmentOpen && (
-          <div className="section-content" id="pushing-development-content">
-            <p>Find a Heavy 1 Decline Bench Press</p>
-            <p>Then</p>
-            <p>3 Sets</p>
-            <p>5 Decline Bench Press @70% of Heavy 1</p>
-            <p>Rest 60-90" b/t Sets</p>
-            <p>Then</p>
-            <p>3 x 12 Incline Dumbbell Bench Press</p>
-            <p>Rest 30" b/t Sets</p>
-            <p><strong>Nota:</strong> En el caso de no llegar, no modificar el tiempo de descanso, modificar el peso.</p>
-            <p>All sets @ Moderate Weight</p>
           </div>
         )}
       </div>
 
       {/* DEADLIFT */}
       <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsDeadliftOpen)}
-          aria-expanded={isDeadliftOpen}
-          aria-controls="deadlift-content"
-        >
-          <h3>DEADLIFT</h3>
-          <span>{isDeadliftOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
+          <h3>DEADLIFT</h3><span>{isDeadliftOpen ? '▲' : '▼'}</span>
         </div>
         {isDeadliftOpen && (
-          <div className="section-content" id="deadlift-content">
-            <p>Work Up To 77% x 3 Reps</p>
-            <p>Subimos progresivamente de a 3 repeticiones hasta el porcentaje dado.</p>
-            <p><strong>Nota:</strong> Todas las repeticiones son Singles, No Touch And Go</p>
-            <p>Then</p>
-            <p>4 x 3 Deadlift @ {calculateWeight(64, oneRmDeadlift)}kg (1 Min Rest)</p>
-            <label htmlFor="oneRmDeadlift">
-              Ingresar 1RM Deadlift (kg):
-              <input
-                type="number"
-                id="oneRmDeadlift"
-                value={oneRmDeadlift}
-                onChange={handle1RMDeadliftChange}
-                placeholder="Ingresa tu 1RM en kg"
-              />
-            </label>
+          <div className="section-content">
+            <label htmlFor="rmDeadlift">Ingresar 1RM Deadlift (kg):</label>
+            <input
+              type="number"
+              id="rmDeadlift"
+              value={oneRmDeadlift}
+              onChange={handle1RMChange}
+              placeholder="Ej: 130"
+            />
+            <p>Work Up To 88% x 2 Reps ({calcWeight(88)})</p>
+            <p>Then 4 x 2 Deadlift @73% ({calcWeight(73)}) - 1 Min Rest</p>
+            <p>*Todas las reps son singles. No touch and go.</p>
           </div>
         )}
       </div>
 
       {/* CONDITIONING */}
       <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsConditioningOpen)}
-          aria-expanded={isConditioningOpen}
-          aria-controls="conditioning-content"
-        >
-          <h3>CONDITIONING</h3>
-          <span>{isConditioningOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsConditioningOpen)}>
+          <h3>CONDITIONING</h3><span>{isConditioningOpen ? '▲' : '▼'}</span>
         </div>
         {isConditioningOpen && (
-          <div className="section-content" id="conditioning-content">
-            <p>3 Rounds For Time</p>
+          <div className="section-content">
+            <p><strong>Parte 1 - On the 00:00</strong></p>
             <ul>
-              <li>21 Toes to Bar</li>
-              <li>12 Double Kettlebell Hang Clean & Jerks</li>
-              <li>3 Handstand Walk Segments</li>
+              <li>45 Deadlift @102/70 kg</li>
+              <li>45 Deficit Kipping Handstand Push Ups</li>
             </ul>
-            <p>REST 5 Min</p>
-            <p>3 Rounds For Time</p>
+            <p><strong>Parte 2 - On the 10:00</strong></p>
             <ul>
-              <li>21/15 Cal Bike Erg</li>
-              <li>12 Double Kettlebell Box Step Ups</li>
-              <li>9 Bar Muscle Ups</li>
+              <li>45/30 Cal Assault Bike</li>
+              <li>45 m Double Dumbbell Walking Lunges (Farmers, Front Rack, Overhead)</li>
             </ul>
-            <p>Kettlebells - 2 x 24/16 kg</p>
-            <p>Box - 60/50 cm</p>
-            <p>Handstand Walk - 7,5 m Unbroken Segments</p>
-            <p><strong>NOTAS</strong></p>
-            <p><strong>SCORE OBJETIVO</strong>: 9-14 Min (Cada Parte)</p>
-            <p><strong>REEMPLAZOS:</strong></p>
-            <p>No Bike Erg: 21 Box jump Overs (60/50 cm; Step Down)</p>
+            <p><strong>Notas:</strong> Objetivo: 4-7 min por parte</p>
           </div>
         )}
       </div>
 
 
-
-      {/* ASSAULT BIKE CONDITIONING (OPCIONAL) */}
+      {/* GYMNASTICS ENDURANCE */}
       <div className="section-block">
-        <div className="section-header">
-          <h3>ASSAULT BIKE CONDITIONING (OPCIONAL)</h3>
+        <div className="section-header" onClick={() => toggleSection(setIsGymnasticsOpen)}>
+          <h3>GYMNASTICS ENDURANCE</h3><span>{isGymnasticsOpen ? '▲' : '▼'}</span>
         </div>
-        <div className="section-content">
-          <p>6 Rounds</p>
-          <ul>
-            <li>1 Min @ Very Hard Pace</li>
-            <li>2 Min @ Recovery Pace</li>
-          </ul>
-          <p>No Rest b/t Rounds</p>
-          <p><strong>NOTAS:</strong></p>
-          <p><strong>ESTIMULO & OBJETIVOS:</strong></p>
-          <p>Trabajo de intensidad moderadamente alta, buscando mantener los rpm/Watts todos los Rounds en una cantidad exigente.</p>
-          <p>El Recovery debe ser en movimiento y sin soltar las manos de la Bike.</p>
-        </div>
+        {isGymnasticsOpen && (
+          <div className="section-content">
+            <p>1) Legless Rope Climb Complex x 6 cada 30"</p>
+            <p>*3-4 Pulls + 1-2 Kip Touch</p>
+            <p>REST 2 Min</p>
+            <p>OTM 6 Min</p>
+            <ul>
+              <li>Min 1: 8 Strict Pull Ups</li>
+              <li>Min 2: 12 Perfect Push Ups</li>
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* ACCESSORY */}
       <div className="section-block">
-        <div
-          className="section-header"
-          onClick={() => toggleSection(setIsAccessoryOpen)}
-          aria-expanded={isAccessoryOpen}
-          aria-controls="accessory-content"
-        >
-          <h3>ACCESSORY</h3>
-          <span>{isAccessoryOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsAccessoryOpen)}>
+          <h3>ACCESSORY</h3><span>{isAccessoryOpen ? '▲' : '▼'}</span>
         </div>
         {isAccessoryOpen && (
-          <div className="section-content" id="accessory-content">
-            <p>4 Rounds:</p>
-            <ul>
-              <li>12/12 Landmine Press</li>
-              <li>8/8 Single Arm Dumbbell Row</li>
-              <li>12/12 Cossack Squats</li>
-            </ul>
-            <p>Rest 30” b/t Rounds</p>
+          <div className="section-content">
+            <p>4 x 12 Seated Dumbbell Strict Press</p>
+            <p>3 x 12/12 One Arm Upright Row</p>
+            <p>4 x 8 Dumbbell PullOvers</p>
+            <p>3 x 10 Shoulder Lateral Raises</p>
+            <p>30" Rest entre rondas</p>
           </div>
         )}
       </div>
