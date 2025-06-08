@@ -1,6 +1,6 @@
 /* Fondo general con imagen fija */
 body {
-  background-image: url('/src/img/pibes.jpg');
+  /*background-image: url('/src/img/pibes.jpg');*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
