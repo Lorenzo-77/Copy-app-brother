@@ -48,3 +48,15 @@ h1, h2, h3, h4, h5 {
   margin: 0 auto;
   padding: 0 16px;
 }
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: cover;
+  }
+
+  body::before {
+    background-color: rgba(0, 0, 0, 0.6); /* Podés oscurecer un poquito más en mobile */
+  }
+}
