@@ -5,8 +5,7 @@ const Sabado = () => {
   const [isWarmUpOpen, setIsWarmUpOpen] = useState(false);
   const [isDeadliftOpen, setIsDeadliftOpen] = useState(false);
   const [isConditioningOpen, setIsConditioningOpen] = useState(false);
-  const [isActivationOpen, setIsActivationOpen] = useState(false);
-  const [isGymnasticsOpen, setIsGymnasticsOpen] = useState(false);
+  const [isSkillOpen, setIsSkillOpen] = useState(false);
   const [isAccessoryOpen, setIsAccessoryOpen] = useState(false);
 
   const [oneRmDeadlift, setOneRmDeadlift] = useState('');
@@ -45,28 +44,28 @@ const Sabado = () => {
           </div>
         )}
       </div>
+{/* DEADLIFT */}
+<div className="section-block">
+  <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
+    <h3>DEADLIFT</h3><span>{isDeadliftOpen ? '▲' : '▼'}</span>
+  </div>
+  {isDeadliftOpen && (
+    <div className="section-content">
+      <p>3 Sets</p>
+      <p>5 Deadlift @ {calcWeight(60)}</p>
+      <p>Rest 60-90" b/t</p>
+      <label htmlFor="rmDeadlift">Ingresar 1RM Deadlift (kg):</label>
+      <input
+        type="number"
+        id="rmDeadlift"
+        value={oneRmDeadlift}
+        onChange={handle1RMChange}
+        placeholder="Ej: 130"
+      />
+    </div>
+  )}
+</div>
 
-      {/* DEADLIFT */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
-          <h3>DEADLIFT</h3><span>{isDeadliftOpen ? '▲' : '▼'}</span>
-        </div>
-        {isDeadliftOpen && (
-          <div className="section-content">
-            <label htmlFor="rmDeadlift">Ingresar 1RM Deadlift (kg):</label>
-            <input
-              type="number"
-              id="rmDeadlift"
-              value={oneRmDeadlift}
-              onChange={handle1RMChange}
-              placeholder="Ej: 130"
-            />
-            <p>Work Up To 88% x 2 Reps ({calcWeight(88)})</p>
-            <p>Then 4 x 2 Deadlift @73% ({calcWeight(73)}) - 1 Min Rest</p>
-            <p>*Todas las reps son singles. No touch and go.</p>
-          </div>
-        )}
-      </div>
 
       {/* CONDITIONING */}
       <div className="section-block">
@@ -75,36 +74,50 @@ const Sabado = () => {
         </div>
         {isConditioningOpen && (
           <div className="section-content">
-            <p><strong>Parte 1 - On the 00:00</strong></p>
+            <p><strong>Parte 1</strong></p>
+            <p>4 Rounds For Time</p>
             <ul>
-              <li>45 Deadlift @102/70 kg</li>
-              <li>45 Deficit Kipping Handstand Push Ups</li>
+              <li>21/15 Cal Assault Bike</li>
+              <li>9 Power Clean & Jerks</li>
             </ul>
-            <p><strong>Parte 2 - On the 10:00</strong></p>
+            <p><strong>REST 5 Min</strong></p>
+            <p><strong>Parte 2</strong></p>
+            <p>4 Rounds For Time</p>
             <ul>
-              <li>45/30 Cal Assault Bike</li>
-              <li>45 m Double Dumbbell Walking Lunges (Farmers, Front Rack, Overhead)</li>
+              <li>9 Shuttle Runs</li>
+              <li>9 Double Dumbbell Thrusters</li>
             </ul>
-            <p><strong>Notas:</strong> Objetivo: 4-7 min por parte</p>
+            <p>Barbell - 61/43 kg</p>
+            <p>Dumbbells - 2 x 22,5/15 kg</p>
+            <h4>ACTIVACIÓN</h4>
+            <ul>
+              <li>7/5 Cal Assault Bike</li>
+              <li>3 Power Clean & Jerks</li>
+              <li>3 Shuttle Runs</li>
+              <li>4 Double Dumbbell Thrusters</li>
+            </ul>
           </div>
         )}
       </div>
 
-
-      {/* GYMNASTICS ENDURANCE */}
+      {/* SKILL PRACTICE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection(setIsGymnasticsOpen)}>
-          <h3>GYMNASTICS ENDURANCE</h3><span>{isGymnasticsOpen ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection(setIsSkillOpen)}>
+          <h3>SKILL PRACTICE</h3><span>{isSkillOpen ? '▲' : '▼'}</span>
         </div>
-        {isGymnasticsOpen && (
+        {isSkillOpen && (
           <div className="section-content">
-            <p>1) Legless Rope Climb Complex x 6 cada 30"</p>
-            <p>*3-4 Pulls + 1-2 Kip Touch</p>
-            <p>REST 2 Min</p>
-            <p>OTM 6 Min</p>
+            <p>OTM 8 Min</p>
             <ul>
-              <li>Min 1: 8 Strict Pull Ups</li>
-              <li>Min 2: 12 Perfect Push Ups</li>
+              <li>Min 1: 15 GHD Sit Ups</li>
+              <li>Min 2: 1-2 Handstand Walk Pirouette</li>
+            </ul>
+            <p>Pirouette - 1 Rep en 1x1 m + 2 m Handstand Walk</p>
+            <p><strong>NOTAS:</strong> Trabajo por calidad, foco en práctica del Handstand Walk Pirouette tras estímulo de zona media.</p>
+            <p><strong>REEMPLAZOS GHD:</strong></p>
+            <ul>
+              <li><a href="https://youtu.be/eWDk5jxAwCE" target="_blank" rel="noreferrer">Opción 1</a></li>
+              <li><a href="https://youtu.be/O3huiwVg4UE" target="_blank" rel="noreferrer">Opción 2</a></li>
             </ul>
           </div>
         )}
@@ -117,11 +130,12 @@ const Sabado = () => {
         </div>
         {isAccessoryOpen && (
           <div className="section-content">
-            <p>4 x 12 Seated Dumbbell Strict Press</p>
-            <p>3 x 12/12 One Arm Upright Row</p>
-            <p>4 x 8 Dumbbell PullOvers</p>
-            <p>3 x 10 Shoulder Lateral Raises</p>
-            <p>30" Rest entre rondas</p>
+            <p>3 Sets</p>
+            <ul>
+              <li>30 m Right Arm Farmers, Left Arm Overhead Carry</li>
+              <li>30 m Left Arm Farmers, Right Arm Overhead Carry</li>
+              <li>30 m Double Kettlebell Front Rack Carry</li>
+            </ul>
           </div>
         )}
       </div>

@@ -28,66 +28,35 @@ function Lunes() {
           <div className="section-content">
             <p>2 Rounds For Quality</p>
             <ul>
-              <li>10/10 Copenhagen Raise</li>
-              <li>10/10 Single Leg Hip Bridge</li>
-              <li>6/6 Lateral Box Step Ups</li>
-              <li>6/6 One Arm Muscle Snatch</li>
-              <li>6/6 One Arm Thrusters</li>
-              <li>5 Cuban Press Complex (w/Empty Barbell)</li>
+              <li>10/10 Eccentric Ankle Dorsiflexion</li>
+              <li>15"/15" Copenhagen Plank</li>
+              <li>10/10 Single Leg Good Morning</li>
+              <li>10 Russian KB Swings</li>
+              <li>10 Yoga Push Ups</li>
+              <li>10" Wall Facing Handstand Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* SNATCH TECHNIQUE */}
+      {/* BOX SQUAT */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection('snatchTechnique')}>
-          <h3>SNATCH TECHNIQUE</h3>
-          <span>{sections.snatchTechnique ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection('boxsquat')}>
+          <h3>BOX SQUAT</h3>
+          <span>{sections.boxsquat ? '▲' : '▼'}</span>
         </div>
-        {sections.snatchTechnique && (
+        {sections.boxsquat && (
           <div className="section-content">
             <p>3 Sets</p>
             <ul>
-              <li>1 Snatch Lift Off</li>
-              <li>1 Pause Power Snatch (2" Pause At Knee Level)</li>
-              <li>1 High Hang Squat Snatch</li>
-              <li>1 Squat Snatch</li>
-              <li>1 Snatch Balance</li>
+              <li>6 Box Back Squats</li>
             </ul>
+            <p>Rest 1-2 Min entre sets</p>
             <p>Sets: {getRM(0.55)} - {getRM(0.60)} - {getRM(0.65)}</p>
-            <label htmlFor="snatchRM">1RM Snatch (Full):</label>
+            <label htmlFor="backSquatRM">1RM Back Squat:</label>
             <input
               type="number"
-              id="snatchRM"
-              value={oneRM}
-              onChange={(e) => setOneRM(e.target.value)}
-              placeholder="Ej: 100"
-            />
-          </div>
-        )}
-      </div>
-
-      {/* SNATCH COMPLEX */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection('snatchComplex')}>
-          <h3>SNATCH COMPLEX</h3>
-          <span>{sections.snatchComplex ? '▲' : '▼'}</span>
-        </div>
-        {sections.snatchComplex && (
-          <div className="section-content">
-            <p>4 Sets</p>
-            <ul>
-              <li>1 Snatch Lift Off (2" Pause At Knee Level)</li>
-              <li>1 Squat Snatch</li>
-              <li>1 Low Hang Squat Snatch</li>
-              <li>1 Hang Squat Snatch</li>
-            </ul>
-            <p>Rest 60-90" b/t Sets</p>
-            <p>Sets: {getRM(0.69)} - {getRM(0.72)} - {getRM(0.75)} - {getRM(0.78)}</p>
-             <input
-              type="number"
-              id="snatchRM"
+              id="backSquatRM"
               value={oneRM}
               onChange={(e) => setOneRM(e.target.value)}
               placeholder="Ej: 100"
@@ -104,27 +73,26 @@ function Lunes() {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>4 Sets - AMRAP 3 Min</p>
+            <p>3 Rounds For Time</p>
             <ul>
-              <li>30 Wall Balls</li>
-              <li>80 Double Unders</li>
-              <li>16 Toes to Bar</li>
-              <li>8 Bar Muscle Ups</li>
+              <li>7 Wall Walks</li>
+              <li>14 Front Squats</li>
+              <li>21 American Kettlebell Swings</li>
             </ul>
-            <p>Rest 3 Min b/t Sets</p>
-            <p><strong>Medball:</strong> 9/6 kg</p>
-            <p><strong>Score Objetivo:</strong> 1 Round (Cada Set)</p>
-            <p><strong>Estimulo & Objetivos:</strong></p>
+            <p><strong>Barbell:</strong> 60/42.5 kg</p>
+            <p><strong>Kettlebell:</strong> 24/16 kg</p>
+            <p><strong>SCORE OBJETIVO:</strong> 8-12 Min</p>
+            <p><strong>ESTIMULO & OBJETIVOS:</strong></p>
             <ul>
-              <li>Buscar velocidad en transiciones.</li>
-              <li>Mantener los movimientos lo más unbroken posible.</li>
+              <li>Acelerar el ritmo de los Wall Walks.</li>
+              <li>Minimizar el tiempo de transición entre movimientos.</li>
             </ul>
-            <p><strong>Activación:</strong></p>
+            <p><strong>ACTIVACIÓN:</strong></p>
             <ul>
-              <li>8 Wall Balls</li>
-              <li>30 Double Unders</li>
-              <li>6 Toes to Bar</li>
-              <li>4 Bar Muscle Ups</li>
+              <li>2 Wall Walks</li>
+              <li>4 Front Squats</li>
+              <li>6 American Kettlebell Swings</li>
+              <li>2 Wall Walks</li>
             </ul>
           </div>
         )}
@@ -139,13 +107,32 @@ function Lunes() {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>3 x 10/10 Double KB Front Rack Drop Lunges</li>
-              <li>3 x 12 Sumo Stance Good Morning</li>
-              <li>4 x 10 DB Suitcase Standing Calf Raises (lento y controlado)</li>
-              <li>3 x 8-10 Glute Ham Raises</li>
+              <li>3 x 12 Flat Bench Dumbbell Flys</li>
+              <li>3 x 30 Banded Pull Aparts</li>
+              <li>3 x 8/8 Goblet Cossack Squats</li>
+              <li>3 x 15/15 Single Leg Banded Hamstring Curls</li>
             </ul>
-            <p><strong>Descanso:</strong> 30" entre vueltas; libre entre movimientos.</p>
-            <p><strong>Notas:</strong> Peso moderado/pesado. Si no se llega, mantener descanso y ajustar peso.</p>
+            <p><strong>30" Rest b/t Rounds; Rest As Needed b/t Movements</strong></p>
+            <p><strong>Nota:</strong> Peso Moderado/pesado; mantener descansos fijos y ajustar peso si es necesario.</p>
+          </div>
+        )}
+      </div>
+
+      {/* MIDLINE */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection('midline')}>
+          <h3>MIDLINE</h3>
+          <span>{sections.midline ? '▲' : '▼'}</span>
+        </div>
+        {sections.midline && (
+          <div className="section-content">
+            <ul>
+              <li>4 x 20" L-Hang</li>
+              <li>4 x 30" Sandbag Bearhug Hold</li>
+              <li>4 x 10/10 Side Bends @Heavy Dumbbell</li>
+            </ul>
+            <p><strong>30" Rest b/t Rounds; Rest As Needed b/t Movements</strong></p>
+            <p><strong>Nota:</strong> Peso Moderado/pesado; mantener descansos fijos y ajustar peso si es necesario.</p>
           </div>
         )}
       </div>
