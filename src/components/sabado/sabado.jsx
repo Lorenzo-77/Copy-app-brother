@@ -44,28 +44,28 @@ const Sabado = () => {
           </div>
         )}
       </div>
-{/* DEADLIFT */}
-<div className="section-block">
-  <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
-    <h3>DEADLIFT</h3><span>{isDeadliftOpen ? '▲' : '▼'}</span>
-  </div>
-  {isDeadliftOpen && (
-    <div className="section-content">
-      <p>3 Sets</p>
-      <p>5 Deadlift @ {calcWeight(60)}</p>
-      <p>Rest 60-90" b/t</p>
-      <label htmlFor="rmDeadlift">Ingresar 1RM Deadlift (kg):</label>
-      <input
-        type="number"
-        id="rmDeadlift"
-        value={oneRmDeadlift}
-        onChange={handle1RMChange}
-        placeholder="Ej: 130"
-      />
-    </div>
-  )}
-</div>
 
+      {/* DEADLIFT */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection(setIsDeadliftOpen)}>
+          <h3>DEADLIFT</h3><span>{isDeadliftOpen ? '▲' : '▼'}</span>
+        </div>
+        {isDeadliftOpen && (
+          <div className="section-content">
+            <p>3 Sets</p>
+            <p>5 Deadlift @ {calcWeight(60)}</p>
+            <p>Rest 60-90" b/t</p>
+            <label htmlFor="rmDeadlift">Ingresar 1RM Deadlift (kg):</label>
+            <input
+              type="number"
+              id="rmDeadlift"
+              value={oneRmDeadlift}
+              onChange={handle1RMChange}
+              placeholder="Ej: 130"
+            />
+          </div>
+        )}
+      </div>
 
       {/* CONDITIONING */}
       <div className="section-block">

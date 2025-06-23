@@ -39,28 +39,53 @@ function Lunes() {
         )}
       </div>
 
-      {/* BOX SQUAT */}
+      {/* SNATCH TECHNIQUE */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection('boxsquat')}>
-          <h3>BOX SQUAT</h3>
-          <span>{sections.boxsquat ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection('snatchtech')}>
+          <h3>SNATCH TECHNIQUE</h3>
+          <span>{sections.snatchtech ? '▲' : '▼'}</span>
         </div>
-        {sections.boxsquat && (
+        {sections.snatchtech && (
           <div className="section-content">
             <p>3 Sets</p>
             <ul>
-              <li>6 Box Back Squats</li>
+              <li>1 Snatch Lift Off</li>
+              <li>1 Slow-Pull Power Snatch</li>
+              <li>1 Hang Squat Snatch</li>
+              <li>(Drop & Reset)</li>
+              <li>1 Squat Snatch</li>
+              <li>1 Snatch Balance</li>
             </ul>
-            <p>Rest 1-2 Min entre sets</p>
             <p>Sets: {getRM(0.55)} - {getRM(0.60)} - {getRM(0.65)}</p>
-            <label htmlFor="backSquatRM">1RM Back Squat:</label>
+            <label htmlFor="snatchRM">1RM Snatch (Full):</label>
             <input
               type="number"
-              id="backSquatRM"
+              id="snatchRM"
               value={oneRM}
               onChange={(e) => setOneRM(e.target.value)}
               placeholder="Ej: 100"
             />
+          </div>
+        )}
+      </div>
+
+      {/* SNATCH COMPLEX */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection('snatchcomplex')}>
+          <h3>SNATCH COMPLEX</h3>
+          <span>{sections.snatchcomplex ? '▲' : '▼'}</span>
+        </div>
+        {sections.snatchcomplex && (
+          <div className="section-content">
+            <p>4 Sets</p>
+            <ul>
+              <li>1 Snatch Lift Off</li>
+              <li>1 Squat Snatch</li>
+              <li>1 Low Hang Squat Snatch</li>
+              <li>1 Hang Squat Snatch</li>
+            </ul>
+            <p>Rest 60-90" entre sets</p>
+            <p>Sets: {getRM(0.71)} - {getRM(0.74)} - {getRM(0.77)} - {getRM(0.80)}</p>
           </div>
         )}
       </div>
@@ -73,26 +98,54 @@ function Lunes() {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>3 Rounds For Time</p>
+            <p>5 Rounds For Time</p>
             <ul>
-              <li>7 Wall Walks</li>
-              <li>14 Front Squats</li>
-              <li>21 American Kettlebell Swings</li>
+              <li>400 m Run</li>
+              <li>15 Toes to Bar</li>
+              <li>7 Snatches</li>
             </ul>
             <p><strong>Barbell:</strong> 60/42.5 kg</p>
-            <p><strong>Kettlebell:</strong> 24/16 kg</p>
-            <p><strong>SCORE OBJETIVO:</strong> 8-12 Min</p>
-            <p><strong>ESTIMULO & OBJETIVOS:</strong></p>
+            <p><strong>Score Objetivo:</strong> 18-24 Min</p>
+            <p><strong>Objetivos:</strong></p>
             <ul>
-              <li>Acelerar el ritmo de los Wall Walks.</li>
-              <li>Minimizar el tiempo de transición entre movimientos.</li>
+              <li>Singles rápidos en los Snatches</li>
+              <li>Regular la corrida para aumentar ritmo por ronda</li>
             </ul>
-            <p><strong>ACTIVACIÓN:</strong></p>
+            <p><strong>Activación:</strong></p>
             <ul>
-              <li>2 Wall Walks</li>
-              <li>4 Front Squats</li>
-              <li>6 American Kettlebell Swings</li>
-              <li>2 Wall Walks</li>
+              <li>200 m Run</li>
+              <li>6 Toes to Bar</li>
+              <li>3 Snatches</li>
+              <li>100 m Run</li>
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* STAMINA CONDITIONING */}
+      <div className="section-block">
+        <div className="section-header" onClick={() => toggleSection('stamina')}>
+          <h3>STAMINA CONDITIONING</h3>
+          <span>{sections.stamina ? '▲' : '▼'}</span>
+        </div>
+        {sections.stamina && (
+          <div className="section-content">
+            <p>2 Rounds For Time</p>
+            <ul>
+              <li>15/12 Cal Assault Bike</li>
+              <li>3 Sandbag Bearhug Carry Segments</li>
+              <li>15/12 Cal Assault Bike</li>
+              <li>5 Rope Climbs</li>
+            </ul>
+            <p><strong>Objetivos:</strong></p>
+            <ul>
+              <li>Asalto Bike al 80-85% de esfuerzo</li>
+              <li>Ejecutar sandbag y rope climb agitados</li>
+            </ul>
+            <p><strong>Reemplazos:</strong></p>
+            <ul>
+              <li>No Assault Bike: 10 Shuttle Runs</li>
+              <li>No Sandbag: Kettlebell Front Rack Carry</li>
             </ul>
           </div>
         )}
@@ -107,32 +160,13 @@ function Lunes() {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>3 x 12 Flat Bench Dumbbell Flys</li>
-              <li>3 x 30 Banded Pull Aparts</li>
-              <li>3 x 8/8 Goblet Cossack Squats</li>
-              <li>3 x 15/15 Single Leg Banded Hamstring Curls</li>
+              <li>3 x 6/6 Double KB Front Rack Cossack Squats</li>
+              <li>4 x 6 Hip Thrust @Heavy</li>
+              <li>3 x 8 Back Rack Standing Calf Raises</li>
+              <li>4 x 8-10 Glute Ham Raises</li>
             </ul>
-            <p><strong>30" Rest b/t Rounds; Rest As Needed b/t Movements</strong></p>
-            <p><strong>Nota:</strong> Peso Moderado/pesado; mantener descansos fijos y ajustar peso si es necesario.</p>
-          </div>
-        )}
-      </div>
-
-      {/* MIDLINE */}
-      <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection('midline')}>
-          <h3>MIDLINE</h3>
-          <span>{sections.midline ? '▲' : '▼'}</span>
-        </div>
-        {sections.midline && (
-          <div className="section-content">
-            <ul>
-              <li>4 x 20" L-Hang</li>
-              <li>4 x 30" Sandbag Bearhug Hold</li>
-              <li>4 x 10/10 Side Bends @Heavy Dumbbell</li>
-            </ul>
-            <p><strong>30" Rest b/t Rounds; Rest As Needed b/t Movements</strong></p>
-            <p><strong>Nota:</strong> Peso Moderado/pesado; mantener descansos fijos y ajustar peso si es necesario.</p>
+            <p><strong>Descanso:</strong> 30" entre rondas, libre entre movimientos</p>
+            <p><strong>Nota:</strong> Peso moderado/pesado. Ajustar carga si es necesario</p>
           </div>
         )}
       </div>
