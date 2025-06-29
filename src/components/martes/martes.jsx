@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useState } from 'react';
 import '../../styles.css';
 
 function Martes() {
@@ -72,7 +72,15 @@ function Martes() {
         </div>
         {sections.frontsquat && (
           <div className="section-content">
-            <label htmlFor="frontSquatRM">1RM Front Squat:</label>
+           
+            <p>
+              Build to 2 Reps <span className="highlight-weight">@{getRM(0.84)}</span>
+            </p>
+            <p>
+              Then 3 Sets x 6 Front Squats <span className="highlight-weight">@{getRM(0.71)}</span>
+            </p>
+            <p>Rest 60-90" entre sets</p>
+             <label htmlFor="frontSquatRM">1RM Front Squat:</label>
             <input
               type="number"
               id="frontSquatRM"
@@ -80,9 +88,6 @@ function Martes() {
               onChange={(e) => setOneRM(e.target.value)}
               placeholder="Ej: 100"
             />
-            <p>Build to 2 Reps @80% ({getRM(0.80)})</p>
-            <p>Then 3 Sets x 6 Front Squats @68% ({getRM(0.68)})</p>
-            <p>Rest 60-90" entre sets</p>
           </div>
         )}
       </div>
@@ -95,18 +100,15 @@ function Martes() {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>4 Sets - AMRAP 4 Min</p>
+            <p>5 Rounds For Time</p>
             <ul>
-              <li>20/15 Cal Row</li>
-              <li>30 Wall Balls</li>
-              <li>60 Double Unders</li>
-              <li>15 Burpee Box Jump Overs</li>
+              <li>400 m Run</li>
+              <li>6/4 Ring Muscle Ups</li>
+              <li>11 Front Squats</li>
             </ul>
-            <p>REST 4 Min b/t</p>
-            <p><strong>Medball:</strong> 9/6 kg | <strong>Box:</strong> 60/50 cm</p>
-            <p><strong>Score Objetivo:</strong> 1 Round + 12 Burpee Box Jump Overs</p>
-            <p><strong>Estimulo:</strong> Foco en transiciones rápidas y burpees con ritmo.</p>
-            <p><strong>Activación:</strong> 10/7 Cal Row, 8 Wall Balls, 30 DU, 5 Burpee Box Jump Overs</p>
+            <p><strong>Barbell:</strong> 60/42,5 kg</p>
+            <p><strong>Score Objetivo:</strong> 18-24 Min</p>
+            <p><strong>Objetivos:</strong> Minimizar transiciones y mantener ritmo en corrida</p>
           </div>
         )}
       </div>
@@ -121,16 +123,16 @@ function Martes() {
           <div className="section-content">
             <p>3 Rounds</p>
             <ul>
-              <li>30" Barbell Overhead Hold @Heavy</li>
-              <li>30 m Double KB Farmers Carry</li>
+              <li>40" Barbell Overhead Hold @Heavy</li>
+              <li>40 m Double Kettlebell Farmers Carry</li>
             </ul>
             <p>Rest 1 Min</p>
             <p>Then 3 Rounds</p>
             <ul>
               <li>10 Dumbbell Lateral Raises</li>
-              <li>8 Dual Plate Cuban Press</li>
+              <li>10 Dual Plate Cuban Press</li>
             </ul>
-            <p>Rest 1 Min b/t Rounds</p>
+            <p>Rest 1 Min entre rondas</p>
           </div>
         )}
       </div>
@@ -144,16 +146,13 @@ function Martes() {
         {sections.prorunner && (
           <div className="section-content">
             <h4>Warm Up</h4>
-            <p>3 Min Run @Easy to Moderate Pace</p>
-            <p>Then 3 Rounds: 30" Hard + 30" Easy</p>
+            <p>5 Min Run From Easy To Moderate/Hard Pace</p>
             <h4>Workout</h4>
-            <p>4 Sets</p>
             <ul>
-              <li>1000 m @Moderate Pace</li>
-              <li>Rest 60"</li>
-              <li>400 m @Moderate Pace</li>
+              <li>5 Rounds: 400 m @Moderate/Fast Pace + 200 m @Easy Pace</li>
+              <li>Rest 2 Min</li>
+              <li>5 Rounds: 200 m @Moderate/Fast Pace + 100 m @Easy Pace</li>
             </ul>
-            <p>Rest 2 Min entre sets</p>
             <h4>Cooldown</h4>
             <p>5 Min Recovery Pace</p>
           </div>

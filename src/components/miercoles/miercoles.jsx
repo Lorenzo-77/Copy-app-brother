@@ -11,7 +11,7 @@ function Miercoles() {
 
   const getRM = (percent) => {
     const rm = parseFloat(oneRM);
-    return oneRM ? `${(rm * percent).toFixed(0)}kg` : `0kg`;
+    return oneRM ? `${(rm * percent).toFixed(0)}kg` : '0kg';
   };
 
   return (
@@ -32,7 +32,7 @@ function Miercoles() {
               <li>6/6 One Arm Muscle Snatch</li>
               <li>6/6 One Arm Thrusters</li>
               <li>6/6 One Arm Overhead Squats (2" Pause At Bottom)</li>
-              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
+              <li>10" Wall Facing Handstand Hold</li>
             </ul>
           </div>
         )}
@@ -41,17 +41,29 @@ function Miercoles() {
       {/* JERK COMPLEX */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection('jerk')}>
-          <h3>JERK COMPLEX</h3><span>{sections.jerk ? '▲' : '▼'}</span>
+          <h3>JERK</h3><span>{sections.jerk ? '▲' : '▼'}</span>
         </div>
         {sections.jerk && (
           <div className="section-content">
-            <p>3 Sets</p>
+            <p>1) Technique</p>
             <ul>
-              <li>1 Push Jerk</li>
-              <li>1 Split Jerk</li>
+              <li>1 x 4 Jump to Split</li>
+              <li>1 x 4 Press in Split</li>
+              <li>2 x 3 Drop to Split</li>
+              <li>2 x 3 Squat Jerk</li>
+              <li>2 x 2 [1 Behind the Neck Split Jerk + 1 Split Jerk]</li>
             </ul>
+            <p>*Rest 30" entre Sets & Rest As Needed b/t movements</p>
+            <p>**Utilizar pesos livianos a moderados, buscando hacer prolijo el movimiento y llegar a las posiciones deseadas</p>
+
+            <p>2) Jerk Complex - 3 Sets</p>
+            <p>2 Split Jerk</p>
             <p>Rest 60-90" b/t Sets</p>
-            <p>Sets: {getRM(0.72)} - {getRM(0.77)} - {getRM(0.82)}</p>
+            <p>
+              Sets: <span className="highlight-weight">{getRM(0.75)}</span> - 
+              <span className="highlight-weight"> {getRM(0.80)}</span> - 
+              <span className="highlight-weight"> {getRM(0.85)}</span>
+            </p>
             <label htmlFor="jerkRM">1RM (kg):</label>
             <input
               type="number"
@@ -64,30 +76,26 @@ function Miercoles() {
         )}
       </div>
 
-      {/* CLEAN & JERK COMPLEX */}
+      {/* CLEAN & JERK */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection('cleanjerk')}>
-          <h3>CLEAN & JERK COMPLEX</h3><span>{sections.cleanjerk ? '▲' : '▼'}</span>
+          <h3>CLEAN & JERK</h3><span>{sections.cleanjerk ? '▲' : '▼'}</span>
         </div>
         {sections.cleanjerk && (
           <div className="section-content">
             <p>4 Sets</p>
             <ul>
-              <li>1 Power Clean</li>
+              <li>1 Squat Clean</li>
               <li>1 Low Hang Squat Clean</li>
-              <li>1 Front Squat</li>
               <li>1 Split Jerk</li>
             </ul>
             <p>Rest 60-90" b/t Sets</p>
-            <p>Sets: {getRM(0.70)} - {getRM(0.74)} - {getRM(0.78)} - {getRM(0.82)}</p>
-            <label htmlFor="cleanRM">1RM (kg):</label>
-            <input
-              type="number"
-              id="cleanRM"
-              value={oneRM}
-              onChange={(e) => setOneRM(e.target.value)}
-              placeholder="Ej: 100"
-            />
+            <p>
+              Sets: <span className="highlight-weight">{getRM(0.74)}</span> - 
+              <span className="highlight-weight"> {getRM(0.78)}</span> - 
+              <span className="highlight-weight"> {getRM(0.82)}</span> - 
+              <span className="highlight-weight"> {getRM(0.86)}</span>
+            </p>
           </div>
         )}
       </div>
@@ -99,23 +107,23 @@ function Miercoles() {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>3 Rounds For Time</p>
+            <p>For Time</p>
             <ul>
-              <li>10 Deadlift</li>
-              <li>10 Hang Squat Cleans</li>
-              <li>10 Shoulder to Overhead</li>
+              <li>60/45 Cal Row</li>
+              <li>45 Power Cleans</li>
+              <li>30 Burpee Box Jump Overs</li>
+              <li>15 Wall Walks</li>
             </ul>
-            <p>REST 5 Min</p>
-            <p>3 Rounds For Time</p>
+            <p>Barbell - 61/43 kg | Box - 60/50 cm</p>
+            <p><strong>Score Objetivo:</strong> 12-18 Min</p>
+            <p><strong>Estimulo:</strong> Sostener ritmo en Power Cleans y Burpees/Wall Walks sin frenar</p>
+            <p><strong>Reemplazos:</strong> No Row: 600 m Run</p>
+            <h4>Activación</h4>
             <ul>
-              <li>8/6 Ring Muscle Ups</li>
-              <li>15 m Handstand Walk</li>
-              <li>8 Box Jump Overs (Step Down)</li>
+              <li>10/7 Cal Row</li>
+              <li>6 Power Cleans</li>
+              <li>4 Burpee Box Jump Overs</li>
             </ul>
-            <p>Barbell - 70/47,5 kg</p>
-            <p>Box - 76/60 cm</p>
-            <p>Handstand Walk - 7,5 m Segments (1,5 m Unbroken Check Points)</p>
-            <p><strong>Score Objetivo:</strong> 6-9 Min (Cada parte)</p>
           </div>
         )}
       </div>
@@ -127,13 +135,18 @@ function Miercoles() {
         </div>
         {sections.rowconditioning && (
           <div className="section-content">
-            <p>1500 m Row @02:05/500m</p>
-            <p>Rest 2 Min</p>
-            <p>4 Rounds</p>
+            <p>4 Sets</p>
             <ul>
-              <li>500 m Row @01:45/500m</li>
-              <li>Rest 45" b/t Rounds</li>
+              <li>300 m Row @01:45/500m</li>
+              <li>300 m Row @Marathon Pace</li>
+              <li>100 m Row @Sprint</li>
             </ul>
+            <p>Rest 2 Min b/t Sets</p>
+            <p>Then 2 Sets</p>
+            <ul>
+              <li>300 m Row @Sub 01:45/500m</li>
+            </ul>
+            <p>Rest 1 Min b/t</p>
           </div>
         )}
       </div>
@@ -146,12 +159,14 @@ function Miercoles() {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>4 x 6 Dumbbell Bench Press</li>
-              <li>3 x 8 Double Kettlebell Pendlay Rows</li>
+              <li>4 x 8 Dumbbell Bench Press</li>
+              <li>3 x 8 Double Kettlebell Bent Over Rows</li>
               <li>3 x 12 Rolling Dumbbell Triceps Extensions</li>
               <li>3 x 12 Dumbbell Hammer Curls</li>
             </ul>
             <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
+            <p>*Completar las 3 vueltas de un movimiento, luego pasar al siguiente</p>
+            <p>**Peso Moderado/pesado; ajustar carga si es necesario sin modificar descanso</p>
           </div>
         )}
       </div>

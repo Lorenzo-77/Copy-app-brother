@@ -4,24 +4,14 @@ import '../../styles.css';
 const Viernes = () => {
   const [sections, setSections] = useState({});
   const [oneRM, setOneRM] = useState('');
-  const [weights, setWeights] = useState({});
 
   const toggleSection = (key) => {
     setSections((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handleRMChange = (e) => {
-    const value = e.target.value;
-    setOneRM(value);
-    if (value) {
-      const rm = parseFloat(value);
-      setWeights({
-        bs68: (rm * 0.68).toFixed(0),
-        bs80: (rm * 0.80).toFixed(0),
-      });
-    } else {
-      setWeights({});
-    }
+  const getRM = (percent) => {
+    const rm = parseFloat(oneRM);
+    return oneRM ? `${(rm * percent).toFixed(0)}kg` : '0kg';
   };
 
   return (
@@ -42,28 +32,28 @@ const Viernes = () => {
               <li>10 Russian KB Swings</li>
               <li>10 Goblet Squats</li>
               <li>10 Yoga Push Ups</li>
-              <li>10" Handstand Hold</li>
+              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* HANDSTAND WALK CONDITIONING */}
+      {/* GYMNASTICS CONDITIONING */}
       <div className="section-block">
-        <div className="section-header" onClick={() => toggleSection('hwalk')}>
-          <h3>HANDSTAND WALK CONDITIONING</h3>
-          <span>{sections.hwalk ? '▲' : '▼'}</span>
+        <div className="section-header" onClick={() => toggleSection('gymnastics')}>
+          <h3>GYMNASTICS CONDITIONING</h3>
+          <span>{sections.gymnastics ? '▲' : '▼'}</span>
         </div>
-        {sections.hwalk && (
+        {sections.gymnastics && (
           <div className="section-content">
-            <p>3 Rounds For Time</p>
+            <p>AMRAP 8 Min</p>
             <ul>
-              <li>15/12 Cal Ski Erg</li>
-              <li>15 m Handstand Walk (1 Pirouette Every 7.5 m)</li>
+              <li>3 Parallette Handstand Push Ups</li>
+              <li>6 Bar Muscle Ups</li>
+              <li>36 Crossovers</li>
             </ul>
-            <p><strong>SCORE OBJETIVO:</strong> 4–8 Min</p>
-            <p><strong>ESTIMULO:</strong> Gimnásticos a alta intensidad sin llegar al fallo.</p>
-            <p><strong>REEMPLAZO:</strong> No Ski Erg: 12 Burpee to Target</p>
+            <p><strong>Score Objetivo:</strong> 4+ Rounds</p>
+            <p><strong>Estimulo:</strong> Alta intensidad sin llegar al fallo</p>
           </div>
         )}
       </div>
@@ -76,16 +66,20 @@ const Viernes = () => {
         </div>
         {sections.backsquat && (
           <div className="section-content">
-            <p>Build to 2 Reps @80%</p>
-            <p>Then 3 Sets of 6 Reps @68%</p>
-            <p><strong>Peso objetivo:</strong> {weights.bs68 || 0}kg x6 - {weights.bs80 || 0}kg x2</p>
             <label>Ingresar 1RM (kg):</label>
             <input
               type="number"
               value={oneRM}
-              onChange={handleRMChange}
+              onChange={(e) => setOneRM(e.target.value)}
               placeholder="Ej: 100"
             />
+            <p>
+              Build to 2 Reps @ <span className="highlight-weight">{getRM(0.84)}</span>
+            </p>
+            <p>
+              Then 3 Sets x 6 Back Squats @ <span className="highlight-weight">{getRM(0.71)}</span>
+            </p>
+            <p>Rest 60-90" b/t Sets</p>
           </div>
         )}
       </div>
@@ -98,19 +92,19 @@ const Viernes = () => {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>For Time - 6-9-12-9-6</p>
+            <p>For Time</p>
             <ul>
-              <li>Lateral Burpees Over the Bar</li>
-              <li>Front Squats</li>
-              <li>Chest to Bar Pull Ups</li>
+              <li>21-18-15-12-9</li>
+              <li>Toes to Bar</li>
+              <li>Thrusters</li>
+              <li>Bar Facing Burpees</li>
             </ul>
-            <p><strong>Barbell:</strong> 75/50 kg</p>
-            <p><strong>Objetivo:</strong> 4–9 Min (Sprint)</p>
-            <p><strong>ACTIVACIÓN:</strong></p>
+            <p>Barbell - 43/30 kg</p>
+            <p><strong>Score Objetivo:</strong> 14-22 Min</p>
+            <p><strong>Estimulo:</strong> Ritmo fuerte y constante en Burpees; cortes breves en Toes to Bar y Thrusters</p>
+            <h4>Activación</h4>
             <ul>
-              <li>4-3 Lateral Burpees Over the Bar</li>
-              <li>4-3 Front Squats</li>
-              <li>4-3 Chest to Bar Pull Ups</li>
+              <li>2 Rounds: 3 Toes to Bar, 3 Thrusters, 3 Bar Facing Burpees</li>
             </ul>
           </div>
         )}
@@ -125,12 +119,14 @@ const Viernes = () => {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>3 x 12 Belt Squats</li>
-              <li>3 x 8 Weighted Single Leg GHD Hip Extensions</li>
-              <li>3 x 10/10 Patrick Step</li>
-              <li>3 x 8/8 Single Leg Banded Hamstring Curl</li>
+              <li>3 x 15 Belt Squats</li>
+              <li>3 x 10 Weighted Single Leg GHD Hip Extensions</li>
+              <li>3 x 12/12 Patrick Step (Level 1)</li>
+              <li>3 x 10/10 Single Leg Banded Hamstring Curl</li>
             </ul>
-            <p>30" Rest entre sets. Peso moderado/pesado.</p>
+            <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
+            <p>*Completar las 3 vueltas de un movimiento antes de pasar al siguiente</p>
+            <p>**Peso Moderado/pesado; ajustar peso si es necesario</p>
           </div>
         )}
       </div>
@@ -144,15 +140,28 @@ const Viernes = () => {
         {sections.prorunner && (
           <div className="section-content">
             <h4>Warm Up</h4>
-            <p>3 Min Run @Easy</p>
-            <p>400 m Run @Moderate</p>
-            <p>2 Rounds: 100 m @Moderate, 100 m @Fast</p>
-            <p>2 Rounds: 100 m @Easy, 50 m Sprint (Not Max)</p>
+            <p>3 Min @Easy Pace</p>
+            <p>Then</p>
+            <ul>
+              <li>30" @Moderate</li>
+              <li>30" @Easy</li>
+              <li>30" @Hard</li>
+              <li>30" @Easy</li>
+            </ul>
             <h4>Workout</h4>
-            <p>100m → 200m (de 10 en 10 m)</p>
-            <p>Full Recovery entre repeticiones</p>
-            <h4>Cooldown</h4>
-            <p>5 Min Recovery Pace</p>
+            <p>5 Sets</p>
+            <ul>
+              <li>500 m @Moderate Pace</li>
+              <li>100 m Recovery Jog</li>
+            </ul>
+            <p>No added rest between reps/sets</p>
+            <p>Rest 3-5 Min</p>
+            <p>4 Sets</p>
+            <ul>
+              <li>150 m Sprint @92-98% effort</li>
+              <li>150 m Walk</li>
+            </ul>
+            <p>Cooldown: 5 Min Recovery Pace</p>
           </div>
         )}
       </div>

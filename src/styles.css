@@ -111,6 +111,11 @@ input[type="number"] {
   transition: border-color 0.2s ease;
 }
 
+.highlight-weight {
+  color: #FF8800; 
+  font-weight: bold;
+}
+
 input[type="number"]::placeholder {
   color: #aaaaaa;
 }
