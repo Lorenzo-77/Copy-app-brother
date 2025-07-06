@@ -11,7 +11,9 @@ function Lunes() {
 
   const getRM = (percent) => {
     const rm = parseFloat(oneRM);
-    return oneRM ? <span className="highlight-weight">{(rm * percent).toFixed(0)}kg</span> : <span className="highlight-weight">0kg</span>;
+    return oneRM
+      ? <span className="highlight-weight">{(rm * percent).toFixed(0)}kg</span>
+      : <span className="highlight-weight">0kg</span>;
   };
 
   return (
@@ -56,7 +58,7 @@ function Lunes() {
               <li>1 Squat Snatch</li>
               <li>1 Snatch Balance</li>
             </ul>
-            <p>Sets: {getRM(0.575)} - {getRM(0.625)} - {getRM(0.675)}</p>
+            <p>Sets: {getRM(0.60)} - {getRM(0.65)} - {getRM(0.70)}</p>
             <label>1RM Snatch (Full):</label>
             <input
               type="number"
@@ -83,7 +85,7 @@ function Lunes() {
               <li>2 Low Hang Squat Snatch</li>
             </ul>
             <p>Rest 60-90" entre sets</p>
-            <p>Sets: {getRM(0.74)} - {getRM(0.77)} - {getRM(0.80)} - {getRM(0.83)}</p>
+            <p>Sets: {getRM(0.77)} - {getRM(0.80)} - {getRM(0.83)} - {getRM(0.86)}</p>
             <label>1RM Snatch (Full):</label>
             <input
               type="number"
@@ -103,26 +105,20 @@ function Lunes() {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>4 Sets AMRAP 3 Min</p>
+            <p>4 Rounds</p>
             <ul>
-              <li>8 m Handstand Walk</li>
-              <li>12 GHD Sit Ups</li>
-              <li>8 Dumbbell Farmers Walking Lunge Steps</li>
-              <li>2 Rope Climbs</li>
+              <li>400 m Run</li>
+              <li>15 Overhead Squats</li>
+              <li>15 Bar Facing Burpees</li>
             </ul>
-            <p>REST 3 Min entre sets</p>
-            <p><strong>Objetivo:</strong> 2+ Rounds por set</p>
+            <p><strong>Barbell:</strong> 60/42.5 kg</p>
+            <p><strong>Score Objetivo:</strong> 18-24 Min</p>
             <p><strong>Activación:</strong></p>
             <ul>
-              <li>4 m Handstand Walk</li>
-              <li>6 GHD Sit Ups</li>
-              <li>4 Alternating Dumbbell Snatches</li>
-              <li>1 Rope Climb</li>
+              <li>200 m Run</li>
+              <li>5 Overhead Squats</li>
+              <li>5 Bar Facing Burpees</li>
             </ul>
-            <p><strong>Reemplazos GHD:</strong> 
-              <a href="https://youtu.be/eWDk5jxAwCE" target="_blank" rel="noreferrer"> Opción 1</a> | 
-              <a href="https://youtu.be/O3huiwVg4UE" target="_blank" rel="noreferrer"> Opción 2</a>
-            </p>
           </div>
         )}
       </div>
@@ -136,7 +132,7 @@ function Lunes() {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>3 x 8/8 Double KB Front Rack Cossack Squats</li>
+              <li>3 x 10/10 Double Kettlebell Front Rack Cossack Squats</li>
               <li>4 x 8 Hip Thrust @Heavy Weight</li>
               <li>3 x 10 Back Rack Standing Calf Raises (movimiento lento y controlado)</li>
               <li>4 x 8-10 Glute Ham Raises</li>

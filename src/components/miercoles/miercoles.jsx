@@ -11,7 +11,9 @@ function Miercoles() {
 
   const getRM = (percent) => {
     const rm = parseFloat(oneRM);
-    return oneRM ? `${(rm * percent).toFixed(0)}kg` : '0kg';
+    return oneRM
+      ? <span className="highlight-weight">{(rm * percent).toFixed(0)}kg</span>
+      : <span className="highlight-weight">0kg</span>;
   };
 
   return (
@@ -32,13 +34,13 @@ function Miercoles() {
               <li>6/6 One Arm Muscle Snatch</li>
               <li>6/6 One Arm Thrusters</li>
               <li>6/6 One Arm Overhead Squats (2" Pause At Bottom)</li>
-              <li>10" Wall Facing Handstand Hold</li>
+              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
             </ul>
           </div>
         )}
       </div>
 
-      {/* JERK COMPLEX */}
+      {/* JERK */}
       <div className="section-block">
         <div className="section-header" onClick={() => toggleSection('jerk')}>
           <h3>JERK</h3><span>{sections.jerk ? '▲' : '▼'}</span>
@@ -54,16 +56,12 @@ function Miercoles() {
               <li>2 x 2 [1 Behind the Neck Split Jerk + 1 Split Jerk]</li>
             </ul>
             <p>*Rest 30" entre Sets & Rest As Needed b/t movements</p>
-            <p>**Utilizar pesos livianos a moderados, buscando hacer prolijo el movimiento y llegar a las posiciones deseadas</p>
+            <p>**Pesos livianos a moderados, foco en técnica</p>
 
             <p>2) Jerk Complex - 3 Sets</p>
             <p>2 Split Jerk</p>
             <p>Rest 60-90" b/t Sets</p>
-            <p>
-              Sets: <span className="highlight-weight">{getRM(0.75)}</span> - 
-              <span className="highlight-weight"> {getRM(0.80)}</span> - 
-              <span className="highlight-weight"> {getRM(0.85)}</span>
-            </p>
+            <p>Sets: {getRM(0.78)} - {getRM(0.83)} - {getRM(0.88)}</p>
             <label htmlFor="jerkRM">1RM (kg):</label>
             <input
               type="number"
@@ -90,12 +88,7 @@ function Miercoles() {
               <li>1 Split Jerk</li>
             </ul>
             <p>Rest 60-90" b/t Sets</p>
-            <p>
-              Sets: <span className="highlight-weight">{getRM(0.74)}</span> - 
-              <span className="highlight-weight"> {getRM(0.78)}</span> - 
-              <span className="highlight-weight"> {getRM(0.82)}</span> - 
-              <span className="highlight-weight"> {getRM(0.86)}</span>
-            </p>
+            <p>Sets: {getRM(0.78)} - {getRM(0.82)} - {getRM(0.86)} - {getRM(0.90)}</p>
           </div>
         )}
       </div>
@@ -107,23 +100,17 @@ function Miercoles() {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>For Time</p>
+            <p>For Total Time</p>
             <ul>
-              <li>60/45 Cal Row</li>
-              <li>45 Power Cleans</li>
-              <li>30 Burpee Box Jump Overs</li>
-              <li>15 Wall Walks</li>
+              <li>12-8-4 Power Clean & Jerks</li>
+              <li>Ring Muscle Ups (Women: 9-6-4)</li>
+              <li>Power Snatches</li>
+              <li>Bar Muscle Ups (Women: 9-6-4)</li>
             </ul>
-            <p>Barbell - 61/43 kg | Box - 60/50 cm</p>
-            <p><strong>Score Objetivo:</strong> 12-18 Min</p>
-            <p><strong>Estimulo:</strong> Sostener ritmo en Power Cleans y Burpees/Wall Walks sin frenar</p>
-            <p><strong>Reemplazos:</strong> No Row: 600 m Run</p>
-            <h4>Activación</h4>
-            <ul>
-              <li>10/7 Cal Row</li>
-              <li>6 Power Cleans</li>
-              <li>4 Burpee Box Jump Overs</li>
-            </ul>
+            <p>REST 90" b/t Rounds</p>
+            <p>Barbell - 61/43 kg</p>
+            <p><strong>Score Objetivo:</strong> 18-24 Min (Incluyendo descansos)</p>
+            <p><strong>Estimulo:</strong> Singles rápidos en barra + controlar cortes en gimnásticos</p>
           </div>
         )}
       </div>
@@ -135,16 +122,9 @@ function Miercoles() {
         </div>
         {sections.rowconditioning && (
           <div className="section-content">
-            <p>4 Sets</p>
+            <p>8 Sets</p>
             <ul>
-              <li>300 m Row @01:45/500m</li>
-              <li>300 m Row @Marathon Pace</li>
-              <li>100 m Row @Sprint</li>
-            </ul>
-            <p>Rest 2 Min b/t Sets</p>
-            <p>Then 2 Sets</p>
-            <ul>
-              <li>300 m Row @Sub 01:45/500m</li>
+              <li>500 m Row @02:00/500m</li>
             </ul>
             <p>Rest 1 Min b/t</p>
           </div>
@@ -159,14 +139,12 @@ function Miercoles() {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>4 x 8 Dumbbell Bench Press</li>
-              <li>3 x 8 Double Kettlebell Bent Over Rows</li>
+              <li>3 x 10 Dumbbell Bench Press</li>
+              <li>3 x 8 Double Kettlebell Prone Rows</li>
               <li>3 x 12 Rolling Dumbbell Triceps Extensions</li>
               <li>3 x 12 Dumbbell Hammer Curls</li>
             </ul>
             <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
-            <p>*Completar las 3 vueltas de un movimiento, luego pasar al siguiente</p>
-            <p>**Peso Moderado/pesado; ajustar carga si es necesario sin modificar descanso</p>
           </div>
         )}
       </div>

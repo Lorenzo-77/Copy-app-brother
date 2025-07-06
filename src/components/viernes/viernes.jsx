@@ -11,7 +11,9 @@ const Viernes = () => {
 
   const getRM = (percent) => {
     const rm = parseFloat(oneRM);
-    return oneRM ? `${(rm * percent).toFixed(0)}kg` : '0kg';
+    return oneRM
+      ? <span className="highlight-weight">{(rm * percent).toFixed(0)}kg</span>
+      : <span className="highlight-weight">0kg</span>;
   };
 
   return (
@@ -32,7 +34,7 @@ const Viernes = () => {
               <li>10 Russian KB Swings</li>
               <li>10 Goblet Squats</li>
               <li>10 Yoga Push Ups</li>
-              <li>10" Top Of Ring Support Hold + 10" Bottom Ring Support Hold</li>
+              <li>5 Supinated Strict Pull Ups +10" Supinated Hang</li>
             </ul>
           </div>
         )}
@@ -46,11 +48,11 @@ const Viernes = () => {
         </div>
         {sections.gymnastics && (
           <div className="section-content">
-            <p>AMRAP 8 Min</p>
+            <p>AMRAP 9 Min</p>
             <ul>
-              <li>3 Parallette Handstand Push Ups</li>
-              <li>6 Bar Muscle Ups</li>
-              <li>36 Crossovers</li>
+              <li>6 Deficit Kipping Handstand Push Ups (10/7 cm)</li>
+              <li>9 Chest to Bar Pull Ups</li>
+              <li>50 Double Unders</li>
             </ul>
             <p><strong>Score Objetivo:</strong> 4+ Rounds</p>
             <p><strong>Estimulo:</strong> Alta intensidad sin llegar al fallo</p>
@@ -73,12 +75,8 @@ const Viernes = () => {
               onChange={(e) => setOneRM(e.target.value)}
               placeholder="Ej: 100"
             />
-            <p>
-              Build to 2 Reps @ <span className="highlight-weight">{getRM(0.84)}</span>
-            </p>
-            <p>
-              Then 3 Sets x 6 Back Squats @ <span className="highlight-weight">{getRM(0.71)}</span>
-            </p>
+            <p>Build to 3 Reps @ {getRM(0.88)}</p>
+            <p>Then 3 Sets x 6 Back Squats @ {getRM(0.74)}</p>
             <p>Rest 60-90" b/t Sets</p>
           </div>
         )}
@@ -92,19 +90,17 @@ const Viernes = () => {
         </div>
         {sections.conditioning && (
           <div className="section-content">
-            <p>For Time</p>
+            <p>AMRAP 15 Min</p>
             <ul>
-              <li>21-18-15-12-9</li>
-              <li>Toes to Bar</li>
-              <li>Thrusters</li>
-              <li>Bar Facing Burpees</li>
+              <li>10-20-30-40-… Wall Balls</li>
+              <li>5-10-15-20-… Burpee Box Jump Overs</li>
             </ul>
-            <p>Barbell - 43/30 kg</p>
-            <p><strong>Score Objetivo:</strong> 14-22 Min</p>
-            <p><strong>Estimulo:</strong> Ritmo fuerte y constante en Burpees; cortes breves en Toes to Bar y Thrusters</p>
+            <p>Medball - 9/6 kg | Box - 60/50 cm</p>
+            <p><strong>Estimulo:</strong> Ritmo fuerte y constante en Burpees; controlar cortes en Wall Balls</p>
             <h4>Activación</h4>
             <ul>
-              <li>2 Rounds: 3 Toes to Bar, 3 Thrusters, 3 Bar Facing Burpees</li>
+              <li>6 Wall Balls</li>
+              <li>3 Burpee Box Jump Overs</li>
             </ul>
           </div>
         )}
@@ -119,14 +115,12 @@ const Viernes = () => {
         {sections.accessory && (
           <div className="section-content">
             <ul>
-              <li>3 x 15 Belt Squats</li>
-              <li>3 x 10 Weighted Single Leg GHD Hip Extensions</li>
-              <li>3 x 12/12 Patrick Step (Level 1)</li>
-              <li>3 x 10/10 Single Leg Banded Hamstring Curl</li>
+              <li>3 x 18 Belt Squats</li>
+              <li>3 x 12 Weighted Single Leg GHD Hip Extensions</li>
+              <li>3 x 10/10 Patrick Step (Level 2)</li>
+              <li>3 x 12/12 Single Leg Banded Hamstring Curl</li>
             </ul>
             <p>30" Rest b/t Rounds; Rest As Needed b/t Movements</p>
-            <p>*Completar las 3 vueltas de un movimiento antes de pasar al siguiente</p>
-            <p>**Peso Moderado/pesado; ajustar peso si es necesario</p>
           </div>
         )}
       </div>
@@ -140,26 +134,25 @@ const Viernes = () => {
         {sections.prorunner && (
           <div className="section-content">
             <h4>Warm Up</h4>
-            <p>3 Min @Easy Pace</p>
-            <p>Then</p>
-            <ul>
-              <li>30" @Moderate</li>
-              <li>30" @Easy</li>
-              <li>30" @Hard</li>
-              <li>30" @Easy</li>
-            </ul>
+            <p>400 m Run @Easy To Moderate Pace</p>
+            <p>Rest 1 Min</p>
+            <p>100 m @Moderate</p>
+            <p>100 m @Fast</p>
+            <p>100 m Recovery Jog</p>
             <h4>Workout</h4>
-            <p>5 Sets</p>
+            <p>3 Sets</p>
             <ul>
-              <li>500 m @Moderate Pace</li>
-              <li>100 m Recovery Jog</li>
+              <li>800 m @Moderate/Fast Pace</li>
+              <li>90" Rest</li>
+              <li>400 m @Moderate/Fast Pace</li>
+              <li>Rest 60"</li>
             </ul>
-            <p>No added rest between reps/sets</p>
-            <p>Rest 3-5 Min</p>
-            <p>4 Sets</p>
+            <p>Rest 3 Min</p>
+            <p>3 Sets</p>
             <ul>
-              <li>150 m Sprint @92-98% effort</li>
-              <li>150 m Walk</li>
+              <li>400 m @Faster Pace</li>
+              <li>30" Rest</li>
+              <li>200 m Recovery Jog</li>
             </ul>
             <p>Cooldown: 5 Min Recovery Pace</p>
           </div>
